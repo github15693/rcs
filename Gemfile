@@ -40,4 +40,7 @@ gem 'spring',        group: :development
 
 # Use bootstrap for pretty stylesheets
 gem 'bootstrap-sass', '~> 3.1.1'
-
+# Use to call api
+gem 'rest-client'
+# use 'Hashie' to convert json to object
+gem 'hashie'
