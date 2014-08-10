@@ -1,28 +1,7 @@
-== README
+Resident Concierge System.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Nhom sinh vien truong [*Dai hoc Can Tho*](http://www.ctu.edu.vn) dan thuc tap tai cong ty [*Innoria*](http://www.mangsangtao.com)
 
-Things you may want to cover:
+Bao gom:
+* Ma nguon [*Ruby on Rails*](http://rubyonrails.org)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
