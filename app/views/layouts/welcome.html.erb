@@ -22,7 +22,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Bookings</a></li>
+            <%= link_to 'Bookings', '#', { class: "#{session[:menu] == 'home' ? 'active' : ''}" } %>
             <li><a href="#contact">Bulletins</a></li>
             <li><a href="#contact">Condo Info</a></li>
             <li><a href="#contact">Events</a></li>
@@ -45,7 +45,11 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+  </div>
 
+  <div id="notifications"></div>
+
+  <div class="container">
     <%= yield %>
   </div>
 </body>
