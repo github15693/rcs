@@ -20,19 +20,10 @@
         <a class="navbar-brand" href="#">Bootstrap theme</a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <%= link_to 'Bookings', '#', { class: "#{session[:menu] == 'home' ? 'active' : ''}" } %>
-          <li><a href="#contact">Bulletins</a></li>
-          <li><a href="#contact">Condo Info</a></li>
-          <li><a href="#contact">Events</a></li>
-          <li><a href="#contact">Facilities</a></li>
-          <li><a href="#contact">Feedback</a></li>
-          <li><a href="#contact">Forms</a></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
-          <%= link_to 'Bookings', '#', { class: "#{session[:menu] == 'home' ? 'active' : ''}" } %>
-          <li><a href="#contact">Bulletins</a></li>
-          <li><a href="#contact">Condo Info</a></li>
+          <%= menu_item t('layout_application.my_profile'), '#' %>
+          <%= menu_item t('layout_application.setting'), '#' %>
+          <%= menu_item t('layout_application.setting'), '#' %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -40,9 +31,58 @@
 </div>
 
 <div id="notifications"></div>
+<div class="container margin-ttop-50">
+  <div class="row">
+    <div>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% if @privileges.size > 0 %>
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <% for i in 1...@privileges.size %>
+                  <li data-target="#carousel-example-generic" data-slide-to="<%= i %>"></li>
+              <% end %>
+          <% else %>
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <% end %>
+        </ol>
 
-<div class="container">
-  <%= yield %>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% if @privileges.size > 0 %>
+              <div class="item active">
+                <h1>ssgsrg</h1>
+              </div>
+              <% for i in 1...@privileges.size %>
+                  <div class="item">
+                    <h1>hsdbfusb</h1>
+                  </div>
+              <% end %>
+          <% else %>
+              <div class="item active">
+                <h1>no data</h1>
+              </div>
+          <% end %>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <h3>PMH Park</h3>
+    </div>
+    <div class="col-md-9">
+      <%= yield %>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
