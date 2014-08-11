@@ -21,11 +21,11 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <%= menu_item t('.home'), welcomes_path, { class: session[:menu] == :home ? :active : '' } %>
-            <%= menu_item t('.feature'), '#', { class: session[:menu] == :feature ? :active : '' } %>
-            <%= menu_item t('.for_resident'), '#', { class: session[:menu] == :for_resident ? :active : '' } %>
-            <%= menu_item t('.for_merchant'), '#', { class: session[:menu] == :for_merchant ? :active : '' } %>
-            <%= menu_item t('.media'), '#', { class: session[:menu] == :media ? :active : '' } %>
+            <%= menu_item t('.home'), root_path, { class: session[:menu] == :home ? :active : '' } %>
+            <%= menu_item t('.feature'), features_path, { class: session[:menu] == :feature ? :active : '' } %>
+            <%= menu_item t('.for_resident'), residents_path, { class: session[:menu] == :for_resident ? :active : '' } %>
+            <%= menu_item t('.for_merchant'), merchants_path, { class: session[:menu] == :for_merchant ? :active : '' } %>
+            <%= menu_item t('.media'), media_path, { class: session[:menu] == :media ? :active : '' } %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
