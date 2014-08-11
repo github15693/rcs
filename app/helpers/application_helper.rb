@@ -12,7 +12,7 @@ module ApplicationHelper
     end
   end
 
-  API_BASE_URL = "http://rms.com/api"
+  API_BASE_URL = "http://rms.innoria.lab.com/api"
   def get_api url, parameters=nil, username_api=nil, password_api=nil
     if !url.nil? && !parameters.nil? && (username_api.nil? || password_api.nil?)
       param = '?'
