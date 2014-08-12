@@ -62,5 +62,9 @@ module ApplicationHelper
       return {status:'failed', message:'Post api error', data:nil}
     end
   end
+
+  def currency(val)
+    "#{ActionController::Base.helpers.number_to_currency(val)}"
+  end
 end
 

@@ -1,0 +1,82 @@
+<div class="row">
+  <% if !@bulletin.nil? %>
+      <div class="col-md-12">
+        <hr>
+        <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+        <div class="col-md-10">
+          <h4><%= @bulletin.title %></h4>
+          <h5><%= @bulletin.date %></h5>
+        </div>
+  <% end %>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.bulletins')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="/events">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.events')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.bookings')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="/privileges">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.privileges')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.services')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.courses')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.forms')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.house_rules')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.guard_house')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.feedback')%>
+      </a>
+    </div>
+    <div class="col-md-2 text-center margin-top-20">
+      <a href="#">
+        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        <%=t('layout_application.my_profile')%>
+      </a>
+    </div>
+
+  </div>
+</div>

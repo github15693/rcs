@@ -32,7 +32,8 @@
 </div>
 
 <div id="notifications"></div>
-<div class="content-privileges">
+<div class="row content-privileges">
+  <div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner text-center">
@@ -51,6 +52,7 @@
                     <h4><%= @privileges[i].description%>&nbsp</h4>
                     <h4><%#= t('privileges.price') + ': ' + currency(@privileges[i].price).to_s%></h4>
                   </a>
+
                 </div>
             <% end %>
         <% else %>
@@ -68,26 +70,14 @@
       </a>
     </div>
   </div>
-<div class="container margin-top-50">
+</div>
+<div class="container">
 
   <div class="row">
-    <div class="col-md-3 col-sm-3 content-left">
+    <div class="col-md-3 col-sm-3">
       <h4><%= t('layout_application.pmh_park') %></h4>
       <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
       <h4><%= t('layout_application.rcs') %></h4>
-      <div class="list-group">
-        <%= link_to t('layout_application.home'), '/homes', class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
-        <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.events'), '/events', class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
-        <%= link_to t('layout_application.bookings'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.privileges'), '/privileges', class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
-        <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.courses'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.guard_house'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.feedback'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-      </div>
     </div>
     <div class="col-md-9 col-sm-9 content-right">
       <%= yield %>

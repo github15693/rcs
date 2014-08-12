@@ -1,0 +1,8 @@
+en:
+  privileges:
+    location: 'Location'
+    name: 'Name'
+    price: 'Price'
+    description: 'Description'
+    distance: 'Distance'
+    date_expiry: 'Date_expiry'

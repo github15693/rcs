@@ -33,12 +33,16 @@ Rails.application.routes.draw do
     #     end
     #   end
 
-    resources :events do
+  resources :events do
 
   end
   resources :homes do
 
-    end
+  end
+
+  resources :privileges do
+
+  end
 
     # Example resource route with sub-resources:
     #   resources :products do
