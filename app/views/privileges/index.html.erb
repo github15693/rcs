@@ -1,0 +1,28 @@
+<div class="row">
+  <% if !@privileges.nil? %>
+  <div class="col-md-12 icon-menu">
+    <div class="col-md-1">
+      <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+    </div>
+    <div class="col-md-11">
+      <h4>Privileges</h4>
+    </div>
+  </div>
+      <% @privileges.each do |privilege| %>
+          <a href="/privileges/<%= privilege.id%>">
+      <div class="col-md-12">
+        <hr>
+        <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+        <div class="col-md-10">
+          <h4><%= privilege.name %></h4>
+          <h5><%= privilege.location %></h5>
+          <h5><%= privilege.distance %></h5>
+          <h5 class="text-right"><%= (privilege.date_expiry.to_date - Date.today()).to_i %> Days left</h5>
+        </div>
+      </div>
+           </a>
+        <% end %>
+      <% else %>
+  <h4>Privileges is empty!</h4>
+  <% end %>
+</div>

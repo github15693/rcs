@@ -39,7 +39,7 @@
         <% if @privileges.size > 0 %>
             <div class="item active">
               <a href="/privileges/<%= @privileges[0].id%>">
-                <b><h4><%=@privileges[0].location%>&nbsp</h4></b>
+                <b><h4><%=@privileges[0].name%>&nbsp</h4></b>
                 <h4><%= @privileges[0].description%>&nbsp</h4>
                 <h5><%#= t('privileges.price') + ': ' + currency(@privileges[0].price).to_s%></h5>
               </a>
@@ -47,7 +47,7 @@
             <% for i in 1...@privileges.size %>
                 <div class="item">
                   <a href="/privileges/<%= @privileges[i].id%>">
-                    <b><h4><%=@privileges[i].location%>&nbsp</h4></b>
+                    <b><h4><%=@privileges[i].name%>&nbsp</h4></b>
                     <h4><%= @privileges[i].description%>&nbsp</h4>
                     <h4><%#= t('privileges.price') + ': ' + currency(@privileges[i].price).to_s%></h4>
                   </a>
@@ -68,7 +68,7 @@
       </a>
     </div>
   </div>
-<div class="container margin-top-50">
+<div class="container">
 
   <div class="row">
     <div class="col-md-3 col-sm-3 content-left">

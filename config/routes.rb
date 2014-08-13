@@ -41,7 +41,9 @@ Rails.application.routes.draw do
   end
 
   resources :privileges do
-
+    collection do
+      post 'redeem_previlege'
+    end
   end
 
     # Example resource route with sub-resources:
