@@ -3,7 +3,15 @@ class WelcomesController < ApplicationController
   before_action :set_menu
 
   def index
-    @user = nil
+    json_condo = api_get '/condos'
+    if json_condo[:status] = 'success'
+      @condos = []
+      json_condo[:result].each do |condo|
+        @condos << condo.values
+      end
+    else
+
+    end
   end
 
   def create
@@ -12,7 +20,11 @@ class WelcomesController < ApplicationController
 
   private
     def set_menu
-      session[:menu] = :home
+      session[:menu] = :welcomes
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :phone, :city, :password, :retype_password, :condo_id)
     end
 end
 

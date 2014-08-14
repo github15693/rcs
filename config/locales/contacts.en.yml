@@ -1,2 +1,21 @@
 en:
+  contacts:
+    index:
+      contact: 'CONTACT US'
+      description: 'Have a query? Contact us and we''ll get back to you shortly'
+    form:
+      im_a_resident: 'I am a Resident'
+      im_a_merchant: 'I am a Merchant'
+      name: 'Name'
+      email: 'Email'
+      phone_num: 'Phone No'
+      submit: 'Submit'
+    create:
+      respond_ok: 'Your queries has been sent!'
+      respond_not_ok: 'Your queries not being delivered, please review!'
+
+  helpers:
+    label:
+      contact:
+        message: 'Message'
 

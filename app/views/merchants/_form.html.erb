@@ -1,4 +1,16 @@
-<%= form_for @user do |f| %>
-
+<%= form_tag merchants_path, remote: true do %>
+  <%= label :merchant, :if_interest %>
+  <div class="form-group">
+    <%= text_field :merchant, :name, { class: 'form-control', placeholder: t('.name') } %>
+  </div>
+  <div class="form-group">
+    <%= text_field :merchant, :email, { class: 'form-control', placeholder: t('.email') } %>
+  </div>
+  <div class="form-group">
+    <%= text_field :merchant, :phone, { class: 'form-control', placeholder: t('.phone_num') } %>
+  </div>
+  <div class="text-center form-group">
+    <%= button_tag t('.submit'), { type: :submit, name: 'merchant[submit]', value: 'Submit', class: 'btn btn-primary btn-block' } %>
+  </div>
 <% end %>
 

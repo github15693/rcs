@@ -1,3 +1,42 @@
 // Place all the styles related to the Welcomes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar-brand {
+  padding: 0;
+  height: 50px;
+  .rcs-logo {
+    display: inline-block;
+    padding-right: 20px;
+    height: 48px;
+    min-width: 48px;
+    padding-left: 48px;
+    background-image: url('/images/fav.svg');
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: 4px center;
+  }
+  .title {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 30px;
+    color: #FFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    .title-dark {
+      color: #CCC;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.btn {
+  border-radius: 2px;
+}
+
+@media all and (min-width: 768px) {
+  .rcs-logo {
+    .title {
+      display: none;
+    }
+  }
+}
+

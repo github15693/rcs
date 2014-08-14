@@ -1,2 +1,6 @@
 en:
+  media:
+    index:
+      media: 'MEDIA'
+      description: 'We are now available on Facebook!'
 

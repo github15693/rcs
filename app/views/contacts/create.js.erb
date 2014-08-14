@@ -1,0 +1,6 @@
+<% if @contact.errors.any? %>
+  $('#notifications').html('<%= alert_dismissible t('.respond_not_ok') %>')
+<% else %>
+  $('#notifications').html('<%= alert_dismissible t('.respond_ok') %>')
+<% end %>
+
