@@ -1,0 +1,20 @@
+vi:
+  merchants:
+    index:
+      merchant: 'BẠN LÀ THƯƠNG GIA?'
+      info: 'NẾU BẠN LÀ MỘT THƯƠNG GIA HOẶC HUẤN LUYỆN VIÊN, MONG MUỐN CỘNG ĐỒNG SỐNG CÁ NHÂN NÀY BIẾT ĐẾN CÁC SẢN PHẨM VÀ DỊCH VỤ TUYỆT VỜI CỦA BẠN. VUI LÒNG LIÊN LẠC VỚI CHÚNG TÔI'
+      description: '* PHỤC VỤ NHỮNG AI Ở GẦN HOẶC Ở XA ĐẾN *'
+    form:
+      name: '* Tên'
+      email: '* E-mail'
+      phone_num: 'Số điện thoại'
+      submit: 'Xác nhận'
+    create:
+      respond_ok: 'Bạn đã đăng ký thành công, vui lòng đợi xác thực!'
+      respond_not_ok: 'Đăng ký không thành công, vui lòng xem lại!'
+
+  helpers:
+    label:
+      merchant:
+        if_interest: 'Liên hệ với chúng tôi nếu bạn quan tâm:'
+

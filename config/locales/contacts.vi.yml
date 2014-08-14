@@ -1,0 +1,21 @@
+vi:
+  contacts:
+    index:
+      contact: 'LIÊN HỆ'
+      description: 'Bạn có thắc mắc? Hãy liên hệ với chúng tôi và chúng tôi sẽ phản hồi cho bạn ngay'
+    form:
+      im_a_resident: 'Tôi là cư dân'
+      im_a_merchant: 'Tôi là thương gia'
+      name: 'Tên'
+      email: 'E-mail'
+      phone_num: 'Số điện thoại'
+      submit: 'Chấp nhận'
+    create:
+      respond: 'Thắc mắc của bạn đã được gửi đi!'
+      respond_not_ok: 'Thắc mắc của bạn chưa được gửi đi, vui lòng xem lại!'
+
+  helpers:
+    label:
+      contact:
+        message: 'Tin nhắn'
+

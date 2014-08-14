@@ -1,2 +1,20 @@
 en:
+  merchants:
+    index:
+      merchant: 'ARE YOU A MERCHANT?'
+      info: 'IF YOU''RE A MERCHANT OR COACH WHO DESIRES TO THIS PRIVATE LIVING COMMUNITY WITH YOUR GREAT PRODUCTS & SERVICES PLEASE FEEL FREE TO GET IN-TOUCH WITH US'
+      description: '* SERVE THOSE WHO ARE NEAR AND THOSE WHO ARE FAR WILL COME *'
+    form:
+      name: '* Name'
+      email: '* Email'
+      phone_num: 'Phone No'
+      submit: 'Submit'
+    create:
+      respond_ok: 'You have successfully registered, please waiting authentication!'
+      respond_not_ok: 'Registration failed, please review!'
+
+  helpers:
+    label:
+      merchant:
+        if_interest: 'Contact us if you are interested:'
 
