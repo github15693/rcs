@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   def temp_session
     session[:token]= 'iMXnuxVicLRLRysLtjUN'
     session[:user_id] =14
+    session[:condo_id] =1
   end
 
   def rest_client url, http_usr = nil, http_pwd = nil
