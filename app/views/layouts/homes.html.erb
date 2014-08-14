@@ -37,7 +37,7 @@
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner text-center">
-        <% if @privileges.size > 0 %>
+        <% if !@privileges.nil? %>
             <div class="item active">
               <a href="/privileges/<%= @privileges[0].id%>">
                 <b><h4><%=@privileges[0].name%>&nbsp</h4></b>
