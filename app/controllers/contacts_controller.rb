@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < RootsController
   layout 'welcome'
   before_action :set_menu
 

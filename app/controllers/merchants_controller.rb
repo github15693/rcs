@@ -1,4 +1,4 @@
-class MerchantsController < ApplicationController
+class MerchantsController < RootsController
   layout 'welcome'
   before_action :set_menu
 

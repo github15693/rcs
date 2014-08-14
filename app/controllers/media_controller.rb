@@ -1,4 +1,4 @@
-class MediaController < ApplicationController
+class MediaController < RootsController
   layout 'welcome'
   before_action :set_menu
 

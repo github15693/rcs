@@ -1,4 +1,4 @@
-class FeaturesController < ApplicationController
+class FeaturesController < RootsController
   layout 'welcome'
   before_action :set_menu
 
