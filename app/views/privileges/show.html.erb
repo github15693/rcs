@@ -5,7 +5,7 @@
           <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
         </div>
         <div class="col-md-11">
-          <h4><a href="/privileges"><%= t('layout_application.privileges') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('privileges.info') %>
+          <h4><a href="<%= privileges_path %>"><%= t('layout_application.privileges') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('privileges.info') %>
           </h4>
         </div>
       </div>
@@ -15,7 +15,7 @@
         <div class="col-md-8 height-200">
           <h3><%= @privilege.name %></h3>
           <h4><%= (@privilege.date_expiry.to_date - Date.today()).to_i %> Days left</h4>
-          <%= form_tag '/privileges/redeem_previlege', remote:true do |f| %>
+          <%= form_tag redeem_previlege_privileges_path, remote:true do |f| %>
               <%= hidden_field_tag 'privilege_id', @privilege.id %>
               <%= submit_tag t('privileges.save_btn'), class: 'btn btn-primary btn-save-privileges col-md-5' %>
           <% end %>

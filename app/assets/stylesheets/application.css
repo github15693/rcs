@@ -19,10 +19,6 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  margin-top: 50px;
-}
-
 #notifications {
   position: fixed;
   top: 45%;
