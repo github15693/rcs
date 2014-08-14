@@ -1,4 +1,4 @@
-class WelcomesController < ApplicationController
+class WelcomesController < RootsController
   layout 'welcome'
   before_action :set_menu
 
