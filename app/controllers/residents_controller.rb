@@ -1,4 +1,4 @@
-class ResidentsController < ApplicationController
+class ResidentsController < RootsController
   layout 'welcome'
   before_action :set_menu
 
