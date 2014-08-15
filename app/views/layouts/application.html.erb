@@ -76,13 +76,13 @@
       <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
       <h4><%= t('layout_application.rcs') %></h4>
       <div class="list-group">
-        <%= link_to t('layout_application.home'), '/homes', class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
+        <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
         <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.events'), '/events', class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
+        <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
         <%= link_to t('layout_application.bookings'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.privileges'), '/privileges', class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
+        <%= link_to t('layout_application.privileges'), privileges_path, class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
         <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.courses'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
         <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.guard_house'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>

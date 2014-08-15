@@ -6,3 +6,8 @@ vi:
     description: 'Mô tả'
     distance: 'Khoảng cách'
     date_expiry: 'Ngày hết hạn'
+    info: 'Thông tin'
+    empty: 'Không có khuyến mãi!'
+    save_btn: 'Lưu khuyến mãi'
+    view_term_conditions: 'Xem term & điều kiện'
+    privileges: 'Khuyến mãi'

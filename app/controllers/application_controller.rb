@@ -19,6 +19,7 @@ class ApplicationController < RootsController
   def temp_session
     session[:token]= 'iMXnuxVicLRLRysLtjUN'
     session[:user_id] =14
+    session[:condo_id] =1
   end
 end
 

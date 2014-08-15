@@ -1,0 +1,27 @@
+<div class="row">
+  <% if !@courses.nil? %>
+      <div class="col-md-12 icon-menu">
+        <div class="col-md-1">
+          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-11">
+          <h4>Courses</h4>
+        </div>
+      </div>
+      <% @courses.each do |course| %>
+          <a href="<%= course_path(course.id) %>">
+            <div class="col-md-12">
+              <hr>
+              <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+              <div class="col-md-10">
+                <h4><%= course.name %></h4>
+                <h5><%= course.description %></h5>
+                <h5><%= course.instructor %></h5>
+              </div>
+            </div>
+          </a>
+      <% end %>
+  <% else %>
+      <h4>Courses is empty!</h4>
+  <% end %>
+</div>

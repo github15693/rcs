@@ -48,7 +48,6 @@ Rails.application.routes.draw do
 
     resources :courses do
       collection do
-        post 'abc'
       end
     end
 
