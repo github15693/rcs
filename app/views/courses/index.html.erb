@@ -5,7 +5,7 @@
           <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
         </div>
         <div class="col-md-11">
-          <h4>Courses</h4>
+          <h4><%= t('layout_application.courses')%></h4>
         </div>
       </div>
       <% @courses.each do |course| %>
@@ -22,6 +22,6 @@
           </a>
       <% end %>
   <% else %>
-      <h4>Courses is empty!</h4>
+      <h4></h4>
   <% end %>
 </div>
