@@ -1,6 +1,8 @@
-<% if @merchant.errors.any? %>
-  $('#notifications').html('<%= alert_dismissible t('.respond_not_ok') %>')
-<% else %>
+<% if @merchant[:status] == 'success' %>
   $('#notifications').html('<%= alert_dismissible t('.respond_ok') %>')
+  $('#merchant_archive').closest('form')[0].reset()
+<% else %>
+  $('#notifications').html('<%= alert_dismissible t('.respond_not_ok') %>')
+  alert('<%= @merchant %>')
 <% end %>
 

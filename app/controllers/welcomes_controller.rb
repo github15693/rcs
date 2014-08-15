@@ -9,8 +9,6 @@ class WelcomesController < RootsController
       json_condo[:result].each do |condo|
         @condos << condo.values
       end
-    else
-
     end
   end
 

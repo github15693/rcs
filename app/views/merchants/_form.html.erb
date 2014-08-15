@@ -1,4 +1,4 @@
-<%= form_tag merchants_path, remote: true do %>
+<%= form_tag merchants_path, remote: true, id: 'hung-form' do %>
   <%= label :merchant, :if_interest %>
   <div class="form-group">
     <%= text_field :merchant, :name, { class: 'form-control', placeholder: t('.name') } %>
@@ -9,6 +9,7 @@
   <div class="form-group">
     <%= text_field :merchant, :phone, { class: 'form-control', placeholder: t('.phone_num') } %>
   </div>
+  <%= hidden_field :merchant, :archive, {value: false} %>
   <div class="text-center form-group">
     <%= button_tag t('.submit'), { type: :submit, name: 'merchant[submit]', value: 'Submit', class: 'btn btn-primary btn-block' } %>
   </div>
