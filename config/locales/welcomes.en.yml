@@ -13,7 +13,7 @@ en:
       phone_num: '* Phone No'
       address: '* Address'
       password: '* Password'
-      retype_password: '* Re-type Password'
+      password_confirmation: '* Re-type Password'
       submit: 'Submit'
     create:
       respond_ok: 'You have successfully registered!'

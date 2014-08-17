@@ -1,7 +1,7 @@
 <%= form_tag welcomes_path, remote: true do %>
   <div class="form-group">
     <%= label :user, :choose_condo %>
-    <%= collection_select :user, :condominium_id, @condos, :first, :last, {}, { class: 'form-control' } %>
+    <%= collection_select :user, :condo_id, @condos, :first, :last, {}, { class: 'form-control' } %>
   </div>
   <%= label :user, :description %>
   <div class="form-group">
@@ -20,7 +20,7 @@
     <%= password_field :user, :password, { class: 'form-control', placeholder: t('.password') } %>
   </div>
   <div class="form-group">
-    <%= password_field :user, :retype_password, { class: 'form-control', placeholder: t('.retype_password') } %>
+    <%= password_field :user, :password_confirmation, { class: 'form-control', placeholder: t('.password_confirmation') } %>
   </div>
   <div class="text-center form-group">
     <%= button_tag t('.submit'), { type: :submit, name: 'user[submit]', value: 'Submit', class: 'btn btn-primary btn-block' } %>

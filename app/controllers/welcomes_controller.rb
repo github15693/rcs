@@ -13,7 +13,8 @@ class WelcomesController < RootsController
   end
 
   def create
-
+    @user = api_post '/sign_up', user_params
+    @errors = @user[:message] unless @user[:status] == 'success'
   end
 
   private

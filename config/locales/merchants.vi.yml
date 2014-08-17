@@ -10,6 +10,8 @@ vi:
       phone_num: 'Số điện thoại'
       submit: 'Xác nhận'
     create:
+      name: 'Tên'
+      email: 'E-mail'
       respond_ok: 'Bạn đã đăng ký thành công, vui lòng đợi xác thực!'
       respond_not_ok: 'Đăng ký không thành công, vui lòng xem lại!'
 

@@ -13,11 +13,11 @@ vi:
       phone_num: '* Số điện thoại'
       address: '* Địa chỉ'
       password: '* Mật khẩu'
-      retype_password: '* Nhập lại Mật khẩu'
+      password_confirmation: '* Nhập lại Mật khẩu'
       submit: 'Xác nhận'
     create:
-      respond_ok: 'Your queries has been sent!'
-      respond_not_ok: 'Your queries not being delivered, please review!'
+      respond_ok: 'Đăng ký thành công!'
+      respond_not_ok: 'Đăng ký không thành công, vui lòng xem lại!'
 
   helpers:
     label:

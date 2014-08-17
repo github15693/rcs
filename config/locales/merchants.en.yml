@@ -10,6 +10,8 @@ en:
       phone_num: 'Phone No'
       submit: 'Submit'
     create:
+      name: 'Name'
+      email: 'Email'
       respond_ok: 'You have successfully registered, please waiting authentication!'
       respond_not_ok: 'Registration failed, please review!'
 

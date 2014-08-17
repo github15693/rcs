@@ -1,8 +1,14 @@
+$('.text-danger').remove()
 <% if @merchant[:status] == 'success' %>
-  $('#notifications').html('<%= alert_dismissible t('.respond_ok') %>')
-  $('#merchant_archive').closest('form')[0].reset()
+  $('#notifications').html('<%= alert_bs t('.respond_ok') %>')
+  $('#merchant_phone').closest('form')[0].reset()
 <% else %>
-  $('#notifications').html('<%= alert_dismissible t('.respond_not_ok') %>')
-  alert('<%= @merchant %>')
+  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
+  <% @errors.each do |key, value| %>
+    $('#merchant_<%= key %>').after('<%= contextual t(".#{key}") + ' ' + value.last %>')
+  <% end %>
 <% end %>
+setTimeout(function() {
+  $('#notifications').html('')
+}, 3000)
 
