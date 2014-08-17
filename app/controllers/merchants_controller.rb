@@ -7,6 +7,7 @@ class MerchantsController < RootsController
 
   def create
     @merchant = api_post '/request_merchant', merchant_params
+    @errors = @merchant[:message] unless @merchant[:status] == 'success'
   end
 
   private

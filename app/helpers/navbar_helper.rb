@@ -13,14 +13,14 @@ module NavbarHelper
     content_tag(:ul, :class => "nav navbar-nav #{pull_class}", &block)
   end
 
-  def menu_item(name=nil, path="#", *args, &block)
-    path = name || path if block_given?
-    options = args.extract_options!
-    content_tag :li, :class => is_active?(path, options) do
-      name, path = path, options if block_given?
-      link_to name, path, options, &block
-    end
-  end
+#  def menu_item(name=nil, path="#", *args, &block)
+#    path = name || path if block_given?
+#    options = args.extract_options!
+#    content_tag :li, :class => is_active?(path, options) do
+#      name, path = path, options if block_given?
+#      link_to name, path, options, &block
+#    end
+#  end
 
   def drop_down(name)
     content_tag :li, :class => "dropdown" do
@@ -204,3 +204,4 @@ class Hash
     self[key] = [current_value, value].compact.join(" ")
   end
 end
+

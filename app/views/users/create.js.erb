@@ -1,0 +1,10 @@
+$('#login-modal').modal('hide')
+<% if @user[:status] == 'success' %>
+  $('#notifications').html('<%= alert_bs t('.respond_ok') %>')
+  setTimeout(function() {
+    $('#notifications').html('')
+  }, 2000)
+<% else %>
+  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
+<% end %>
+

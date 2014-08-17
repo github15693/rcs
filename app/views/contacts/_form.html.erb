@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <%= label :contact, :message %>
-    <%= text_area :contact, :message, { class: 'form-control' } %>
+    <%= text_area :contact, :message, { class: 'form-control', placeholder: t('.message') } %>
   </div>
   <div class="text-center form-group">
     <%= button_tag t('.submit'), { type: :submit, name: 'contact[submit]', value: 'Submit', class: 'btn btn-primary btn-block' } %>

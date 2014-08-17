@@ -6,12 +6,13 @@ vi:
     form:
       im_a_resident: 'Tôi là cư dân'
       im_a_merchant: 'Tôi là thương gia'
-      name: 'Tên'
-      email: 'E-mail'
-      phone_num: 'Số điện thoại'
+      name: '* Tên'
+      email: '* E-mail'
+      phone_num: '* Số điện thoại'
+      message: '*'
       submit: 'Chấp nhận'
     create:
-      respond: 'Thắc mắc của bạn đã được gửi đi!'
+      respond_ok: 'Thắc mắc của bạn đã được gửi đi!'
       respond_not_ok: 'Thắc mắc của bạn chưa được gửi đi, vui lòng xem lại!'
 
   helpers:

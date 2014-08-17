@@ -26,7 +26,7 @@ class RootsController < ActionController::Base
 
   private
     def api_domain
-      'http://rms.vn/api'
+      'http://rms.innoria.com/api'
     end
 
     def api_params query_params = {}

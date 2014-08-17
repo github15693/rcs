@@ -3,11 +3,11 @@ class ContactsController < RootsController
   before_action :set_menu
 
   def index
-    @contact = nil
   end
 
   def create
-
+    @contact = api_post '/send_contact_us', contact_params
+    @errors = @contact[:message] unless @contact[:status] == 'success'
   end
 
   private
