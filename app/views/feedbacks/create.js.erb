@@ -1,0 +1,5 @@
+<% if @feedback[:status] == "success" %>
+alert(<%= @image %> );
+<% else %>
+alert(<%= @feedback.message %>);
+<% end %>   

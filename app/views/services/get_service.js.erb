@@ -1,0 +1,10 @@
+$('div.result').html('')
+<% if @services[:results].size >0 %>
+
+$('div.result').html('<%= j render("services_content") %>')
+
+<% else %>
+
+
+
+<% end %>

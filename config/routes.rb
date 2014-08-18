@@ -20,7 +20,14 @@ Rails.application.routes.draw do
     resources :merchants, only: [:index, :create]
     resources :media, only: [:index]
     resources :contacts, only: [:index, :create]
-
+    resources :bulletins, only: [:index, :show]
+    resources :events, only: [:index, :show]
+    get 'join/:id',              to: 'events#join',           as: 'join_event'
+    get  'events/:id/photo' , to: 'events#image_details' , as: 'event_photos'
+    resources :feedbacks, only: [:new, :create]
+    resources :services , only: [:index , :show]
+    get 'service/get_service' , to: "services#get_service"
+    resources :forms , only: [:index]
     # Example resource route with options:
     #   resources :products do
     #     member do
@@ -33,9 +40,9 @@ Rails.application.routes.draw do
     #     end
     #   end
 
-    resources :events do
+    # resources :events do
 
-    end
+    # end
 
     # Example resource route with sub-resources:
     #   resources :products do
@@ -65,5 +72,6 @@ Rails.application.routes.draw do
     #     resources :products
     #   end
   end
+  get 'service/get_service' , to: "services#get_service"
 end
 

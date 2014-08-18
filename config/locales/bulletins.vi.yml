@@ -1,0 +1,7 @@
+vi:
+  bulletins:
+    index:
+      title: 'Thong Bao'
+      info: 'Info'
+      daypost: 'Day Post'
+      

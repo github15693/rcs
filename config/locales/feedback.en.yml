@@ -1,0 +1,8 @@
+en:
+  feedback:
+    new:
+      title: "Feedback"
+      welcome: "We welcome your Feedback Suggestion & Report. We give get back to you via your email address. Thank you"
+      feedback_title: "Title"
+      select_subject: "Please select your subject master"
+      submit: "Submit"

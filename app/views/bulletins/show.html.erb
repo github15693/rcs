@@ -1,0 +1,12 @@
+<div class= "bulletin-partial">
+<h2><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<%= link_to t('bulletins.index.title') , bulletins_path , class: "btn-link" %> > <%= t('bulletins.index.info') %></h2>
+
+<div class="bulletin-content">
+    <h3><%= @bulletin.data.title %></h3>
+ <%= simple_format( @bulletin.data.content , {class: 'keep-format'} ) %>
+       <span ><%= t('bulletins.index.daypost') %> : <i> <%= @bulletin.data.date%></i></span>
+        <br>
+
+</div>
+
+</div>

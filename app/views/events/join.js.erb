@@ -1,0 +1,9 @@
+<% if @join_event.status == "success" %>
+$("a.join").remove() ; 
+$("span.num").text('<%= @list_user[:results][:num_user] %>');
+$("i.include").text('<%= t("event.show.including") %>');
+
+<% else %>
+alert("Join fails");
+
+<% end %>

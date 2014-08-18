@@ -1,0 +1,11 @@
+en:
+  event:
+    index:
+      title: 'Events'
+      info: 'Info'
+      daypost: 'Day Post'
+    show:
+      im_comming: "Yes! I'm Comming"
+      resident_atend: "Residents are attending"
+      view_photo: "View Photos"
+      including: "(including you)"

@@ -1,0 +1,18 @@
+<div class= "feedback-partial">
+<h2><span class="glyphicon glyphicon-envelope"></span> &nbsp;<span><%= t('feedback.new.title') %></span></h2>
+
+<div class="feedback-form">
+<%= form_tag feedbacks_path , remote: true ,:multipart =>true do %>
+<p><%= t('feedback.new.welcome') %> </p>
+<%= label_tag(:title, t('feedback.new.feedback_title')) %>
+<%= text_field_tag :title %>
+ <%= label_tag(:feedback_category_id, t('feedback.new.select_subject')) %>
+ <%= select_tag "feedback_category_id" , options_for_select( @cat[:result]) %> <br>
+<%= text_area_tag :content  %>
+<%= file_field_tag :image %>
+<%= submit_tag  t('feedback.new.submit') ,:class => 'btn btn-success' %>
+<% end %>
+</div>
+
+
+</div>

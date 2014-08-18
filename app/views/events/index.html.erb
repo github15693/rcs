@@ -1,0 +1,42 @@
+<div class= "event-partial">
+<h2><span class="glyphicon glyphicon-calendar"></span> &nbsp;<span><%= t('event.index.title') %></span></h2>
+
+<%  @events.results.each do |e| %>
+<div class="event-content">
+<div class ="row">
+<div class="col-xs-2">
+ <%= image_tag "http://0.0.0.0:8080"+e.image, :class => 'img-thumbnail' %>
+</div>
+<div class="col-xs-10">
+    <h3><%= link_to e.name , event_path(e.id) ,{class: "btn-link" }  %></h3>
+
+       <span ><%= t('event.index.daypost') %> : <i><%= e.date %></i></span>
+   
+</div>
+
+</div>
+</div>
+<% end %>
+<div class="text-center">
+<ul class="pagination">
+  <li class='<%=  @current_page.to_i == 1 ? "disabled" : "" %>'>
+  <a href='<%=  @current_page.to_i == 1 ? "#" : "/events?page=#{@current_page.to_i - 1}" %>'>&laquo;</a>
+  </li>
+<% for i in 1..@pages %>
+<% if i == @current_page.to_i %>
+<li class = "active"> 
+<a href=""><%= i %><span class="sr-only">(current)</span></a>
+</li>
+<% else %>
+<li > 
+<%= link_to i , events_path(:page=> i) %>
+</li>
+<% end %> 
+
+<% end %>
+  <li class='<%=  @current_page.to_i == @pages ? "disabled" : "" %>'>
+  <a href='<%=  @current_page.to_i == @pages ? "#" : "/events?page=#{@current_page.to_i + 1}" %>'>&raquo;</a>
+  </li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,7 @@
+en:
+  service:
+    index:
+      title: "Service"
+      looking: "Looking for something? Simply select service category to begin"
+      please_select: "Please select a service category"
+      search_result: "Search result"
