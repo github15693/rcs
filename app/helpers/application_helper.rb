@@ -11,6 +11,7 @@ module ApplicationHelper
   API_BASE_URL = "http://rms.innoria.com/api"
 
   def get_api url, parameters=nil, username_api=nil, password_api=nil
+    begin
     if !url.nil? && !parameters.nil? && (username_api.nil? || password_api.nil?)
       param = '?'
       i=0
@@ -47,6 +48,9 @@ module ApplicationHelper
       return JSON.parse(rest_resource.get, :symbolize_names => true)
     else
       return  {status:'failed', message:'Get api error', data:nil}
+    end
+    rescue
+      return {status:'failed', message:'Get api error', data:nil}
     end
   end
 
