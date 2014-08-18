@@ -86,7 +86,7 @@
         <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
         <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
-        <%= link_to t('layout_application.bookings'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.bookings'), bookings_path, class:"list-group-item list-group-item-info #{session[:menu] == :bookings ? 'active' : ''}"%>
         <%= link_to t('layout_application.privileges'), privileges_path, class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
         <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
