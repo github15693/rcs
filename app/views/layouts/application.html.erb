@@ -39,7 +39,7 @@
 </div>
 
 <div id="notifications"></div>
-<div class="content-privileges">
+<div class="content-privileges private-dhk ">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner text-center">
@@ -82,7 +82,7 @@
       <h4><%= t('layout_application.pmh_park') %></h4>
       <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
       <h4><%= t('layout_application.rcs') %></h4>
-      <div class="list-group">
+      <div class="list-group private-dhk ">
         <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
         <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
