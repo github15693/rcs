@@ -6,9 +6,10 @@ en:
     form:
       im_a_resident: 'I am a Resident'
       im_a_merchant: 'I am a Merchant'
-      name: 'Name'
-      email: 'Email'
-      phone_num: 'Phone No'
+      name: '* Name'
+      email: '* Email'
+      phone_num: '* Phone No'
+      message: '*'
       submit: 'Submit'
     create:
       respond_ok: 'Your queries has been sent!'

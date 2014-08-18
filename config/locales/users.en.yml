@@ -1,0 +1,6 @@
+en:
+  users:
+    create:
+      respond_ok: 'Sign in successfully!'
+      respond_not_ok: 'Email or password was incorrect!'
+

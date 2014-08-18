@@ -9,13 +9,12 @@ class WelcomesController < RootsController
       json_condo[:result].each do |condo|
         @condos << condo.values
       end
-    else
-
     end
   end
 
   def create
-
+    @user = api_post '/sign_up', user_params
+    @errors = @user[:message] unless @user[:status] == 'success'
   end
 
   private

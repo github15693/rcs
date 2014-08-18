@@ -3,11 +3,11 @@ class MerchantsController < RootsController
   before_action :set_menu
 
   def index
-    @merchant = nil
   end
 
   def create
-
+    @merchant = api_post '/request_merchant', merchant_params
+    @errors = @merchant[:message] unless @merchant[:status] == 'success'
   end
 
   private
@@ -16,7 +16,7 @@ class MerchantsController < RootsController
     end
 
     def merchant_params
-      params.require(:merchant).permit(:name, :email, :phone)
+      params.require(:merchant).permit(:name, :email, :phone, :archive)
     end
 end
 
