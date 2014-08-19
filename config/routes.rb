@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 
     resources :bookings do
       collection do
+        get 'check_booking'
       end
     end
     # Example resource route with sub-resources:
