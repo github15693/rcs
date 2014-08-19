@@ -8,7 +8,7 @@ class ApplicationController < RootsController
 
   def get_privileges
     @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id],authentication_token:session[:token]})
-    @privileges=@temp.data
+    @privileges=@temp.total > 0 ? @temp.data : nil
   end
 
   def get_last_bulletins
