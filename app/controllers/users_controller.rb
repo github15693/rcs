@@ -2,11 +2,12 @@ class UsersController < RootsController
   def create
     @user = api_post '/log_in', user_params
     if @user[:status] == 'success'
-      session[:user_id] = user[:user_id]
+      cookies[:user_id] = user[:user_id]
       session[:email] = user[:email]
       session[:name] = user[:name]
       session[:token] = user[:token]
       session[:condo_id] = user[:condo_id]
+      render :js => "window.location = '#{homes_url}'"
       if user_params[:remember]
         cookies[:user_id] = user[:user_id]
         cookies[:email] = user[:email]
