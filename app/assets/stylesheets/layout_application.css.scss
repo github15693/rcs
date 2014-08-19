@@ -42,21 +42,24 @@
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, transparent 100%);
   background-repeat: repeat-x;
 }
-a.list-group-item-info:hover, a.list-group-item-info:focus {
-  color: #31708F;
-  background-color: #C4E3F3;
-  border: 1px solid steelblue;
-  box-shadow: 0 0 5px 5px #ffffff;
-  text-shadow: 0 0 6px steelblue;
+.private-dhk {
+  a.list-group-item-info:hover, a.list-group-item-info:focus {
+    color: #31708F;
+    background-color: #C4E3F3;
+    border: 1px solid steelblue;
+    box-shadow: 0 0 5px 5px #ffffff;
+    text-shadow: 0 0 6px steelblue;
+  }
+  a:hover{
+    text-decoration: none;
+    text-shadow: 0 0 2px steelblue;
+  }
 }
-a:hover{
-  text-decoration: none;
-  text-shadow: 0 0 2px steelblue;
-}
+
 .margin-top-20{
   margin-top: 20px;
 }
-hr {
+.private-dhk hr {
   -moz-border: 1px solid #000000;
   -webkit-border: 1px solid #000000;
   -o-border: 1px solid #000000;
