@@ -1,5 +1,13 @@
 class RootsController < ActionController::Base
   before_action :set_locale
+  before_action :authenticate_user!
+
+  def authenticate_user!
+    if session[:token].blank?
+      redirect_to welcomes_url
+    end
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

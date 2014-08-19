@@ -1,4 +1,6 @@
 class UsersController < RootsController
+  skip_before_action :authenticate_user!
+
   def create
     @user = api_post '/log_in', user_params
     if @user[:status] == 'success'
@@ -8,11 +10,6 @@ class UsersController < RootsController
       session[:token] = user[:token]
       session[:condo_id] = user[:condo_id]
       render js: "window.location = '#{homes_url}'"
-      if user_params[:remember]
-        cookies[:email] = user[:email]
-        cookies[:name] = user[:name]
-        cookies[:token] = user[:token]
-      end
     end
   end
 

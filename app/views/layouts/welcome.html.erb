@@ -72,11 +72,6 @@
             <%= password_field :user, :password, { class: 'form-control', placeholder: t('.password') } %>
           </div>
         </div>
-        <div class="pull-left">
-          <%= label :user, :remember do %>
-            <%= check_box :user, :remember %> <%= t('.remember') %>
-          <% end %>
-        </div>
         <div class="text-right">
           <%= button_tag t('.login'), { type: :submit, name: 'merchant[submit]', value: 'Submit', class: 'btn btn-success' } %>
           <%= link_to t('.sign_up'), root_path, { class: 'btn btn-link' } %>

@@ -1,6 +1,7 @@
 class WelcomesController < RootsController
   layout 'welcome'
   before_action :set_menu
+  skip_before_action :authenticate_user!
 
   def index
     json_condo = api_get '/condos'
