@@ -30,7 +30,7 @@
         <ul class="nav navbar-nav navbar-right">
           <%= menu_item t('layout_application.my_profile'), '#' %>
           <%= menu_item t('layout_application.setting'), '#' %>
-          <%= menu_item t('layout_application.logout'), '#' %>
+          <%= menu_item t('layout_application.logout'), user_path, {}, { method: :delete, remote: true } %>
         </ul>
       </div>
       <!--/.nav-collapse -->

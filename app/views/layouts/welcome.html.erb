@@ -58,7 +58,7 @@
   <%= modal_content id: 'login-modal' do %>
     <%= modal_header t('.login') %>
     <%= modal_body do %>
-      <%= form_tag users_path, remote: true do %>
+      <%= form_tag user_path, remote: true do %>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><%= glyph(:user) %></span>
@@ -79,7 +79,7 @@
         </div>
         <div class="text-right">
           <%= button_tag t('.login'), { type: :submit, name: 'merchant[submit]', value: 'Submit', class: 'btn btn-success' } %>
-          <%= link_to t('.sign_up'), root_path %>
+          <%= link_to t('.sign_up'), root_path, { class: 'btn btn-link' } %>
         </div>
       <% end %>
     <% end %>

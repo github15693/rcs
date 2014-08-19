@@ -1,7 +1,7 @@
 module RootsHelper
 
-  def menu_item(name = nil, path = nil, options = {})
-    content_tag(:li, link_to(name, path), options)
+  def menu_item(name = nil, path = nil, options = {}, html_options = {})
+    content_tag(:li, link_to(name, path, html_options), options)
   end
 
   def alert_bs(content, type = 'success', dismissible = true)
