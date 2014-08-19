@@ -1,8 +1,5 @@
 en:
   layout_application:
-    my_profile: 'My profile'
-    setting: 'Setting'
-    logout: 'Log out'
     pmh_park: 'PMH Park'
     rcs: 'Resident Concierge Service'
     home: 'Home'
@@ -18,3 +15,4 @@ en:
     forms: 'Forms'
     guard_house: 'Guard House'
     house_rules: 'House Rules'
+

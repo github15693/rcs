@@ -27,11 +27,22 @@
         </a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
           <%= menu_item t('layout_application.my_profile'), '#' %>
           <%= menu_item t('layout_application.setting'), '#' %>
-          <%= menu_item t('layout_application.logout'), user_path, {}, { method: :delete, remote: true } %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.language') %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <%= menu_item t('.english'), url_for(params.merge(locale: :en)) %>
+              <%= menu_item t('.vietnamese'), url_for(params.merge(locale: :vi)) %>
+            </ul>
+          </li>
         </ul>
+        <div class="navbar-right">
+          <div class="navbar-btn">
+            <%= link_to t('layout_application.logout'), user_path, { class: 'btn btn-danger', method: :delete, remote: true } %>
+          </div>
+        </div>
       </div>
       <!--/.nav-collapse -->
     </div>

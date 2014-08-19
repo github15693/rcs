@@ -18,7 +18,7 @@
         <hr>
       </div>
       <% @booking_facilities.each do |bk_fct| %>
-          <% if bk_fct.facilities.size > 0 %>
+          <% unless bk_fct.facilities.blank? %>
               <div class="col-md-12">
                 <h4><%= bk_fct.category %></h4>
               </div>
@@ -43,3 +43,4 @@
       <h4>Facility is empty!</h4>
   <% end %>
 </div>
+
