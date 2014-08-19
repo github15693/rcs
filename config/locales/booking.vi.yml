@@ -1,0 +1,8 @@
+vi:
+  booking:
+    bookings: 'Đặt trước'
+    book_facilities: 'Đặt dịch vụ'
+    check_booking: 'Dịch vụ đã đặt'
+    book: 'Đặt'
+    cancel: 'Hủy'
+    request_cancel: 'Yêu cầu huỷ'

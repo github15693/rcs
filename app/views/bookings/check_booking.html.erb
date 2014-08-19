@@ -1,0 +1,41 @@
+<div class="row">
+  <% if !@check_bookings.nil? %>
+      <div class="col-md-12 icon-menu">
+        <div class="col-md-1">
+          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-7">
+          <h4><%= t('booking.bookings') %></h4>
+        </div>
+        <div class="col-md-2">
+          <h5><%= link_to t('booking.book_facilities'), bookings_path %></h5>
+        </div>
+        <div class="col-md-2">
+          <h5><%=link_to t('booking.check_booking'), bookings_check_booking_path %></h5>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <hr>
+      </div>
+      <% if @check_bookings.size > 0 %>
+          <div class="col-md-12"><h4>My bookings</h4></div>
+          <% @check_bookings.each do |cbk| %>
+              <div class="col-md-12">
+                <% if @check_bookings.find_index(cbk) > 0 && @check_bookings.find_index(cbk) < @check_bookings.size %>
+                    <hr>
+                <% end %>
+                <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+                <div class="col-md-10">
+                  <h4><%= cbk.name %></h4>
+                  <h5><%= cbk.booking_price %></h5>
+                  <h5><%= cbk.deposit_price %></h5>
+                  <div class="text-right">
+                    <a class="btn btn-primary" href=""><%= t('booking.book') %></a></div>
+                </div>
+              </div>
+          <% end %>
+      <% end %>
+  <% else %>
+      <h4>Facility is empty!</h4>
+  <% end %>
+</div>

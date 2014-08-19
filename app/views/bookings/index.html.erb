@@ -1,1 +1,45 @@
-<%= debug @booking_facilities %>
+<div class="row">
+  <% if !@booking_facilities.nil? %>
+      <div class="col-md-12 icon-menu">
+        <div class="col-md-1">
+          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-7">
+          <h4><%= t('booking.bookings') %></h4>
+        </div>
+        <div class="col-md-2">
+          <h5><%= link_to t('booking.book_facilities'), bookings_path %></h5>
+        </div>
+        <div class="col-md-2">
+          <h5><%=link_to t('booking.check_booking'), bookings_check_booking_path %></h5>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <hr>
+      </div>
+      <% @booking_facilities.each do |bk_fct| %>
+          <% if bk_fct.facilities.size > 0 %>
+              <div class="col-md-12">
+                <h4><%= bk_fct.category %></h4>
+              </div>
+              <% bk_fct.facilities.each do |fct| %>
+                  <div class="col-md-12">
+                    <% if bk_fct.facilities.find_index(fct) > 0 && bk_fct.facilities.find_index(fct) < bk_fct.facilities.size %>
+                      <hr>
+                    <% end %>
+                      <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+                      <div class="col-md-10">
+                        <h4><%= fct.name %></h4>
+                        <h5><%= fct.booking_price %></h5>
+                        <h5><%= fct.deposit_price %></h5>
+                        <div class="text-right"><a class="btn btn-primary" href="<%= booking_path(fct.id)%>"><%= t('booking.book') %></a></div>
+                      </div>
+
+                  </div>
+              <% end %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <h4>Facility is empty!</h4>
+  <% end %>
+</div>
