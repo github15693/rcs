@@ -110,7 +110,7 @@
         <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
         <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.guard_house'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.guard_house'), guard_houses_path, class:"list-group-item list-group-item-info #{session[:menu] == :guard_houses ? 'active' : ''}"%>
         <%= link_to t('layout_application.feedback'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
       </div>
     </div>

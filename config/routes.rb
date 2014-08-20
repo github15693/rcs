@@ -60,9 +60,17 @@ Rails.application.routes.draw do
 
     resources :courses, only: [:index, :show]
 
-    resources :bookings, except: [:show] do
-    end
     get 'bookings/check_booking' => 'bookings#check_booking'
+    post 'bookings/make_a_booking' => 'bookings#make_a_booking'
+    resources :bookings do
+    end
+
+
+    resources :guard_houses do
+      collection do
+
+      end
+    end
     # Example resource route with sub-resources:
     #   resources :products do
     #     resources :comments, :sales

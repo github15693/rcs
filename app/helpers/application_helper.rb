@@ -47,10 +47,10 @@ module ApplicationHelper
       rest_resource = RestClient::Resource.new(uri, username_api, password_api)
       return JSON.parse(rest_resource.get, :symbolize_names => true)
     else
-      return  {status:'failed', message:'Get api error', data:nil}
+      return  {status:'failed', message:'Get api error', total:0, data:nil}
     end
     rescue
-      return {status:'failed', message:'Get api error', data:nil}
+      return {status:'failed', message:'Get api error', total:0, data:nil}
     end
   end
 
@@ -60,7 +60,7 @@ module ApplicationHelper
     begin
       return JSON.parse(rest_resource.post(parameters, :content_type=> 'application/json'), :symbolize_names => true)
     rescue
-      return {status:'failed', message:'Post api error', data:nil}
+      return {status:'failed', message:'Post api error', total:0, data:nil}
     end
   end
 

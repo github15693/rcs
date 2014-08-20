@@ -1,0 +1,87 @@
+<%= form_tag bookings_make_a_booking_path, remote: true do |f| %>
+    <div class="row private-dhk">
+      <% if !@booking_detail.nil? %>
+          <div class="col-md-12 icon-menu">
+            <div class="col-md-1">
+              <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+            </div>
+            <div class="col-md-11">
+              <h4>
+                <a href="<%= bookings_path %>"><%= t('layout_application.bookings') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('booking.booking_facility') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('booking.make_a_booking') %>
+              </h4>
+            </div>
+          </div>
+          <div class="col-md-12" id="img-privileges">
+            <hr>
+            <div class="col-md-4"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+            <div class="col-md-8 height-200">
+              <h4><%= @booking_detail.facility.name %></h4>
+              <h5><%= @booking_detail.facility.booking_price %></h5>
+              <h5><%= @booking_detail.facility.deposit_price %></h5>
+            </div>
+          </div>
+          <div class="col-md-12 margin-top-20">
+            <div class="background-title"><%= t('booking.please_select_your_preferred_date') %></div>
+          </div>
+          <div class="col-md-12  margin-top-10">
+            <div class="col-md-4 input-group date margin-left-15" id="datetime-picker" data-date-format="DD/MM/YYYY">
+              <input class="form-control" id="textFieldDate" name="preferred_date" placeholder="DD/MM/YYYY" readonly="true" type="text">
+              <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+            </div>
+          </div>
+          <div class="col-md-12 margin-top-20">
+            <div class="background-title"><%= t('booking.please_select_your_preferred_timeslot') %></div>
+          </div>
+          <div class="col-md-12  margin-top-10">
+            <div class=" col-md-4">
+              <select class="form-control change-active" name="time_slot_id">
+                <% if !@booking_detail.time_slots.nil? %>
+                    <% @booking_detail.time_slots.each do |tl| %>
+                        <% if !tl.slot_start.nil? && !tl.slot_end.nil? %>
+                            <option value="<%= tl.id %>"><%= Time.parse(tl.slot_start).strftime('%I:%M %P') + ' - ' + Time.parse(tl.slot_end).strftime('%I:%M %P') %></option>
+                        <% end %>
+                    <% end %>
+                <% end %>
+              </select>
+            </div>
+            <div class="col-md-1 text-center">
+              <a class="glyphicon glyphicon-time font-size-35"></a>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <hr>
+            <div class="col-md-12">Description</div>
+            <%= submit_tag t('booking.book_now'), class: 'btn btn-primary col-md-5 margin-top-20' %>
+          </div>
+
+      <% else %>
+          <h4><%= t('booking.facility_is_empty') %></h4>
+      <% end %>
+    </div>
+
+<% end %>
+
+<script type="text/javascript">
+    var currentdate = new Date();
+    var date_val = currentdate.getDate();
+    var month_val = currentdate.getMonth() + 1;
+    if (date_val < 10) {
+        date_val = '0' + date_val
+    }
+    if (month_val < 10) {
+        month_val = '0' + month_val
+    }
+    var datetime = date_val + "/"
+            + (month_val) + "/"
+            + currentdate.getFullYear();
+    $('#textFieldDate').val(datetime);
+    $(function () {
+        $('#datetime-picker').datetimepicker({
+            pickTime: false,
+            dateFormat: 'dd/mm/yyyy',
+            minDate: currentdate
+        });
+    });
+
+
+</script>

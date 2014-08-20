@@ -30,7 +30,7 @@
                   <h5><%= cbk.booking_price %></h5>
                   <h5><%= cbk.deposit_price %></h5>
                   <div class="text-right">
-                    <a class="btn btn-primary" href=""><%= t('booking.book') %></a></div>
+                    <a class="btn btn-primary" href=""><%= cbk.status.upcase == 'BOOKED' ? t('booking.request_cancel') : t('booking.cancel') %></a></div>
                 </div>
               </div>
           <% end %>
