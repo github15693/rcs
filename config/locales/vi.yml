@@ -38,4 +38,19 @@ vi:
       password: 'Mật khẩu'
       remember: 'Nhớ đăng nhập'
       sign_up: 'hoặc Đăng ký'
+    homes:
+      first_name: 'HTQL'
+      last_name: 'Cư dân'
+      profile: 'Hồ sơ cá nhân'
+      setting: 'Thiết lập'
+      language: 'Ngôn ngữ'
+      english: 'Tiếng Anh'
+      vietnamese: 'Tiếng Việt'
+      logout: 'Đăng xuất'
+    application:
+      first_name: 'HTQL'
+      last_name: 'Cư dân'
+      language: 'Ngôn ngữ'
+      english: 'Tiếng Anh'
+      vietnamese: 'Tiếng Việt'
 

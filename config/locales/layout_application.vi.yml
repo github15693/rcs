@@ -1,8 +1,5 @@
 vi:
   layout_application:
-    my_profile: 'Hồ sơ cá nhân'
-    setting: 'Thiết lập'
-    logout: 'Đăng xuất'
     pmh_park: 'PMH Park'
     rcs: 'Resident Concierge Service'
     home: 'Trang chủ'
@@ -18,3 +15,4 @@ vi:
     forms: 'Biểu mẫu'
     guard_house: 'An ninh'
     house_rules: 'Quy định'
+

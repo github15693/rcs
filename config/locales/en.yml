@@ -38,4 +38,19 @@ en:
       password: 'Password'
       remember: 'Remember me'
       sign_up: 'or Sign up'
+    homes:
+      first_name: 'Resident Concierge'
+      last_name: 'System'
+      language: 'Language'
+      english: 'English'
+      vietnamese: 'Vietnamese'
+      profile: 'My Profile'
+      setting: 'Setting'
+      logout: 'Logout'
+    application:
+      first_name: 'Resident Concierge'
+      last_name: 'System'
+      language: 'Language'
+      english: 'English'
+      vietnamese: 'Vietnamese'
 

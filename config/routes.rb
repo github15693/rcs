@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     # Example resource route (maps HTTP verbs to controller actions automatically):
     #   resources :products
     resources :welcomes, only: [:index, :create]
-    resources :users, only: [:create]
+    resource :user, only: [:create, :destroy]
     resources :features, only: [:index]
     resources :residents, only: [:index]
     resources :merchants, only: [:index, :create]
@@ -61,6 +61,18 @@ Rails.application.routes.draw do
     end
 
 
+    get 'bookings/check_booking' => 'bookings#check_booking'
+    resources :bookings do
+      collection do
+      end
+    end
+
+
+    resources :guard_houses do
+      collection do
+
+      end
+   end
     # Example resource route with sub-resources:
     #   resources :products do
     #     resources :comments, :sales

@@ -27,11 +27,22 @@
         </a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <%= menu_item t('layout_application.my_profile'), '#' %>
-          <%= menu_item t('layout_application.setting'), '#' %>
-          <%= menu_item t('layout_application.logout'), '#' %>
+        <ul class="nav navbar-nav">
+          <%= menu_item t('.profile'), '#' %>
+          <%= menu_item t('.setting'), '#' %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.language') %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <%= menu_item t('.english'), url_for(params.merge(locale: :en)) %>
+              <%= menu_item t('.vietnamese'), url_for(params.merge(locale: :vi)) %>
+            </ul>
+          </li>
         </ul>
+        <div class="navbar-right">
+          <div class="navbar-btn">
+            <%= link_to t('.logout'), user_path, { class: 'btn btn-danger', method: :delete, remote: true } %>
+          </div>
+        </div>
       </div>
       <!--/.nav-collapse -->
     </div>
@@ -39,7 +50,7 @@
 </div>
 
 <div id="notifications"></div>
-<div class="row content-privileges">
+<div class="row content-privileges private-dhk ">
   <div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
@@ -49,7 +60,6 @@
               <a href="/privileges/<%= @privileges[0].id%>">
                 <b><h4><%=@privileges[0].name%>&nbsp</h4></b>
                 <h4><%= @privileges[0].description%>&nbsp</h4>
-                <h5><%#= t('privileges.price') + ': ' + currency(@privileges[0].price).to_s%></h5>
               </a>
             </div>
             <% for i in 1...@privileges.size %>
@@ -57,7 +67,6 @@
                   <a href="/privileges/<%= @privileges[i].id%>">
                     <b><h4><%=@privileges[i].name%>&nbsp</h4></b>
                     <h4><%= @privileges[i].description%>&nbsp</h4>
-                    <h4><%#= t('privileges.price') + ': ' + currency(@privileges[i].price).to_s%></h4>
                   </a>
 
                 </div>

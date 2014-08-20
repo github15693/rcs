@@ -9,9 +9,9 @@ module ApplicationHelper
   end
 
 
-  API_BASE_URL = "http://0.0.0.0:8080/api"
 
-  # API_BASE_URL = "http://rms.innoria.com/api"
+
+ API_BASE_URL = "http://rms.innoria.com/api"
 
 
   def get_api url, parameters=nil, username_api=nil, password_api=nil
@@ -51,10 +51,10 @@ module ApplicationHelper
       rest_resource = RestClient::Resource.new(uri, username_api, password_api)
       return JSON.parse(rest_resource.get, :symbolize_names => true)
     else
-      return  {status:'failed', message:'Get api error', data:nil}
+      return  {status:'failed', message:'Get api error', total:0, data:nil}
     end
     rescue
-      return {status:'failed', message:'Get api error', data:nil}
+      return {status:'failed', message:'Get api error', total:0, data:nil}
     end
   end
 
@@ -64,7 +64,7 @@ module ApplicationHelper
     begin
       return JSON.parse(rest_resource.post(parameters, :content_type=> 'application/json'), :symbolize_names => true)
     rescue
-      return {status:'failed', message:'Post api error', data:nil}
+      return {status:'failed', message:'Post api error', total:0, data:nil}
     end
   end
 

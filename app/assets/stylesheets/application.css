@@ -19,6 +19,11 @@ html {
   overflow-y: scroll;
 }
 
+body {
+  margin-top: 50px;
+  padding-right: 15px !important;
+}
+
 #notifications {
   position: fixed;
   top: 45%;

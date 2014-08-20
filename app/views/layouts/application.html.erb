@@ -27,11 +27,22 @@
         </a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
           <%= menu_item t('layout_application.my_profile'), '#' %>
           <%= menu_item t('layout_application.setting'), '#' %>
-          <%= menu_item t('layout_application.logout'), '#' %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.language') %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <%= menu_item t('.english'), url_for(params.merge(locale: :en)) %>
+              <%= menu_item t('.vietnamese'), url_for(params.merge(locale: :vi)) %>
+            </ul>
+          </li>
         </ul>
+        <div class="navbar-right">
+          <div class="navbar-btn">
+            <%= link_to t('layout_application.logout'), user_path, { class: 'btn btn-danger', method: :delete, remote: true } %>
+          </div>
+        </div>
       </div>
       <!--/.nav-collapse -->
     </div>
@@ -39,7 +50,7 @@
 </div>
 
 <div id="notifications"></div>
-<div class="content-privileges">
+<div class="content-privileges private-dhk ">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner text-center">
@@ -82,17 +93,17 @@
       <h4><%= t('layout_application.pmh_park') %></h4>
       <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
       <h4><%= t('layout_application.rcs') %></h4>
-      <div class="list-group">
+      <div class="list-group private-dhk">
         <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
         <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
-        <%= link_to t('layout_application.bookings'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.bookings'), bookings_path, class:"list-group-item list-group-item-info #{session[:menu] == :bookings ? 'active' : ''}"%>
         <%= link_to t('layout_application.privileges'), privileges_path, class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
         <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
         <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
         <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.guard_house'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.guard_house'), guard_houses_path, class:"list-group-item list-group-item-info #{session[:menu] == :guard_houses ? 'active' : ''}"%>
         <%= link_to t('layout_application.feedback'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
       </div>
     </div>
