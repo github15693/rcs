@@ -1,30 +1,25 @@
 class UsersController < RootsController
-  skip_before_action :authenticate_user!
+  layout 'application'
 
-  def create
-    @user = api_post '/log_in', user_params
-    if @user[:status] == 'success'
-      session[:user_id] = user[:user_id]
-      session[:email] = user[:email]
-      session[:name] = user[:name]
-      session[:token] = user[:token]
-      session[:condo_id] = user[:condo_id]
-      render js: "window.location = '#{homes_url}'"
+  def edit
+    json_user = api_get '/profile', {token: session[:token]}
+    if json_user[:status] = 'success'
+      @user = json_user[:data]
     end
   end
 
-  def destroy
-    session.destroy
-    render js: "window.location = '#{root_url}'"
+  def update
+    user_params[:token] = session[:token]
+    json_user = api_post '/edit_profile', user_params
   end
 
   private
     def user_params
-      params.require(:user).permit(:email, :password, :remember)
+      params.require(:user).permit(:name, :phone, :email)
     end
 
-    def user
-      @user[:data]
+    def password_params
+      params.require(:user).permit(:current_password, :password, :password_confirm)
     end
 end
 

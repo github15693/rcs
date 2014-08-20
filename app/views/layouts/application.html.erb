@@ -28,8 +28,15 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <%= menu_item t('layout_application.my_profile'), '#' %>
-          <%= menu_item t('layout_application.setting'), '#' %>
+          <%= menu_item t('.profile'), user_path %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.setting') %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <%= menu_item t('.change_password'), password_user_path %>
+              <%= menu_item t('.tech_support'), support_help_path %>
+              <%= menu_item t('.about'), about_help_path %>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.language') %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -40,7 +47,7 @@
         </ul>
         <div class="navbar-right">
           <div class="navbar-btn">
-            <%= link_to t('layout_application.logout'), user_path, { class: 'btn btn-danger', method: :delete, remote: true } %>
+            <%= link_to t('.logout'), session_path, { class: 'btn btn-danger', method: :delete, remote: true } %>
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@
   <%= modal_content id: 'login-modal' do %>
     <%= modal_header t('.login') %>
     <%= modal_body do %>
-      <%= form_tag user_path, remote: true do %>
+      <%= form_tag session_path, remote: true do %>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><%= glyph(:user) %></span>
