@@ -16,6 +16,16 @@ class BookingsController < ApplicationController
     @booking_detail=temp.total > 0 ? temp.data : nil
   end
 
+  def make_a_booking
+    if params[:time_slot_id].nil? || params[:time_slot_id].blank?
+      @message = 'Missing timeslot!'
+    else
+      @results = hash_to_object post_api('/make_a_booking',{user_id:session[:user_id],preferred_date:params[:preferred_date], time_slot_id:params[:time_slot_id], authentication_token:session[:token]})
+      @make_a_booking=@results.total > 0 ? @results.data : nil
+      @message = @results.message
+    end
+  end
+
   private
   def set_menu
     session[:menu] = :bookings

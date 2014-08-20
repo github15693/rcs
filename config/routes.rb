@@ -53,9 +53,8 @@ Rails.application.routes.draw do
     end
 
     get 'bookings/check_booking' => 'bookings#check_booking'
+    post 'bookings/make_a_booking' => 'bookings#make_a_booking'
     resources :bookings do
-      collection do
-      end
     end
 
 
