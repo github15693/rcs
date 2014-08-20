@@ -1,0 +1,14 @@
+$('.text-danger').remove()
+<% if @contact[:status] == 'success' %>
+  $('#notifications').html('<%= alert_bs t('.respond_ok') %>')
+  $('#contact_message').closest('form')[0].reset()
+<% else %>
+  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
+  <% @errors.each do |key, value| %>
+    $('#contact_<%= key %>').after('<%= contextual t(".#{key}") + ' ' + value.last %>')
+  <% end %>
+<% end %>
+setTimeout(function() {
+  $('#notifications').html('')
+}, 3000)
+

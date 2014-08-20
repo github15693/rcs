@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rcs</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= homes_path %>">
+          <span class="rcs-logo">
+            <h1 class="title">
+              <%= t('.first_name') %>
+              <span class="title-dark"><%= t('.last_name') %></span>
+            </h1>
+          </span>
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <%= menu_item t('layout_application.my_profile'), '#' %>
+          <%= menu_item t('layout_application.setting'), '#' %>
+          <%= menu_item t('layout_application.logout'), '#' %>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div id="notifications"></div>
+<div class="row content-privileges">
+  <div>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner text-center">
+        <% if !@privileges.nil? %>
+            <div class="item active">
+              <a href="/privileges/<%= @privileges[0].id%>">
+                <b><h4><%=@privileges[0].name%>&nbsp</h4></b>
+                <h4><%= @privileges[0].description%>&nbsp</h4>
+                <h5><%#= t('privileges.price') + ': ' + currency(@privileges[0].price).to_s%></h5>
+              </a>
+            </div>
+            <% for i in 1...@privileges.size %>
+                <div class="item">
+                  <a href="/privileges/<%= @privileges[i].id%>">
+                    <b><h4><%=@privileges[i].name%>&nbsp</h4></b>
+                    <h4><%= @privileges[i].description%>&nbsp</h4>
+                    <h4><%#= t('privileges.price') + ': ' + currency(@privileges[i].price).to_s%></h4>
+                  </a>
+
+                </div>
+            <% end %>
+        <% else %>
+            <div class="item active">
+              <h1>no data</h1>
+            </div>
+        <% end %>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+      <h4><%= t('layout_application.pmh_park') %></h4>
+      <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
+      <h4><%= t('layout_application.rcs') %></h4>
+    </div>
+    <div class="col-md-9 col-sm-9 content-right">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="footer">
+      <p>© Innoria Company - Project RCS v11082014</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

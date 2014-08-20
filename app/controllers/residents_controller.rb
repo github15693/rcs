@@ -1,4 +1,13 @@
-class ResidentsController < ApplicationController
+class ResidentsController < RootsController
   layout 'welcome'
+  before_action :set_menu
+
+  def index
+  end
+
+  private
+    def set_menu
+      session[:menu] = :residents
+    end
 end
 

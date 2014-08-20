@@ -1,0 +1,27 @@
+vi:
+  welcomes:
+    index:
+      sign_up_now: 'Đăng Ký Ngay'
+      name_app: 'Dịch Vụ Hướng Dẩn Cư Dân'
+      info: 'Có phải bạn đang được Phục vụ?'
+      description: 'Cư dân là Lý Do chúng tôi có mặt ở đây.'
+      made_private: 'Innoria Solution made for Private Living'
+      download_app: 'Tải xuống ứng dụng (MIỄN PHÍ) của chúng tôi sẳn có trên di động:'
+    form:
+      name: '* Tên'
+      email: '* E-mail'
+      phone_num: '* Số điện thoại'
+      address: '* Địa chỉ'
+      password: '* Mật khẩu'
+      password_confirmation: '* Nhập lại Mật khẩu'
+      submit: 'Xác nhận'
+    create:
+      respond_ok: 'Đăng ký thành công!'
+      respond_not_ok: 'Đăng ký không thành công, vui lòng xem lại!'
+
+  helpers:
+    label:
+      user:
+        choose_condo: 'Vui lòng chọn Chung cư của bạn:'
+        description: 'Vui lòng điền vào các trường dưới đây:'
+

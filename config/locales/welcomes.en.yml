@@ -1,2 +1,27 @@
 en:
+  welcomes:
+    index:
+      sign_up_now: 'Sign Up Now'
+      name_app: 'Resident Concierge Service'
+      info: 'Are you being Serviced?'
+      description: 'Residents are our Reasons for being here.'
+      made_private: 'Innoria Solution made for Private Living'
+      download_app: 'Download our InnoriaSolution App Available FREE on mobile:'
+    form:
+      name: '* Name'
+      email: '* Email'
+      phone_num: '* Phone No'
+      address: '* Address'
+      password: '* Password'
+      password_confirmation: '* Re-type Password'
+      submit: 'Submit'
+    create:
+      respond_ok: 'You have successfully registered!'
+      respond_not_ok: 'Registration failed, please review!'
+
+  helpers:
+    label:
+      user:
+        choose_condo: 'Please select your condominium:'
+        description: 'Kindly fill in the field below:'
 

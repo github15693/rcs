@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Rcs</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,72 +17,95 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Bootstrap theme</a>
+        <a class="navbar-brand" href="<%= homes_path %>">
+          <span class="rcs-logo">
+            <h1 class="title">
+              <%= t('.first_name') %>
+              <span class="title-dark"><%= t('.last_name') %></span>
+            </h1>
+          </span>
+        </a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <%= menu_item t('layout_application.my_profile'), '#' %>
           <%= menu_item t('layout_application.setting'), '#' %>
-          <%= menu_item t('layout_application.setting'), '#' %>
+          <%= menu_item t('layout_application.logout'), '#' %>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
+      <!--/.nav-collapse -->
     </div>
   </div>
 </div>
 
 <div id="notifications"></div>
-<div class="container margin-ttop-50">
-  <div class="row">
-    <div>
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <% if @privileges.size > 0 %>
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <% for i in 1...@privileges.size %>
-                  <li data-target="#carousel-example-generic" data-slide-to="<%= i %>"></li>
-              <% end %>
-          <% else %>
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <% end %>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <% if @privileges.size > 0 %>
-              <div class="item active">
-                <h1>ssgsrg</h1>
-              </div>
-              <% for i in 1...@privileges.size %>
-                  <div class="item">
-                    <h1>hsdbfusb</h1>
-                  </div>
-              <% end %>
-          <% else %>
-              <div class="item active">
-                <h1>no data</h1>
-              </div>
-          <% end %>
-        </div>
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
+<div class="content-privileges">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner text-center">
+        <% if !@privileges.nil? %>
+            <div class="item active">
+              <a href="/privileges/<%= @privileges[0].id%>">
+                <b><h4><%=@privileges[0].name%>&nbsp</h4></b>
+                <h4><%= @privileges[0].description%>&nbsp</h4>
+                <h5><%#= t('privileges.price') + ': ' + currency(@privileges[0].price).to_s%></h5>
+              </a>
+            </div>
+            <% for i in 1...@privileges.size %>
+                <div class="item">
+                  <a href="/privileges/<%= @privileges[i].id%>">
+                    <b><h4><%=@privileges[i].name%>&nbsp</h4></b>
+                    <h4><%= @privileges[i].description%>&nbsp</h4>
+                    <h4><%#= t('privileges.price') + ': ' + currency(@privileges[i].price).to_s%></h4>
+                  </a>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="item active">
+              <h1>no data</h1>
+            </div>
+        <% end %>
       </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
   </div>
+<div class="container">
+
   <div class="row">
-    <div class="col-md-3">
-        <h3>PMH Park</h3>
+    <div class="col-md-3 col-sm-3 content-left">
+      <h4><%= t('layout_application.pmh_park') %></h4>
+      <div class='text-center'><%= image_tag 'no-image.jpg' %></div>
+      <h4><%= t('layout_application.rcs') %></h4>
+      <div class="list-group">
+        <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
+        <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
+        <%= link_to t('layout_application.bookings'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.privileges'), privileges_path, class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
+        <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
+        <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.guard_house'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.feedback'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+      </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 col-sm-9 content-right">
       <%= yield %>
     </div>
   </div>
-
+  <div class="row">
+    <div class="footer">
+      <p>© Innoria Company - Project RCS v11082014</p>
+    </div>
+  </div>
 </div>
 </body>
 </html>
+

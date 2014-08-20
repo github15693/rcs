@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def menu_item(name = nil, path = nil, options = {})
-    content_tag(:li, link_to(name, path), options)
-  end
-
   def hash_to_object hash
     begin
       return Hashie::Mash.new hash
@@ -12,8 +8,14 @@ module ApplicationHelper
     end
   end
 
+
   API_BASE_URL = "http://0.0.0.0:8080/api"
+
+  # API_BASE_URL = "http://rms.innoria.com/api"
+
+
   def get_api url, parameters=nil, username_api=nil, password_api=nil
+    begin
     if !url.nil? && !parameters.nil? && (username_api.nil? || password_api.nil?)
       param = '?'
       i=0
@@ -51,6 +53,9 @@ module ApplicationHelper
     else
       return  {status:'failed', message:'Get api error', data:nil}
     end
+    rescue
+      return {status:'failed', message:'Get api error', data:nil}
+    end
   end
 
   def post_api url, parameters, username_api=nil, password_api=nil
@@ -61,6 +66,10 @@ module ApplicationHelper
     rescue
       return {status:'failed', message:'Post api error', data:nil}
     end
+  end
+
+  def currency(val)
+    "#{ActionController::Base.helpers.number_to_currency(val)}"
   end
 end
 

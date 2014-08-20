@@ -1,0 +1,52 @@
+<div class="row">
+  <% if !@privilege.nil? %>
+      <div class="col-md-12 icon-menu">
+        <div class="col-md-1">
+          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-11">
+          <h4><a href="<%= privileges_path %>"><%= t('layout_application.privileges') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('privileges.info') %>
+          </h4>
+        </div>
+      </div>
+      <div class="col-md-12" id="img-privileges">
+        <hr>
+        <div class="col-md-4"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+        <div class="col-md-8 height-200">
+          <h3><%= @privilege.name %></h3>
+          <h4><%= (@privilege.date_expiry.to_date - Date.today()).to_i %> Days left</h4>
+          <%= form_tag redeem_previlege_privileges_path, remote:true do |f| %>
+              <%= hidden_field_tag 'privilege_id', @privilege.id %>
+              <%= submit_tag t('privileges.save_btn'), class: 'btn btn-primary btn-save-privileges col-md-5' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-12 margin-top-20">
+          <div class="col-md-1 text-center"><a class="glyphicon glyphicon-map-marker font-size-35"></a> </div>
+          <div class="col-md-5 margin-top-10"><%= @privilege.location %></div>
+        <div class="col-md-1 text-center"><a class="glyphicon glyphicon-time font-size-35"></a> </div>
+          <div class="col-md-5 margin-top-10"><%= @privilege.date_time_detail %></div>
+       </div>
+      <br>
+      <div class="col-md-12 margin-top-20">
+        <div class="col-md-1 text-center"><a class="glyphicon glyphicon-earphone font-size-35"></a> </div>
+          <div class="col-md-5 margin-top-10"><%= @privilege.phone %></div>
+        <div class="col-md-1 text-center"><a class="glyphicon glyphicon-send font-size-35"></a> </div>
+          <div class="col-md-5 margin-top-10"><%= @privilege.distance %></div>
+       </div>
+      <div class="col-md-12">
+      <hr>
+        <div class="col-md-12"><%= @privilege.description %></div>
+      </div>
+      <div class="col-md-12">
+        <hr>
+        <div class="col-md-12"><%= t('privileges.view_term_conditions') %></div>
+      </div>
+      <div class="col-md-12">
+        <hr>
+      </div>
+
+  <% else %>
+      <h4><%= t('privileges.empty') %></h4>
+  <% end %>
+</div>

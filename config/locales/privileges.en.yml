@@ -1,0 +1,13 @@
+en:
+  privileges:
+    location: 'Location'
+    name: 'Name'
+    price: 'Price'
+    description: 'Description'
+    distance: 'Distance'
+    date_expiry: 'Date_expiry'
+    info: 'Info'
+    empty: 'Privileges is empty!'
+    save_btn: 'Save to E-Walet'
+    view_term_conditions: 'View term & Conditions'
+    privileges: 'Privileges'
