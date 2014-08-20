@@ -8,12 +8,12 @@ class PrivilegesController < ApplicationController
 
   def show
     @temp = hash_to_object get_api('/privilege_detail',{privilege_id:params[:id],authentication_token:session[:token]})
-    @privilege=@temp.data
+    @privilege=@temp.total > 0 ? @temp.data : nil
   end
 
   def redeem_previlege
     @results = hash_to_object post_api('/redeem_previlege',{privilege_id:params[:privilege_id],user_id:session[:user_id],authentication_token:session[:token]})
-    @privilege=@results.data
+    @privilege=@temp.total > 0 ? @temp.data : nil
   end
 
   private

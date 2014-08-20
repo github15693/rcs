@@ -6,3 +6,4 @@ vi:
     book: 'Đặt'
     cancel: 'Hủy'
     request_cancel: 'Yêu cầu huỷ'
+    facility_is_empty: 'Không có dịch vụ!'

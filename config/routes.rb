@@ -52,12 +52,18 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :bookings, except: [:show] do
+    get 'bookings/check_booking' => 'bookings#check_booking'
+    resources :bookings do
+      collection do
+      end
+    end
+
+
+    resources :guard_houses do
       collection do
 
       end
     end
-    get 'bookings/check_booking' => 'bookings#check_booking'
     # Example resource route with sub-resources:
     #   resources :products do
     #     resources :comments, :sales

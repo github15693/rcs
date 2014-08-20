@@ -1,0 +1,35 @@
+<div class="row  private-dh">
+  <% if !@booking_detail.nil? %>
+      <div class="col-md-12 icon-menu">
+        <div class="col-md-1">
+          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-11">
+          <h4><a href="<%= privileges_path %>"><%= t('layout_application.privileges') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('privileges.info') %>
+          </h4>
+        </div>
+      </div>
+      <div class="col-md-12" id="img-privileges">
+        <hr>
+        <div class="col-md-4"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+        <div class="col-md-8 height-200">
+          <h4><%= @booking_detail.name %></h4>
+          <h5><%= @booking_detail.booking_price %></h5>
+          <h5><%= @booking_detail.deposit_price %></h5>
+        </div>
+      </div>
+      <div class="col-md-12 margin-top-20">
+        <div class="background-title">Please select time slot</div>
+      </div>
+      <div class="col-md-12">
+       This is time slot
+      </div>
+      <div class="col-md-12">
+        <hr>
+        <div class="col-md-12">Description</div>
+      </div>
+
+  <% else %>
+      <h4><%= t('booking.facility_is_empty') %></h4>
+  <% end %>
+</div>

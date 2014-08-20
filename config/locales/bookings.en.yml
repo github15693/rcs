@@ -6,3 +6,4 @@ en:
     book: 'Book'
     cancel: 'Cancel'
     request_cancel: 'Request cancel'
+    facility_is_empty: 'Facility is empty!'
