@@ -1,0 +1,6 @@
+vi:
+  sessions:
+    create:
+      respond_ok: 'Đăng nhập thành công!'
+      respond_not_ok: 'E-mail hoặc mật khẩu không đúng!'
+

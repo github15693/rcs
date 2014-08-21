@@ -1,6 +1,14 @@
 vi:
   users:
-    create:
-      respond_ok: 'Đăng nhập thành công!'
-      respond_not_ok: 'E-mail hoặc mật khẩu không đúng!'
+
+  helpers:
+    label:
+      user:
+        name: 'Tên:'
+        phone: 'Số điện thoại:'
+        email: 'E-mail:'
+        interest: 'Sở thích:'
+        current_password: 'Mật khẩu cũ'
+        password: 'Mật khẩu mới'
+        password_confirm: 'Nhập lại mật khẩu'
 

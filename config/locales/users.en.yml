@@ -1,6 +1,14 @@
 en:
   users:
-    create:
-      respond_ok: 'Sign in successfully!'
-      respond_not_ok: 'Email or password was incorrect!'
+
+  helpers:
+    label:
+      user:
+        name: 'Name:'
+        phone: 'Phone:'
+        email: 'Email:'
+        interest: 'Interest(s):'
+        current_password: 'Old password'
+        password: 'New password'
+        password_confirm: 'Password confirm'
 

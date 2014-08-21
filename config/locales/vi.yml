@@ -43,6 +43,9 @@ vi:
       last_name: 'Cư dân'
       profile: 'Hồ sơ cá nhân'
       setting: 'Thiết lập'
+      change_password: 'Đổi mật khẩu'
+      tech_support: 'Hỗ trợ kỹ thuật'
+      about: 'Thông tin'
       language: 'Ngôn ngữ'
       english: 'Tiếng Anh'
       vietnamese: 'Tiếng Việt'
@@ -50,7 +53,13 @@ vi:
     application:
       first_name: 'HTQL'
       last_name: 'Cư dân'
+      profile: 'Hồ sơ cá nhân'
+      setting: 'Thiết lập'
+      change_password: 'Đổi mật khẩu'
+      tech_support: 'Hỗ trợ kỹ thuật'
+      about: 'Thông tin'
       language: 'Ngôn ngữ'
       english: 'Tiếng Anh'
       vietnamese: 'Tiếng Việt'
+      logout: 'Đăng xuất'
 

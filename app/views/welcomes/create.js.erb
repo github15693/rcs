@@ -1,5 +1,5 @@
 $('.text-danger').remove()
-<% if @user[:status] == 'success' %>
+<% if @user == 'success' %>
   $('#notifications').html('<%= alert_bs t('.respond_ok') %>')
   $('#user_password_confirmation').closest('form')[0].reset()
 <% else %>
