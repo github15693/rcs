@@ -1,0 +1,5 @@
+$('#login-modal').modal('hide')
+<% if @session == 'failed' %>
+  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
+<% end %>
+
