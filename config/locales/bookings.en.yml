@@ -7,3 +7,8 @@ en:
     cancel: 'Cancel'
     request_cancel: 'Request cancel'
     facility_is_empty: 'Facility is empty!'
+    booking_facility: 'Booking facility'
+    make_a_booking: 'Make a booking'
+    please_select_your_preferred_date: 'Please select your preferred date:'
+    please_select_your_preferred_timeslot: 'Please select your preferred timeslot:'
+    book_now: 'Book now!'
