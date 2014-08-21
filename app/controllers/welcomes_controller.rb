@@ -7,7 +7,7 @@ class WelcomesController < RootsController
     json_condo = api_get '/condos'
     if json_condo[:status] = 'success'
       @condos = []
-      json_condo[:result].each do |condo|
+      json_condo[:results].each do |condo|
         @condos << condo.values
       end
     end
