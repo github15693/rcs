@@ -8,12 +8,12 @@ class ApplicationController < RootsController
 
   def get_privileges
     @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
-    @privileges=@temp.total > 0 ? @temp.data : nil
+    @privileges=@temp.total > 0 ? @temp.results : nil
   end
 
   def get_last_bulletins
     @temp = hash_to_object get_api('/bulletins',{auth_token:session[:auth_token]})
-    @bulletin=@temp.total > 0 ? @temp.data[0] : nil
+    @bulletin=@temp.total > 0 ? @temp.results[0] : nil
   end
 
   def temp_session
