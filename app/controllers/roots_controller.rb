@@ -3,7 +3,7 @@ class RootsController < ActionController::Base
   before_action :authenticate_user!
 
   def authenticate_user!
-    if session[:token].blank?
+    if session[:auth_token].blank?
       redirect_to welcomes_url
     end
   end
