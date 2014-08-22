@@ -1,0 +1,7 @@
+<% if @temp.total > 0 %>
+    $('.load-view-content').html('<%= j render 'check_booking' %>')
+    delayedAlert("Success!",1000)
+    <% else %>
+    $('.load-view-content').html('<%= j render 'check_booking' %>')
+    delayedAlert("Success!",1000)
+<% end %>
