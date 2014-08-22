@@ -13,7 +13,18 @@ class PrivilegesController < ApplicationController
 
   def redeem_previlege
     @results = hash_to_object post_api('/redeem_previlege',{privilege_id:params[:privilege_id],user_id:session[:user_id],auth_token:session[:auth_token]})
-    @privilege=@temp.total > 0 ? @temp.results : nil
+    @privilege=@results.total > 0 ? @results.results : nil
+  end
+
+  def my_privileges
+    @temp = hash_to_object get_api('/my_privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
+    @my_privileges=@temp.total > 0 ? @temp.results : nil
+  end
+
+  def delete_privilege
+    post_api('/delete_privilege',{privilege_id:params[:privilege_id],auth_token:session[:auth_token]})
+    @temp = hash_to_object get_api('/my_privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
+    @my_privileges=@temp.total > 0 ? @temp.results : nil
   end
 
   private

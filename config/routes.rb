@@ -55,6 +55,8 @@ Rails.application.routes.draw do
     resources :privileges, only: [:index, :show] do
       collection do
         post 'redeem_previlege'
+        get 'my_privileges'
+        post 'delete_privilege'
       end
     end
 

@@ -1,0 +1,29 @@
+<div class="row">
+  <% if !@my_privileges.nil? %>
+      <% if @my_privileges.size > 0 %>
+          <div class="col-md-12"><h4 class="background-title"><%= t('booking.my_bookings') %></h4></div>
+          <% @my_privileges.each do |pri| %>
+              <div class="col-md-12">
+                <% if @my_privileges.find_index(pri) > 0 && @my_privileges.find_index(pri) < @my_privileges.size %>
+                    <hr>
+                <% end %>
+                <div class="col-md-2"><%= image_tag pri.image_path, class: 'img-thumbnail' %></div>
+                <div class="col-md-10">
+                  <h4><%= pri.name %></h4>
+                  <h5><%= pri.location %></h5>
+                  <h5><%= pri.distance %></h5>
+
+                  <div class="text-right">
+                    <%= form_tag delete_privilege_privileges_path, remote: true do %>
+                        <%= hidden_field_tag 'privilege_id', pri.id %>
+                        <input type="submit" class="btn btn-primary" value="<%= t('booking.cancel') %>">
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+      <% end %>
+  <% else %>
+      <h4><%= t('booking.facility_is_empty') %></h4>
+  <% end %>
+</div>

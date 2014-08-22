@@ -12,7 +12,7 @@
           <a href="<%= privilege_path(privilege.id) %>">
       <div class="col-md-12">
         <hr>
-        <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+        <div class="col-md-2"><%= image_tag privilege.image_path, class: 'img-thumbnail' %></div>
         <div class="col-md-10">
           <h4><%= privilege.name %></h4>
           <h5><%= privilege.location %></h5>
@@ -23,6 +23,6 @@
            </a>
         <% end %>
       <% else %>
-  <h4>Privileges is empty!</h4>
+  <h4><%= t('booking.facility_is_empty.cancel') %></h4>
   <% end %>
 </div>

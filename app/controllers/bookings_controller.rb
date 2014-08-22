@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def check_booking
+    session[:booking_tab] = :check_booking
     temp = hash_to_object get_api('/check_booking',{user_id:session[:user_id], auth_token:session[:auth_token]})
     @check_bookings=temp.total > 0 ? temp.results : nil
   end
@@ -29,5 +30,6 @@ class BookingsController < ApplicationController
   private
   def set_menu
     session[:menu] = :bookings
+    session[:booking_tab] = :facility_booking
   end
 end

@@ -44,15 +44,23 @@
 }
 .private-dhk {
   a.list-group-item-info:hover, a.list-group-item-info:focus {
-    color: #31708F;
-    background-color: #C4E3F3;
+    color: #ffffff;
+    background-color: #31708F;
     border: 1px solid steelblue;
-    box-shadow: 0 0 5px 5px #ffffff;
+    box-shadow: 0 0 1px 1px #3789B2;
     text-shadow: 0 0 6px steelblue;
   }
   a:hover{
     text-decoration: none;
     text-shadow: 0 0 2px steelblue;
+  }
+  .booking_tab{
+    padding: 5px;
+    color: #ffffff;
+    background-color: #31708F;
+    border: 1px solid steelblue;
+    box-shadow: 0 0 1px 1px #3789B2;
+    text-shadow: 0 0 6px steelblue;
   }
 }
 a:hover{

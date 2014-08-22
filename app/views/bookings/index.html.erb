@@ -4,14 +4,14 @@
         <div class="col-md-1">
           <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-5">
           <h4><%= t('booking.bookings') %></h4>
         </div>
-        <div class="col-md-2">
-          <h5><%= link_to t('booking.book_facilities'), bookings_path %></h5>
+        <div class="col-md-3 private-dhk text-right">
+          <h5><a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:booking_tab] == :facility_booking %>"></a><%= link_to t('booking.book_facilities'), bookings_path, class:"#{session[:booking_tab] == :facility_booking ? 'booking_tab' : ''}" %></h5>
         </div>
-        <div class="col-md-2">
-          <h5><%=link_to t('booking.check_booking'), bookings_check_booking_path %></h5>
+        <div class="col-md-3 private-dhk">
+          <h5><a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:booking_tab] == :check_booking %>"></a><%= link_to t('booking.check_booking'), bookings_check_booking_path, class:"#{session[:booking_tab] == :check_booking ? 'booking_tab' : ''}" %></h5>
         </div>
       </div>
       <div class="col-md-12">
@@ -20,7 +20,7 @@
       <% @booking_facilities.each do |bk_fct| %>
           <% unless bk_fct.facilities.blank? %>
               <div class="col-md-12">
-                <h4><%= bk_fct.category %></h4>
+                <h4 class="background-title"><%= bk_fct.category %></h4>
               </div>
               <% bk_fct.facilities.each do |fct| %>
                   <div class="col-md-12">
