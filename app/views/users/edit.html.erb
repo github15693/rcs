@@ -15,6 +15,7 @@
     <%= label :user, :interest %>
     <%= text_area_tag 'user[interest]', @user[:interest], { class: 'form-control'} %>
   </div>
+  <%= hidden_field_tag 'user[:auth_token]', session[:auth_token] %>
   <div class="form-group">
     <%= button_tag t('.submit'), { type: :submit, name: 'user[submit]', value: 'Submit', class: 'btn btn-primary btn-block' } %>
   </div>
