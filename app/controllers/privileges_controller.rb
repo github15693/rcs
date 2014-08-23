@@ -21,8 +21,8 @@ class PrivilegesController < ApplicationController
     @my_privileges=@temp.total > 0 ? @temp.results : nil
   end
 
-  def delete_privilege
-    post_api('/delete_privilege',{privilege_id:params[:privilege_id],auth_token:session[:auth_token]})
+  def delete_my_privilege
+    post_api('/delete_my_privilege',{privilege_id:params[:privilege_id],auth_token:session[:auth_token]})
     @temp = hash_to_object get_api('/my_privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
     @my_privileges=@temp.total > 0 ? @temp.results : nil
   end

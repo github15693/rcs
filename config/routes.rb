@@ -56,7 +56,7 @@ Rails.application.routes.draw do
       collection do
         post 'redeem_previlege'
         get 'my_privileges'
-        post 'delete_privilege'
+        post 'delete_my_privilege'
       end
     end
 
@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
     get 'bookings/check_booking' => 'bookings#check_booking'
     post 'bookings/make_a_booking' => 'bookings#make_a_booking'
+    post 'bookings/delete_my_booking' => 'bookings#delete_my_booking'
     resources :bookings do
     end
 
