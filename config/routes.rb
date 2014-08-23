@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :edit, :update] do
       member do
         get 'password'
+        get 'e_walet' => 'users#e_walet'
         patch 'update_password'
         put 'update_password'
       end
@@ -61,7 +62,6 @@ Rails.application.routes.draw do
     end
 
     resources :courses, only: [:index, :show]
-
     get 'bookings/check_booking' => 'bookings#check_booking'
     post 'bookings/make_a_booking' => 'bookings#make_a_booking'
     post 'bookings/delete_my_booking' => 'bookings#delete_my_booking'
@@ -71,7 +71,6 @@ Rails.application.routes.draw do
 
     resources :guard_houses do
       collection do
-
       end
     end
     # Example resource route with sub-resources:

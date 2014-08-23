@@ -1,7 +1,6 @@
 <div class="row">
   <% if !@my_privileges.nil? %>
       <% if @my_privileges.size > 0 %>
-          <div class="col-md-12"><h4 class="background-title"><%= t('booking.my_bookings') %></h4></div>
           <% @my_privileges.each do |pri| %>
               <div class="col-md-12">
                 <% if @my_privileges.find_index(pri) > 0 && @my_privileges.find_index(pri) < @my_privileges.size %>

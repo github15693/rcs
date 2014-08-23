@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
     session[:booking_tab] = :check_booking
     @temp = hash_to_object get_api('/check_booking',{user_id:session[:user_id], auth_token:session[:auth_token]})
     @check_bookings=@temp.total > 0 ? @temp.results : nil
+    @booking_loction = params[:booking_location]
   end
 
   private
