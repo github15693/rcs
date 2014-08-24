@@ -25,7 +25,7 @@ class WelcomesController < RootsController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :phone, :city, :password, :retype_password, :condo_id)
+      params.require(:user).permit(:name, :email, :phone, :city, :password, :password_confirmation, :condo_id)
     end
 end
 
