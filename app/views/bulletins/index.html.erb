@@ -1,16 +1,21 @@
 <div class= "bulletin-partial">
 <h2 class="header"><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<span><%= t('bulletins.index.title') %></span></h2>
 
-<% @bulletins.data.each do |b| %>
-<div class="bulletin-content">
-    <h3><%= link_to b.title , bulletin_path(b.id) ,{class: "btn-link" }  %></h3>
- <%= simple_format( b.content.truncate(200, separator: '', omission: link_to( "..." , bulletin_path(b.id))  ) , {class: 'keep-format'} ) %>
-       <span ><%= t('bulletins.index.daypost') %> : <i><%= b.date %></i></span>
+<% if @bulletins[:results].size > 0 %>
+<% @bulletins[:results].each do |b| %>
+<div class="bulletin-content row">
+<div class="col-xs-2">
+<%= image_tag "http://0.0.0.0:8080"+b[:image_path_thumb], { :class => 'img-thumbnail', size: '150x150' } %>
+</div>
+<div class="col-xs-10">
+    <h3><%= link_to b[:title] , bulletin_path(b[:id]) ,{class: "btn-link" }  %></h3>
+ <%= simple_format( b[:content].truncate(200, separator: '', omission: link_to( "..." , bulletin_path(b[:id]))  ) , {class: 'keep-format'} ) %>
+    <span ><%= t('bulletins.index.daypost') %> : <i><%= b[:date] %></i></span>
         <br>
 
      
         
-
+</div>
 </div>
 <% end %>
 <div class="text-center">
@@ -35,4 +40,7 @@
   </li>
 </ul>
 </div>
+<% else %>
+<p>No bulletin available </p>
+<% end %>
 </div>

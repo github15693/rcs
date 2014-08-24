@@ -3,9 +3,9 @@
  <span> ><%= t('bulletins.index.info') %></span></h2>
 
 <div class="bulletin-content">
-    <h3><%= @bulletin.data.title %></h3>
- <%= simple_format( @bulletin.data.content , {class: 'keep-format'} ) %>
-       <span ><%= t('bulletins.index.daypost') %> : <i> <%= @bulletin.data.date%></i></span>
+    <h3><%= @bulletin[:results][:title] %></h3>
+ <%= simple_format( @bulletin[:results][:content] , {class: 'keep-format'} ) %>
+       <span ><%= t('bulletins.index.daypost') %> : <i> <%= @bulletin[:results][:date]%></i></span>
         <br>
 
 </div>

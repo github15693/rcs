@@ -1,16 +1,17 @@
 <div class= "event-partial">
 <h2 class="header"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<span><%= t('event.index.title') %></span></h2>
 
-<%  @events.results.each do |e| %>
+<% if @events[:results].size >0 %>
+<%  @events[:results].each do |e| %>
 <div class="event-content">
 <div class ="row">
 <div class="col-xs-2">
- <%= image_tag "http://0.0.0.0:8080"+e.image, :class => 'img-thumbnail' %>
+ <%= image_tag "http://0.0.0.0:8080"+e[:image], :class => 'img-thumbnail' %>
 </div>
 <div class="col-xs-10">
-    <h3><%= link_to e.name , event_path(e.id) ,{class: "btn-link" }  %></h3>
+    <h3><%= link_to e[:name] , event_path(e[:id]) ,{class: "btn-link" }  %></h3>
 
-       <span ><%= t('event.index.daypost') %> : <i><%= e.date %></i></span>
+       <span ><%= t('event.index.daypost') %> : <i><%= e[:date] %></i></span>
    
 </div>
 
@@ -39,4 +40,7 @@
   </li>
 </ul>
 </div>
+<% else %>
+<p>No event available </p>
+<% end %>
 </div>

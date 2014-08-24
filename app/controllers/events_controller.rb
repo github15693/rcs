@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_menu
 respond_to :html , :js
-  # def index
-  #   p hash_to_object post_api('/request_friend',{request_user_id:14, confirm_user_id:4})
-  # end
+
 def index
     #get total page from api
       
@@ -14,21 +12,21 @@ def index
     else
     @current_page = 1
     end
-   @events =   hash_to_object get_api('/events', {:page=>@current_page , :limit=>limit , :auth_token =>session[:auth_token] })
+   @events =    get_api('/events', {:page=>@current_page , :limit=>limit , :auth_token =>session[:auth_token] , :condo_id =>session[:condo_id]})
 
 
-   @pages  =   @events.total % limit == 0 ? @events.total/limit : @events.total/limit +1
+   @pages  =   @events[:total] % limit == 0 ? @events[:total]/limit : @events[:total]/limit +1
 
 
 end 
 def show
      @event = get_api('/event_detail', {:event_id=>params[:id] , :auth_token =>session[:auth_token]})
      @list_user = get_api('/list_user' , {:event_id=>params[:id]  , :auth_token =>session[:auth_token]})
-     @all_image = get_api('/event_detail_photo', {:event_id=>params[:id]})
+     @all_image = get_api('/event_detail_photo', {:event_id=>params[:id] , :auth_token =>session[:auth_token]})
 end  
 def join
-    @join_event =hash_to_object post_api('/join_event' , {:user_id => session[:user_id] , :event_id => params[:id] , :auth_token =>session[:auth_token]})
-    @list_user = get_api('/list_user' , {:event_id=>params[:id]  , :auth_token =>session[:auth_token]})
+    @join_event = post_api('/join_event' , {:user_id => session[:user_id] , :event_id => params[:id] , :auth_token =>session[:auth_token]})
+    @list_user = get_api('/list_user' , {:event_id=>params[:id]  , :auth_token =>session[:auth_token] ,:user_id => session[:user_id]})
 end
 def photo    
 end  

@@ -30,7 +30,9 @@
 <%= @service[:results][:call_to_order] %> 
 </p>
 <p class="right"><span class="glyphicon glyphicon-credit-card big"></span> 
-<%= t('service.show.make_order') %> 
+<%= mail_to "me@domain.com",  t('service.show.make_order') , 
+         subject: "I want to ordre" %>
+<%=%> 
 </p>
 <div class="clear"></div>
 <p > <span class="glyphicon glyphicon-globe big"></span>

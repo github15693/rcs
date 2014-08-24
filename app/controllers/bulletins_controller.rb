@@ -8,12 +8,12 @@ class BulletinsController < ApplicationController
     else
     @current_page = 1
     end
-    @bulletins = hash_to_object get_api('/bulletins', {:page=>@current_page , :limit=>limit , :auth_token =>session[:auth_token]})
-   @pages =    @bulletins.total % limit == 0 ? @bulletins.total/limit : @bulletins.total/limit +1
+    @bulletins = get_api('/bulletins', {:page=>@current_page , :limit=>limit ,:condo_id => session[:condo_id] , :auth_token =>session[:auth_token]})
+   @pages =    @bulletins[:total] % limit == 0 ? @bulletins[:total]/limit : @bulletins[:total]/limit +1
 
   end
   def show
 
-     @bulletin = hash_to_object get_api('/bulletin_detail', {:bulletin_id=>params[:id] , :auth_token =>session[:auth_token]})
+     @bulletin =  get_api('/bulletin_detail', {:bulletin_id=>params[:id] , :auth_token =>session[:auth_token]})
   end  
 end

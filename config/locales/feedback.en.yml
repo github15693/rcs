@@ -5,4 +5,7 @@ en:
       welcome: "We welcome your Feedback Suggestion & Report. We give get back to you via your email address. Thank you"
       feedback_title: "Title"
       select_subject: "Please select your subject master"
+      feedback_content: "Content"
       submit: "Submit"
+      send_success: "Send feedback successfuly, please wait our mail reply"
+      send_fail: "Somethinng was wrong due to server errors"

@@ -9,8 +9,8 @@ class ApplicationController < RootsController
 
   # protect_from_forgery with: :exception
   # before_action  :temp_session, :get_privileges, :get_last_bulletins
-
-  protect_from_forgery with: :exception
+    protect_from_forgery with: :null_session,
+      if: Proc.new { |c| c.request.format =~ %r{application/json} }
   before_action :get_privileges, :get_last_bulletins
 
 

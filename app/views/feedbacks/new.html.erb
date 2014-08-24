@@ -1,18 +1,46 @@
 <div class= "feedback-partial">
 <h2 class="header"><span class="glyphicon glyphicon-envelope"></span> &nbsp;<span><%= t('feedback.new.title') %></span></h2>
-
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do %>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= msg %>
+      <% end %>
+  <% end %>
 <div class="feedback-form">
 <%= form_tag feedbacks_path , remote: true ,:multipart =>true do %>
 <p><%= t('feedback.new.welcome') %> </p>
-<%= label_tag(:title, t('feedback.new.feedback_title')) %>
-<%= text_field_tag :title %>
+<div class="form-group">
  <%= label_tag(:feedback_category_id, t('feedback.new.select_subject')) %>
- <%= select_tag "feedback_category_id" , options_for_select( @cat[:result]) %> <br>
-<%= text_area_tag :content  %>
-<%= file_field_tag :image %>
+ <%= select_tag "feedback_category_id" , options_for_select( @cat[:results]) %> <br>
+</div>
+<div class="form-group">
+<%= label_tag(:title, t('feedback.new.feedback_title')) %>
+<%= text_field_tag :title ,nil, class: "form-control" %>
+</div>
+<%= label_tag(:title, t('feedback.new.feedback_content')) %>
+<%= text_area_tag :content ,nil , class: "form-control" %>
+
+<%= file_field_tag :image  %>
+<div class="input-group choose" style="margin:15px 0px">
+            <input type="text" class="form-control">
+            <span class="input-group-addon" style="cursor: pointer" =>Browse</span>
+</div>
 <%= submit_tag  t('feedback.new.submit') ,:class => 'btn btn-success' %>
 <% end %>
 </div>
 
 
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $("#image").hide();
+$("#image").change(function(){
+          $("div.choose input").val($(this).val());
+        });
+         $(document).on('click', 'div.choose', function(e) {
+           e.preventDefault();
+           $('#image').trigger('click');
+         });
+});
+
+</script>
