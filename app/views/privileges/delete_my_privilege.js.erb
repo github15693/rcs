@@ -1,0 +1,7 @@
+<% if @temp.total > 0 %>
+    $('.load-content-privileges').html('<%= j render 'users/my_privileges' %>')
+    delayedAlert("<%= @temp.message %>",1000)
+    <% else %>
+    $('.load-content-privileges').html('<%= j render 'users/my_privileges' %>')
+    delayedAlert("Success!",1000)
+<% end %>

@@ -1,0 +1,10 @@
+<% if @temp.total > 0 %>
+    <% if @booking_loction == 'Booking_Facility' %>
+        $('.load-view-content').html('<%= j render 'check_booking' %>')
+        delayedAlert("Success!", 1000)
+    <% elsif @booking_loction == 'Booking_E_Walet' %>
+        $('.load-content-booking').html('<%= j render 'users/my_booking' %>')
+        delayedAlert("Success!", 1000)
+    <% end %>
+<% else %>
+<% end %>

@@ -1,13 +1,20 @@
 
-
-
-
-
-
-
-
-
-
-
-
+<div class="col-md-12 icon-menu">
+  <div class="col-md-1">
+    <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
+  </div>
+  <div class="col-md-5">
+    <h4><%= t('users.title') %></h4>
+  </div>
+  <div class="col-md-3 private-dhk text-right">
+    <h5>
+      <a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :info %>"></a><%= link_to t('.info'), user_path, class: "#{session[:profile_tab] == :info ? 'booking_tab' : ''}" %>
+    </h5>
+  </div>
+  <div class="col-md-3 private-dhk">
+    <h5>
+      <a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :e_walet %>"></a><%= link_to t('.e_wallet'), e_walet_user_path, class: "#{session[:profile_tab] == :e_walet ? 'booking_tab' : ''}" %>
+    </h5>
+  </div>
+</div>
 

@@ -27,6 +27,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def delete_my_booking
+    post_api('/delete_my_booking',{booking_id:params[:booking_id],auth_token:session[:auth_token]})
+    session[:booking_tab] = :check_booking
+    @temp = hash_to_object get_api('/check_booking',{user_id:session[:user_id], auth_token:session[:auth_token]})
+    @check_bookings=@temp.total > 0 ? @temp.results : nil
+    @booking_loction = params[:booking_location]
+  end
+
   private
   def set_menu
     session[:menu] = :bookings
