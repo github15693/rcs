@@ -11,7 +11,8 @@ module ApplicationHelper
 
 
 
- API_BASE_URL = "http://rms.innoria.com/api"
+ # API_BASE_URL = "http://rms.innoria.com/api"
+ API_BASE_URL = "http://localhost:8080/api"
 
 
   def get_api url, parameters=nil, username_api=nil, password_api=nil

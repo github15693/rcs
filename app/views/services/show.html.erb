@@ -6,54 +6,39 @@
 <div class="service-content">
 <div class="row">
 <div class="col-xs-4">
- <%= image_tag "http://0.0.0.0:8080"+ @service[:results][:image_path], :class => 'img-thumbnail' %>
+ <%= image_tag "http://0.0.0.0:8080"+ @user[:image], :class => 'img-thumbnail' %>
 </div>
 <div class="col-xs-8">
-    <h3><%= @service[:results][:name]%></h3>
 
-
-    <p class="decscription">
-  <%= @service[:results][:description]  %>
-    </p>
 
   
 </div>
 </div>
-<p class="left"> <span class="glyphicon glyphicon-map-marker big"></span>
-<%= @service[:results][:address] %> 
-</p>
-<p class="right"><span class="glyphicon glyphicon-dashboard big"></span> 
-<%= @service[:results][:order_hours] %> 
-</p>
-<div class="clear"></div>
-<p class="left"> <span class="glyphicon glyphicon-earphone big"></span>
-<%= @service[:results][:call_to_order] %> 
-</p>
-<p class="right"><span class="glyphicon glyphicon-credit-card big"></span> 
-<%= mail_to "me@domain.com",  t('service.show.make_order') , 
-         subject: "I want to ordre" %>
-<%=%> 
-</p>
-<div class="clear"></div>
-<p > <span class="glyphicon glyphicon-globe big"></span>
+<div class='row'>
+<div class="col-xs-2">
+<p><%= t('users.name') %></p>
+</div>
+<div class="col-xs-10">
+</div>
+</div>
+<div class='row'>
+<div class="col-xs-2">
+<p><%= t('users.phone') %></p>
+</div>
+<div class="col-xs-10">
+</div>
+</div>
+<div class='row'>
+<div class="col-xs-2">
+<p><%= t('users.interest') %></p>
+</div>
+<div class="col-xs-10">
+</div>
+</div>
 
-<%= link_to @service[:results][:web_page], "http://google.com" %>
-</p>
-<div id="foot">
-<h4><a href="#"><%= t('service.show.view_term') %></a></h4>
-<p class="term">
-<%= @service[:results][:term] %> 
-</p>
-</div>
-</div>
+
 
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("p.term").hide();
-  $("#foot a").click(function(e){
-    e.preventDefault();
-     $("p.term").slideToggle();
-  });
-});
+
 </script>
