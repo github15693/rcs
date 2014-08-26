@@ -15,7 +15,7 @@
     <div id="<%= fc[:form_category_name] %>" class="panel-collapse collapse">
       <div class="panel-body">
        <% fc[:forms].each do |f| %>
-         <h4><a href="http://0.0.0.0:8080<%= f[:form_path]%>"><%= f[:title] %></a></h4>
+         <h4><a href=" <%= url %><%= f[:form_path]%>"><%= f[:title] %></a></h4>
        <% end %>
       </div>
     </div>

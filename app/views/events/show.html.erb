@@ -45,7 +45,7 @@
     $(document).ready(function() {
       var dynamicimg =[]
       <% @all_image[:results].each do |img| %>
-      dynamicimg.push( {"src":'<%= "http://0.0.0.0:8080"+img[:image_url] %>',"thumb":'<%= "http://0.0.0.0:8080"+img[:image_url_thumb] %>'})
+      dynamicimg.push( {"src":'<%= url+img[:image_url] %>',"thumb":'<%= url+img[:image_url_thumb] %>'})
       <% end %>
     $('a.left').click(function(e){
     $(this).lightGallery({
