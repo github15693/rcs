@@ -102,16 +102,16 @@
       <h4><%= t('layout_application.rcs') %></h4>
       <div class="list-group private-dhk">
         <%= link_to t('layout_application.home'), homes_path, class:"list-group-item list-group-item-info #{session[:menu] == :homes ? 'active' : ''}"%>
-        <%= link_to t('layout_application.bulletins'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.bulletins'), bulletins_path, class:"list-group-item list-group-item-info #{session[:menu] == :bulletins ? 'active' : ''}"%>
         <%= link_to t('layout_application.events'), events_path, class:"list-group-item list-group-item-info #{session[:menu] == :events ? 'active' : ''}"%>
         <%= link_to t('layout_application.bookings'), bookings_path, class:"list-group-item list-group-item-info #{session[:menu] == :bookings ? 'active' : ''}"%>
         <%= link_to t('layout_application.privileges'), privileges_path, class:"list-group-item list-group-item-info #{session[:menu] == :privileges ? 'active' : ''}"%>
-        <%= link_to t('layout_application.services'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.services'), services_path, class:"list-group-item list-group-item-info #{session[:menu] == :services ? 'active' : ''}"%>
         <%= link_to t('layout_application.courses'), courses_path, class:"list-group-item list-group-item-info #{session[:menu] == :courses ? 'active' : ''}"%>
-        <%= link_to t('layout_application.forms'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
-        <%= link_to t('layout_application.house_rules'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.forms'), forms_path, class:"list-group-item list-group-item-info #{session[:menu] == :forms ? 'active' : ''}"%>
+        <%= link_to t('layout_application.house_rules'), house_rules_path, class:"list-group-item list-group-item-info #{session[:menu] == :house_rules ? 'active' : ''}"%>
         <%= link_to t('layout_application.guard_house'), guard_houses_path, class:"list-group-item list-group-item-info #{session[:menu] == :guard_houses ? 'active' : ''}"%>
-        <%= link_to t('layout_application.feedback'), '#', class:"list-group-item list-group-item-info #{session[:menustatus] == 'home' ? 'active' : ''}"%>
+        <%= link_to t('layout_application.feedback'), new_feedback_path, class:"list-group-item list-group-item-info #{session[:menu] == :feedbacks ? 'active' : ''}"%>
       </div>
     </div>
     <div class="col-md-9 col-sm-9 content-right load-view-content">

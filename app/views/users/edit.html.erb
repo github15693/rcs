@@ -1,4 +1,12 @@
+<div profile-partial>
+<h2 class="header"><span class="glyphicon glyphicon-user"></span> &nbsp;<%= link_to t('users.title') , user_path , class: "btn-link nice-red" %> <span> > <%= t('users.edit_profile') %> </span>
 
+</h2>
+<% if @errors %>
+<% @errors.each do |e| %>
+<%= e %>
+<% end %>
+<% end %>
 <%= form_tag user_path, method: :put , :multipart =>true  do %>
 <div class="row">
 <div class="col-xs-10">
@@ -27,12 +35,12 @@
   </div>
   <div class="col-xs-2">
           <div class="img-preview">
-          <%= image_tag "http://localhost:8080/"+@user[:image], { id: 'img-thumbnail', class: 'img-thumbnail', size: '250x250' } %>
+          <%= image_tag url+@user[:image], { id: 'img-thumbnail', class: 'img-thumbnail', size: '250x250' } %>
         </div>
   </div>
   </div>
 <% end %>
-
+</div>
 <script type="text/javascript">
     $(document).on('click', '#img-thumbnail', function () {
         $('#image').click();

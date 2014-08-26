@@ -1,4 +1,11 @@
 vi:
   feedback:
     new:
-      title: "Phan Hoi"
+      title: "Phản hồi"
+      welcome: "Chúng tôi luôn sẵn sàng nhận các phản ảnh của bạn về tình hình chung cư, chúng tôi sẻ  phản hồi nhanh chóng qua địa chỉ email của bạn"
+      feedback_title: "Tựa đề"
+      select_subject: "Xin vui lòng chọn loại phản hồi"
+      feedback_content: "Nội dung"
+      submit: "Gửi"
+      send_success: "Gửi thành công, vui lòng chờ phản hồi từ chúng tôi"
+      send_fail: "Gữi thất bại xin vui lòng thữ lại"

@@ -1,7 +1,8 @@
 class BulletinsController < ApplicationController
+  before_action :set_menu
   def index
     #get total page from api
-      
+ 
     limit = 2
     if params[:page]
     @current_page = params[:page]
@@ -15,5 +16,9 @@ class BulletinsController < ApplicationController
   def show
 
      @bulletin =  get_api('/bulletin_detail', {:bulletin_id=>params[:id] , :auth_token =>session[:auth_token]})
-  end  
+  end 
+    private
+  def set_menu
+    session[:menu] = :bulletins
+  end 
 end

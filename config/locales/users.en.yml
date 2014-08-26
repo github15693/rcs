@@ -1,5 +1,6 @@
 en:
   users:
+    edit_profile: 'Edit Profile'
     title: 'Profile'
     name: 'Name:'
     phone: 'Phone:'

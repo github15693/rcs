@@ -6,7 +6,7 @@
 <div class="event-content">
 <div class ="row">
 <div class="col-xs-2">
- <%= image_tag "http://0.0.0.0:8080"+e[:image], :class => 'img-thumbnail' %>
+ <%= image_tag url+e[:image], :class => 'img-thumbnail' %>
 </div>
 <div class="col-xs-10">
     <h3><%= link_to e[:name] , event_path(e[:id]) ,{class: "btn-link" }  %></h3>

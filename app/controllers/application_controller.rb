@@ -13,12 +13,14 @@ class ApplicationController < RootsController
       if: Proc.new { |c| c.request.format =~ %r{application/json} }
   before_action :get_privileges, :get_last_bulletins
 
-
   include ApplicationHelper
 
   def get_privileges
     @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
     @privileges=@temp.total > 0 ? @temp.results : nil
+  end
+  def domain
+      'http://rms.innoria.com/'
   end
 
   def get_last_bulletins

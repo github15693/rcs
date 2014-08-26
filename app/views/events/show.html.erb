@@ -11,7 +11,7 @@
 <div class="event-content">
 <div class="row">
 <div class="col-xs-4">
- <%= image_tag "http://0.0.0.0:8080"+@all_image[:results][0][:image_url], :class => 'img-thumbnail' %>
+ <%= image_tag url+@all_image[:results][0][:image_url], :class => 'img-thumbnail' %>
 </div>
 <div class="col-xs-8">
     <h3><%= @event[:results][:name]%></h3>

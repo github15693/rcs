@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
   layout 'application'
-    include ApplicationHelper
+
 
   def show
-      json_user = api_get '/profile', {auth_token: session[:auth_token]}
-    if json_user[:status] = 'success'
+       session[:profile_tab] = :info
+  json_user = api_get '/profile', {auth_token: session[:auth_token]}
+    if json_user[:status] == 'success'
       @user = json_user[:results]
     end
+ 
   end  
 
 
   def edit
     json_user = api_get '/profile', {auth_token: session[:auth_token]}
-    if json_user[:status] = 'success'
+    if json_user[:status] == 'success'
       @user = json_user[:results]
     end
   end
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
     # json_user = api_post '/edit_profile', user_params
     if params[:image]
 image = params[:image]
-@user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city],
+@user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city] ,:interest => params[:interest],
                        image: {
            :content_type => image.content_type,
            :filename => image.original_filename ,
@@ -30,12 +32,17 @@ image = params[:image]
                               }
  }) 
       else
- @user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city] })       
+ @user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city],:interest => params[:interest] })       
       end
  if @user[:status] == "success"
-  redirect_to new_feedback_path ,:notice => t('feedback.new.send_success')
+  redirect_to user_path ,:notice => t('users.send_success')
  else
-  redirect_to homes_path, :error => t('feedback.new.send_fail')
+  @errors = @user[:message]
+   json_user = api_get '/profile', {auth_token: session[:auth_token]}
+    if json_user[:status] == 'success'
+      @user = json_user[:results]
+    end
+  render "edit", :error => t('users.send_fail')
  end 
 
   end
@@ -43,9 +50,6 @@ image = params[:image]
   def password
   end
 
-  def show
-    session[:profile_tab] = :info
-  end
 
   def e_walet
     session[:profile_tab] = :e_walet

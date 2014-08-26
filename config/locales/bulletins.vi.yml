@@ -1,7 +1,6 @@
 vi:
   bulletins:
     index:
-      title: 'Thong Bao'
-      info: 'Info'
-      daypost: 'Day Post'
-      
+      title: 'Thông báo'
+      info: 'chi tiết'
+      daypost: 'Ngày đăng'

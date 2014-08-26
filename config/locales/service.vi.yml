@@ -1,7 +1,10 @@
-en:
+vi:
   service:
     index:
-      title: "Service"
-      looking: "Looking for something? Simply select service category to begin"
-      please_select: "Please select a service category"
-      search_result: "Search result"
+      title: "Dịch vụ"
+      looking: "Chọn lại hình dịch vụ bạn đang mong muốn"
+      please_select: "Chọn"
+      search_result: "Kết quả  tìm kiếm "
+    show:
+      view_term: "Xem Điều kiện dịch vụ"
+      make_order: "Gửi yêu cầu"

@@ -2,6 +2,7 @@ class FeedbacksController < ApplicationController
   require 'base64'
   respond_to :js , :html
   def new
+    set_menu
   @cat = get_api('/list_subject', { :condo_id => session[:condo_id] ,:auth_token =>session[:auth_token]})
   end
   def create
@@ -22,5 +23,9 @@ image = params[:image]
   redirect_to homes_path, :error => t('feedback.new.send_fail')
  end 
 
-  end  
+  end
+  private
+  def set_menu
+    session[:menu] = :feedbacks
+  end
 end

@@ -5,7 +5,7 @@
 <% @bulletins[:results].each do |b| %>
 <div class="bulletin-content row">
 <div class="col-xs-2">
-<%= image_tag "http://0.0.0.0:8080"+b[:image_path_thumb], { :class => 'img-thumbnail', size: '150x150' } %>
+<%= image_tag url+b[:image_path_thumb], { :class => 'img-thumbnail', size: '150x150' } %>
 </div>
 <div class="col-xs-10">
     <h3><%= link_to b[:title] , bulletin_path(b[:id]) ,{class: "btn-link" }  %></h3>

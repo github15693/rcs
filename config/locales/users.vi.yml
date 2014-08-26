@@ -1,6 +1,11 @@
 vi:
   users:
-
+    edit_profile: 'Chỉnh sữa thông tin'
+    title: 'Thông tin'
+    name: 'Tên:'
+    phone: 'Điện thoại:'
+    city: 'Địa chỉ:'
+    interest: 'Sở thích:'
   helpers:
     label:
       user:
