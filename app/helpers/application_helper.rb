@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def image_base_url
+    return 'http://rms.innoria.com'
+  end
+
   API_BASE_URL = "http://rms.innoria.com/api"
 
   def get_api url, parameters=nil, username_api=nil, password_api=nil

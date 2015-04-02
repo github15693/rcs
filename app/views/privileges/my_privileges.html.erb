@@ -7,7 +7,7 @@
                 <% if @my_privileges.find_index(pri) > 0 && @my_privileges.find_index(pri) < @my_privileges.size %>
                     <hr>
                 <% end %>
-                <div class="col-md-2"><%= image_tag pri.image_path, class: 'img-thumbnail' %></div>
+                <div class="col-md-2"><%= image_tag image_base_url + pri.image_path, class: 'img-thumbnail' %></div>
                 <div class="col-md-10">
                   <h4><%= pri.name %></h4>
                   <h5><%= pri.location %></h5>
