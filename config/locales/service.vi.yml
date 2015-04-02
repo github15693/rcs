@@ -1,0 +1,10 @@
+vi:
+  service:
+    index:
+      title: "Dịch vụ"
+      looking: "Chọn lại hình dịch vụ bạn đang mong muốn"
+      please_select: "Chọn"
+      search_result: "Kết quả  tìm kiếm "
+    show:
+      view_term: "Xem Điều kiện dịch vụ"
+      make_order: "Gửi yêu cầu"

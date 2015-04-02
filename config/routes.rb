@@ -21,6 +21,15 @@ Rails.application.routes.draw do
     resources :merchants, only: [:index, :create]
     resources :media, only: [:index]
     resources :contacts, only: [:index, :create]
+    resources :bulletins, only: [:index, :show]
+    resources :events, only: [:index, :show]
+    get 'join/:id',              to: 'events#join',           as: 'join_event'
+    get  'events/:id/photo' , to: 'events#image_details' , as: 'event_photos'
+    resources :feedbacks, only: [:new, :create]
+    resources :services , only: [:index , :show]
+    get 'service/get_service' , to: "services#get_service"
+    resources :forms , only: [:index]
+    resources :house_rules , only: [:index , :show]
     resource :user, only: [:show, :edit, :update] do
       member do
         get 'password'
@@ -48,10 +57,12 @@ Rails.application.routes.draw do
     #     end
     #   end
 
-    resources :events do
+    # resources :events do
 
-    end
+
+
     resources :homes, only: [:index]
+
 
     resources :privileges, only: [:index, :show] do
       collection do
@@ -62,6 +73,7 @@ Rails.application.routes.draw do
     end
 
     resources :courses, only: [:index, :show]
+
     get 'bookings/check_booking' => 'bookings#check_booking'
     post 'bookings/make_a_booking' => 'bookings#make_a_booking'
     post 'bookings/delete_my_booking' => 'bookings#delete_my_booking'
@@ -72,7 +84,7 @@ Rails.application.routes.draw do
     resources :guard_houses do
       collection do
       end
-    end
+   end
     # Example resource route with sub-resources:
     #   resources :products do
     #     resources :comments, :sales
@@ -101,5 +113,6 @@ Rails.application.routes.draw do
     #     resources :products
     #   end
   end
+  get 'service/get_service' , to: "services#get_service"
 end
 

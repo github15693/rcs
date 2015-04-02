@@ -1,0 +1,43 @@
+<div class= "service-partial">
+<h2 class="header"><span class="glyphicon glyphicon-road"></span> &nbsp;<span><%= t('service.index.title') %></span></h2>
+
+<div class="select">
+<p><%= t('service.index.looking') %> </p>
+<select class="form-control">
+    <option value="all" id="all"  'selected' %>
+      <%= t("service.index.please_select") %>
+          </option>
+    <% @cat[:results].each do |r| %>
+        <option  id="<%= r[:id] %>" value="<%= r[:id] %>">
+        <%= r[:name] %>
+
+        </option>
+    <% end %>
+  </select>
+</div>
+<div class="result">
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.select select').change(function(){
+          var cid = $(this).val();
+        if (cid != 'all'){
+        param = {"id":cid};
+         $.ajax({
+        
+      url : "service/get_service" ,
+      type : "get" ,
+      data: param ,
+      dataType: "script",
+      success: function(){ } ,
+      error: function(){ }
+    });
+       }
+       else{
+        $('div.result').html('');
+       }
+  });
+});
+</script>
+</div>

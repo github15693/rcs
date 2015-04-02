@@ -1,3 +1,4 @@
+<div class = "profile-partial">
 <div class="col-md-12 icon-menu">
   <div class="col-md-1">
     <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
@@ -15,4 +16,32 @@
       <a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :e_walet %>"></a><%= link_to t('.e_wallet'), e_walet_user_path, class: "#{session[:profile_tab] == :e_walet ? 'booking_tab' : ''}" %>
     </h5>
   </div>
+</div>
+<div class="profile-content">
+<div class= "row">
+<div class="col-xs-2">
+ <%= image_tag "http://0.0.0.0:8080"+ @user[:image], :class => 'img-thumbnail' , size: "150x150"%> 
+</div>
+<div class="col-xs-10">
+<h4><b><%= @user[:name] %></b></h4>
+  <%= link_to  t('users.edit_profile'), edit_user_path , class: "btn btn-link" %>
+</div>
+</div><!-- end div row -->
+<div class="row">
+<div class="col-xs-1"><%=t('users.city') %></div>
+<div class="col-xs-8"><%= @user[:city] %></div> 
+</div>
+<div class="row">
+<div class="col-xs-1"><%=t('users.phone') %></div>
+<div class="col-xs-8"><%=  @user[:phone] %></div>
+</div>
+<div class="row">
+<div class="col-xs-1"><%=t('users.interest') %></div>
+<div class="col-xs-8"><%=@user[:interest] %></div>
+</div>
+
+
+
+
+</div>
 </div>

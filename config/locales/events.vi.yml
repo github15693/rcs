@@ -1,0 +1,11 @@
+vi:
+  event:
+    index:
+      title: 'Sự kiện'
+      info: 'chi tiết'
+      daypost: 'Ngày đăng'
+    show:
+      im_comming: "Tôi sẻ tham gia"
+      resident_atend: "người tham gia"
+      view_photo: "Hình ảnh"
+      including: "(gồm cả  bạn)"

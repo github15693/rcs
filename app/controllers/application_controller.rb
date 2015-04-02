@@ -1,7 +1,16 @@
 class ApplicationController < RootsController
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+
+
+  # protect_from_forgery with: :exception
+  # before_action :get_privileges
+  # before_action :set_locale
+
+  # protect_from_forgery with: :exception
+  # before_action  :temp_session, :get_privileges, :get_last_bulletins
+    protect_from_forgery with: :null_session,
+      if: Proc.new { |c| c.request.format =~ %r{application/json} }
   before_action :get_privileges, :get_last_bulletins
 
   include ApplicationHelper
@@ -9,6 +18,9 @@ class ApplicationController < RootsController
   def get_privileges
     @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
     @privileges=@temp.total > 0 ? @temp.results : nil
+  end
+  def domain
+      'http://rms.innoria.com/'
   end
 
   def get_last_bulletins

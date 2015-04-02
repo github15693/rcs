@@ -1,0 +1,7 @@
+<h3><%= t('service.index.search_result') %> </h3>
+<% @services[:results].each do |s| %>
+<div>
+
+<%= link_to s[:name] , service_path(s[:id]) %>
+</div>
+ <% end %> 

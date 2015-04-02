@@ -1,14 +1,20 @@
 en:
   users:
-
+    edit_profile: 'Edit Profile'
+    title: 'Profile'
+    name: 'Name:'
+    phone: 'Phone:'
+    city: 'Address:'
+    interest: 'Interest(s):'
   helpers:
     label:
       user:
         name: 'Name:'
         phone: 'Phone:'
-        email: 'Email:'
+        city: 'Address:'
         interest: 'Interest(s):'
         current_password: 'Old password'
         password: 'New password'
         password_confirm: 'Password confirm'
+
 

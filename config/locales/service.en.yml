@@ -1,0 +1,10 @@
+en:
+  service:
+    index:
+      title: "Services"
+      looking: "Looking for something? Simply select service category to begin"
+      please_select: "Please select a service category"
+      search_result: "Search result"
+    show:
+      view_term: "View Terms & Conditions"
+      make_order: "Make an Order"

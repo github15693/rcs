@@ -1,24 +1,55 @@
-class UsersController < RootsController
+class UsersController < ApplicationController
   layout 'application'
-  include ApplicationHelper
+
+
+  def show
+       session[:profile_tab] = :info
+  json_user = api_get '/profile', {auth_token: session[:auth_token]}
+    if json_user[:status] == 'success'
+      @user = json_user[:results]
+    end
+ 
+  end  
+
+
   def edit
     json_user = api_get '/profile', {auth_token: session[:auth_token]}
-    if json_user[:status] = 'success'
+    if json_user[:status] == 'success'
       @user = json_user[:results]
     end
   end
 
   def update
-    password_params.merge(auth_token: session[:auth_token])
-    json_user = api_post '/edit_profile', user_params
+    # password_params.merge(auth_token: session[:auth_token])
+    # json_user = api_post '/edit_profile', user_params
+    if params[:image]
+image = params[:image]
+@user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city] ,:interest => params[:interest],
+                       image: {
+           :content_type => image.content_type,
+           :filename => image.original_filename ,
+           :file_data => Base64.encode64(image.read)
+                              }
+ }) 
+      else
+ @user = post_api('/edit_profile' , { :auth_token =>session[:auth_token] , :name=> params[:name], :phone => params[:phone] ,:city => params[:city],:interest => params[:interest] })       
+      end
+ if @user[:status] == "success"
+  redirect_to user_path ,:notice => t('users.send_success')
+ else
+  @errors = @user[:message]
+   json_user = api_get '/profile', {auth_token: session[:auth_token]}
+    if json_user[:status] == 'success'
+      @user = json_user[:results]
+    end
+  render "edit", :error => t('users.send_fail')
+ end 
+
   end
 
   def password
   end
 
-  def show
-    session[:profile_tab] = :info
-  end
 
   def e_walet
     session[:profile_tab] = :e_walet
@@ -37,9 +68,7 @@ class UsersController < RootsController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :phone, :email, :auth_token)
-    end
+   
 
     def password_params
       params.require(:user).permit(:current_password, :password, :password_confirmation, :auth_token)

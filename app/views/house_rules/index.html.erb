@@ -1,0 +1,57 @@
+<div class="rules-partial">
+<h2 class="header"><span class="glyphicon glyphicon-bell"></span> &nbsp;<span><%= t('house_rule.index.title') %></span></h2>
+
+
+<div class="panel-group" id="accordion">
+<%  @rules[:results].each do |fc| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#<%= fc[:houserule_category_name].tr(' ', '') %>">
+          <%= fc[:houserule_category_name] %>
+        </a>
+      </h3>
+    </div>
+    <div id="<%= fc[:houserule_category_name].tr(' ', '') %>" class="panel-collapse collapse">
+      <div class="panel-body">
+      <% if fc[:house_rules].size > 0 %>
+       <% fc[:house_rules].each do |r| %>
+       <div class= "rule-content" >
+         <h4><span> <%=r[:title]  %></span> </h4>
+         <p> <%= r[:content] %> </p>
+      </div>
+       <% end %>
+       <% else %>
+       <p> Nothing<p>
+       <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+       $("#accordion div:first-child div.panel-collapse").addClass('in');
+       $('div.rule-content p').hide();
+       $('div.rule-content h4 span').click(function(){
+      var content = $(this).parent().next();
+        if(content.hasClass("open")) 
+         { 
+        content.slideUp().removeClass("open");
+         }
+         else
+         {
+        $("#accordion p.open").slideUp().removeClass("open");
+        content.addClass("open").slideDown();
+         }
+       });
+
+
+
+
+  });
+</script>
+
+
+</div>
