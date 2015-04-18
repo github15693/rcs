@@ -15,5 +15,16 @@
 //= require bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
-//= require turbolinks
+
 //= require_tree .
+
+
+$(function(){
+    //set layout
+    if(localStorage.getItem('global_layout') == undefined){
+        localStorage.setItem('global_layout', "fixed");
+    }
+    $('#layout-' + localStorage.getItem('global_layout')).prop('checked', true)
+    change_layout(localStorage.getItem('global_layout'));
+
+})

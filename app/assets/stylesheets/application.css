@@ -20,10 +20,10 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  margin-top: 50px;
-  padding-right: 15px !important;
-}
+/*body {*/
+  /*margin-top: 50px;*/
+  /*padding-right: 15px !important;*/
+/*}*/
 
 #notifications {
   position: fixed;
@@ -43,5 +43,9 @@ textarea {
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
+}
+.items-center{
+    align-items: center;
+    display: flex;
 }
 

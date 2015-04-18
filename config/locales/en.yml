@@ -50,6 +50,7 @@ en:
       english: 'English'
       vietnamese: 'Vietnamese'
       logout: 'Logout'
+      navigation: 'MAIN NAVIGATION'
     application:
       first_name: 'Resident Concierge'
       last_name: 'System'

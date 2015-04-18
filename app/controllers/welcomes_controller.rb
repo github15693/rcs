@@ -1,7 +1,8 @@
 class WelcomesController < RootsController
-  layout 'welcome'
+  # layout 'adminLte' #welcome
   before_action :set_menu
   skip_before_action :authenticate_user!
+  before_action :redirect_to_home
 
   def index
     json_condo = api_get '/condos'
@@ -26,6 +27,12 @@ class WelcomesController < RootsController
 
     def user_params
       params.require(:user).permit(:name, :email, :phone, :city, :password, :password_confirmation, :condo_id)
+    end
+
+    def redirect_to_home
+      unless session[:auth_token].blank?
+        redirect_to homes_url
+      end
     end
 end
 

@@ -1,5 +1,5 @@
 class MerchantsController < RootsController
-  layout 'welcome'
+  # layout 'welcome'
   before_action :set_menu
   skip_before_action :authenticate_user!
 

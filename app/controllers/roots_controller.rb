@@ -1,6 +1,27 @@
 class RootsController < ActionController::Base
   before_action :set_locale
   before_action :authenticate_user!
+  before_action :get_user_info
+  layout 'adminLte'
+  include ApplicationHelper
+
+  def get_user_info
+    json_session = post_api '/log_in', {:email => 'guest@rms.com', :password => '12345678'}
+    @session = json_session[:status]
+    if json_session[:status] == 'success'
+      session[:user_id] = json_session[:results][:user_id]
+      session[:email] = json_session[:results][:email]
+      session[:name] = json_session[:results][:name]
+      session[:auth_token] = json_session[:results][:auth_token]
+      session[:condo_id] = json_session[:results][:condo_id]
+      # render js: "window.location = '#{homes_url}'"
+    end
+
+    json_user = get_api '/profile', {auth_token: session[:auth_token]}
+    if json_user[:status] == 'success'
+      @user = hash_to_object json_user[:results]
+    end
+  end
 
   def authenticate_user!
     if session[:auth_token].blank?
@@ -9,7 +30,7 @@ class RootsController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || :vi #I18n.default_locale
   end
 
   def default_url_options options = {}

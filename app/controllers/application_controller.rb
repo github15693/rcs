@@ -11,7 +11,8 @@ class ApplicationController < RootsController
   # before_action  :temp_session, :get_privileges, :get_last_bulletins
     protect_from_forgery with: :null_session,
       if: Proc.new { |c| c.request.format =~ %r{application/json} }
-  before_action :get_privileges, :get_last_bulletins
+    before_action :get_privileges, :get_last_bulletins
+    layout 'adminLte'
 
   include ApplicationHelper
 
@@ -33,5 +34,7 @@ class ApplicationController < RootsController
     session[:user_id] =7
     session[:condo_id] =1
   end
+
+
 end
 

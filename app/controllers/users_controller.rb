@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  layout 'application'
+  # layout 'application'
 
 
   def show
        session[:profile_tab] = :info
-  json_user = api_get '/profile', {auth_token: session[:auth_token]}
-    if json_user[:status] == 'success'
-      @user = json_user[:results]
-    end
+  # json_user = api_get '/profile', {auth_token: session[:auth_token]}
+  #   if json_user[:status] == 'success'
+  #     @user = json_user[:results]
+  #   end
  
   end  
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def edit
     json_user = api_get '/profile', {auth_token: session[:auth_token]}
     if json_user[:status] == 'success'
-      @user = json_user[:results]
+      @user = hash_to_object json_user[:results]
     end
   end
 

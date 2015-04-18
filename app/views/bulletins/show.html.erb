@@ -1,6 +1,8 @@
 <div class= "bulletin-partial">
-<h2 class="header"><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<%= link_to t('bulletins.index.title') , bulletins_path , class: "btn-link nice-red" %> 
- <span> ><%= t('bulletins.index.info') %></span></h2>
+<h2 class="header">
+  <span class="fa fa-bullhorn"></span> &nbsp;<%= link_to t('bulletins.index.title') , bulletins_path , class: "btn-link nice-red" %>
+ <span> <i class="fa fa-angle-right"></i> <%= t('bulletins.index.info') %></span>
+</h2>
 
 <div class="bulletin-content">
     <h3><%= @bulletin[:results][:title] %></h3>

@@ -50,6 +50,7 @@ vi:
       english: 'Tiếng Anh'
       vietnamese: 'Tiếng Việt'
       logout: 'Đăng xuất'
+      navigation: 'THANH ĐIỀU HƯỚNG'
     application:
       first_name: 'HTQL'
       last_name: 'Cư dân'

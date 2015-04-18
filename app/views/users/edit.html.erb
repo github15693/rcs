@@ -35,7 +35,7 @@
   </div>
   <div class="col-xs-2">
           <div class="img-preview">
-          <%= image_tag url+@user[:image], { id: 'img-thumbnail', class: 'img-thumbnail', size: '250x250' } %>
+            <%= image_tag @user.image.blank? == true ? 'guest_user.png' : image_base_url + @user[:image], { id: 'img-thumbnail', class: 'img-thumbnail', size: '250x250' } %>
         </div>
   </div>
   </div>
