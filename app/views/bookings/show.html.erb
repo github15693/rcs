@@ -1,19 +1,12 @@
 <%= form_tag bookings_make_a_booking_path, remote: true do |f| %>
     <div class="row private-dhk">
       <% if !@booking_detail.nil? %>
-          <div class="col-md-12 icon-menu">
-            <div class="col-md-1">
-              <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-            </div>
-            <div class="col-md-11">
-              <h4>
-                <a href="<%= bookings_path %>"><%= t('layout_application.bookings') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('booking.booking_facility') %></a> &nbsp;<a class="glyphicon glyphicon-chevron-right"></a> &nbsp;<%= t('booking.make_a_booking') %>
-              </h4>
-            </div>
-          </div>
+          <h2 class="col-md-12 header">
+            <span class="fa fa-newspaper-o"></span>
+            <span><%= t('booking.bookings') %></span>
+          </h2>
           <div class="col-md-12" id="img-privileges">
-            <hr>
-            <div class="col-md-4"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+            <div class="col-md-4"><%= image_tag image_base_url + @booking_detail.facility.image_path, class: 'img-thumbnail' %></div>
             <div class="col-md-8 height-200">
               <h4><%= @booking_detail.facility.name %></h4>
               <h5><%= @booking_detail.facility.booking_price %></h5>
@@ -49,8 +42,6 @@
             </div>
           </div>
           <div class="col-md-12">
-            <hr>
-            <div class="col-md-12">Description</div>
             <%= submit_tag t('booking.book_now'), class: 'btn btn-primary col-md-5 margin-top-20' %>
           </div>
 

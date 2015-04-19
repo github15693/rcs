@@ -6,15 +6,17 @@ class RootsController < ActionController::Base
   include ApplicationHelper
 
   def get_user_info
-    json_session = post_api '/log_in', {:email => 'guest@rms.com', :password => '12345678'}
-    @session = json_session[:status]
-    if json_session[:status] == 'success'
-      session[:user_id] = json_session[:results][:user_id]
-      session[:email] = json_session[:results][:email]
-      session[:name] = json_session[:results][:name]
-      session[:auth_token] = json_session[:results][:auth_token]
-      session[:condo_id] = json_session[:results][:condo_id]
-      # render js: "window.location = '#{homes_url}'"
+    if session[:auth_token].blank?
+      json_session = post_api '/log_in', {:email => 'guest@rms.com', :password => '12345678'}
+      @session = json_session[:status]
+      if json_session[:status] == 'success'
+        session[:user_id] = json_session[:results][:user_id]
+        session[:email] = json_session[:results][:email]
+        session[:name] = json_session[:results][:name]
+        session[:auth_token] = json_session[:results][:auth_token]
+        session[:condo_id] = json_session[:results][:condo_id]
+        # render js: "window.location = '#{homes_url}'"
+      end
     end
 
     json_user = get_api '/profile', {auth_token: session[:auth_token]}

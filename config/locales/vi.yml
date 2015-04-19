@@ -51,6 +51,7 @@ vi:
       vietnamese: 'Tiếng Việt'
       logout: 'Đăng xuất'
       navigation: 'THANH ĐIỀU HƯỚNG'
+      user_created_date: 'Thành viên từ ngày '
     application:
       first_name: 'HTQL'
       last_name: 'Cư dân'

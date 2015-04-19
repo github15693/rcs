@@ -51,6 +51,7 @@ en:
       vietnamese: 'Vietnamese'
       logout: 'Logout'
       navigation: 'MAIN NAVIGATION'
+      user_created_date: 'Member since '
     application:
       first_name: 'Resident Concierge'
       last_name: 'System'

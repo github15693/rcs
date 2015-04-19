@@ -1,7 +1,7 @@
 <div class="row">
   <% if !@booking_facilities.nil? %>
         <h2 class="col-md-12 header">
-          <span class="fa fa-bullhorn"></span>
+          <span class="fa fa-newspaper-o"></span>
           <span><%= t('booking.bookings') %></span>
         </h2>
       <div class="col-md-2 pull-right">
@@ -20,7 +20,7 @@
                     <% if bk_fct.facilities.find_index(fct) > 0 && bk_fct.facilities.find_index(fct) < bk_fct.facilities.size %>
                       <hr style="border-bottom: 1px solid black">
                     <% end %>
-                      <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
+                      <div class="col-md-2"><%= image_tag image_base_url + fct.image_path, class: 'img-thumbnail' %></div>
                       <div class="col-md-10">
                         <h4><%= fct.name %></h4>
                         <h5><%= fct.booking_price %></h5>
