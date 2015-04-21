@@ -20,6 +20,11 @@
 
 
 $(function(){
+    if(localStorage.getItem('i18n') == undefined || localStorage.getItem('i18n') == 'vi'){
+        i18nJs = i18nJs.vi;
+    }else{
+        i18nJs = i18nJs.en;
+    }
     //set layout
     if(localStorage.getItem('global_layout') == undefined){
         localStorage.setItem('global_layout', "fixed");
@@ -28,3 +33,7 @@ $(function(){
     change_layout(localStorage.getItem('global_layout'));
 
 })
+
+function setLaguage(val){
+    localStorage.setItem('i18n', val);
+}

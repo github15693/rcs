@@ -9,3 +9,5 @@ en:
       resident_atend: "Residents are attending"
       view_photo: "View Photos"
       including: "(including you)"
+  events:
+      location: 'Location: '

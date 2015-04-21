@@ -11,14 +11,14 @@ class ApplicationController < RootsController
   # before_action  :temp_session, :get_privileges, :get_last_bulletins
     protect_from_forgery with: :null_session,
       if: Proc.new { |c| c.request.format =~ %r{application/json} }
-    before_action :get_privileges, :get_last_bulletins
+    # before_action :get_privileges, :get_last_bulletins
     layout 'adminLte'
 
   include ApplicationHelper
 
   def get_privileges
     @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id],auth_token:session[:auth_token]})
-    @privileges=@temp.total > 0 ? @temp.results : nil
+    @privileges = @temp.total > 0 ? @temp.results : nil
   end
   def domain
       'http://rms.innoria.com/'

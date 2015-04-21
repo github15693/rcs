@@ -52,6 +52,10 @@ en:
       logout: 'Logout'
       navigation: 'MAIN NAVIGATION'
       user_created_date: 'Member since '
+      last_bulletins: 'Lastest bulletins'
+      last_events: 'Lastest events'
+      last_privileges: 'Lastest privileges'
+      date_apply: 'Applied date: '
     application:
       first_name: 'Resident Concierge'
       last_name: 'System'

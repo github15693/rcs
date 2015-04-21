@@ -9,3 +9,5 @@ vi:
       resident_atend: "người tham gia"
       view_photo: "Hình ảnh"
       including: "(gồm cả  bạn)"
+  events:
+    location: 'Địa điểm: '

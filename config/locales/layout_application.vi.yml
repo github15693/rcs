@@ -3,7 +3,7 @@ vi:
     pmh_park: 'PMH Park'
     rcs: 'Resident Concierge Service'
     home: 'Trang chủ'
-    bookings: 'Đặt chỗ'
+    bookings: 'Dịch vụ'
     privileges: 'Khuyến mãi'
     services: 'Dịch vụ'
     courses: 'Khóa học'
@@ -13,6 +13,6 @@ vi:
     facilities: 'Cơ sở vật chất'
     feedback: 'Phản hồi'
     forms: 'Biểu mẫu'
-    guard_house: 'Bảo vệ'
+    guard_house: 'Liên hệ'
     house_rules: 'Quy định'
 

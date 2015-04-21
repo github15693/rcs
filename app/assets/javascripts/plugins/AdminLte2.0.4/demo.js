@@ -1,5 +1,5 @@
 var my_skins = ["skin-blue", "skin-black", "skin-red", "skin-yellow", "skin-purple", "skin-green"];
-$(function () {
+$(window).load(function () {
   /* For demo purposes */
   var demo = $("<div />").css({
     position: "fixed",
@@ -27,7 +27,7 @@ $(function () {
     "box-shadow": "0 1px 3px rgba(0,0,0,0.1)"
   }).addClass("no-print");
   demo_settings.append(
-          "<h4 class='text-light-blue' style='margin: 0 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 15px;'>Layout Options</h4>"
+          "<h4 class='text-light-blue' style='margin: 0 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 15px;'>" + i18nJs.layout.layout_config + "</h4>"
           //Fixed layout
           + "<div class='form-group'>"
           + "<div class='checkbox'>"
@@ -62,7 +62,7 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-blue\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px; background: #367fa9;'></span><span class='bg-light-blue' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Blue</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.blue + "</p>"
                   + "</a>");
   skins_list.append(skin_blue);
   var skin_black =
@@ -70,7 +70,7 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-black\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div style='box-shadow: 0 0 2px rgba(0,0,0,0.1)' class='clearfix'><span style='display:block; width: 20%; float: left; height: 10px; background: #fefefe;'></span><span style='display:block; width: 80%; float: left; height: 10px; background: #fefefe;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Black</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.white + "</p>"
                   + "</a>");
   skins_list.append(skin_black);
   var skin_purple =
@@ -78,7 +78,7 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-purple\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-purple-active'></span><span class='bg-purple' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Purple</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.purple + "</p>"
                   + "</a>");
   skins_list.append(skin_purple);
   var skin_green =
@@ -86,7 +86,7 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-green\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-green-active'></span><span class='bg-green' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Green</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.green + "</p>"
                   + "</a>");
   skins_list.append(skin_green);
     var skin_red =
@@ -94,7 +94,7 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-red\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-red-active'></span><span class='bg-red' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Red</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.red + "</p>"
                   + "</a>");
   skins_list.append(skin_red);
     var skin_yellow =
@@ -102,11 +102,11 @@ $(function () {
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-yellow\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-yellow-active'></span><span class='bg-yellow' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
-                  + "<p class='text-center'>Skin Yellow</p>"
+                  + "<p class='text-center'>" + i18nJs.layout.color.yellow + "</p>"
                   + "</a>");
   skins_list.append(skin_yellow);
 
-  demo_settings.append("<h4 class='text-light-blue' style='margin: 0 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 15px;'>Skins</h4>");
+  demo_settings.append("<h4 class='text-light-blue' style='margin: 0 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 15px;'>" + i18nJs.layout.skins + "</h4>");
   demo_settings.append(skins_list);
 
   demo.click(function () {

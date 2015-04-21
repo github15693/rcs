@@ -1,1 +1,18 @@
-delayedAlert("<%= @message %>",1000)
+<% if @success == true %>
+    cosyAlert("<%= @message %>", 'success', {
+        vPos : 'middle',
+        hPos : 'center',
+        autoHideTime : 1000,
+        showTime : 500,
+        hideTime : 500
+    });
+<% else %>
+    cosyAlert("<%= @message %>", 'error', {
+        vPos : 'middle',
+        hPos : 'center',
+        autoHideTime : 1000,
+        showTime : 500,
+        hideTime : 500
+    });
+<% end %>
+//delayedAlert("<%= @message %>",1000)

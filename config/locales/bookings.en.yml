@@ -13,3 +13,4 @@ en:
     please_select_your_preferred_timeslot: 'Please select your preferred timeslot:'
     book_now: 'Book now!'
     my_bookings: 'My bookings'
+    missing_time_slot: 'Missing timeslot.'

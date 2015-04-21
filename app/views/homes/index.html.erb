@@ -1,82 +1,72 @@
-<div class="row private-dhk">
-  <% if !@bulletin.nil? %>
-      <div class="col-md-12">
-        <hr>
-        <div class="col-md-2"><%= image_tag 'no-image.jpg', class: 'img-thumbnail' %></div>
-        <div class="col-md-10">
-          <h4><%= @bulletin.title %></h4>
-          <h5><%= @bulletin.date %></h5>
-        </div>
-  <% end %>
-  </div>
+<div class="row">
   <div class="col-md-12">
-    <hr>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= bulletins_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.bulletins')%>
-      </a>
+    <div class="col-md-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t('layouts.homes.last_bulletins') %></h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <% if !@bulletins.nil? %>
+              <div>
+                <% @bulletins.each do |bulletin| %>
+                      <h5 class="category-title"><b><%= bulletin.title %></b></h5>
+                      <h5><%= t('layouts.homes.date_apply') %><%= DateTime.parse(bulletin.date).strftime("%d/%m/%Y") if !bulletin.date.nil? %></h5>
+                      <span><%= bulletin.content %></span>
+                      <hr>
+                <% end %>
+              </div>
+          <% end %>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
     </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= events_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.events')%>
-      </a>
+    <div class="col-md-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t('layouts.homes.last_events') %></h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <%#= debug @events %>
+          <% if !@events.nil? %>
+              <div>
+                <% @events.each do |event| %>
+                    <h5 class="category-title"><b><%= event.name %></b></h5>
+                    <h5><%= t 'layouts.homes.date_apply'%><%= DateTime.parse(event.date).strftime("%d/%m/%Y") if !event.date.nil? %>  <%= DateTime.parse(event.time_start).strftime('%H:%M') if !event.time_start.nil? %> - <%= DateTime.parse(event.time_end).strftime('%H:%M') if !event.time_end.nil? %></h5>
+                    <h5><%= t('events.location') %> <%= event.location %></h5>
+                    <span><%= event.description %></span>
+                    <hr>
+                <% end %>
+              </div>
+          <% end %>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
     </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= bookings_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.bookings')%>
-      </a>
+    <div class="col-md-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t('layouts.homes.last_privileges') %></h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <% if !@privileges.nil? %>
+              <div>
+                <% @privileges.each do |pri| %>
+                    <h5 class="category-title"><b><%= pri.name %></b></h5>
+                    <h5><%= t 'layouts.homes.date_apply'%><%= pri.date_time_detail %></h5>
+                    <span><%= pri.description %></span>
+                    <hr>
+                <% end %>
+              </div>
+          <% end %>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
     </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= privileges_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.privileges')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= services_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.services')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= courses_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.courses')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= forms_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.forms')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= house_rules_path %>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.house_rules')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= guard_houses_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.guard_house')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="<%= feedbacks_path%>">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.feedback')%>
-      </a>
-    </div>
-    <div class="col-md-2 text-center margin-top-20">
-      <a href="/user">
-        <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        <%=t('layout_application.my_profile')%>
-      </a>
-    </div>
-
   </div>
 </div>

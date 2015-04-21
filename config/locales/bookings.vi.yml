@@ -13,3 +13,4 @@ vi:
     please_select_your_preferred_timeslot: 'Vui lòng chọn thời gian:'
     book_now: 'Đặt ngay!'
     my_bookings: 'Dịch vụ đã đặt'
+    missing_time_slot: 'Thời gian không được rỗng'
