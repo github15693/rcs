@@ -209,7 +209,7 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-      <li class="header"><%= t('layouts.homes.navigation') %></li>
+      <!--<li class="header"><%#= t('layouts.homes.navigation') %></li>-->
       <li class="treeview <%= 'active' if session[:menu] == :homes %>">
         <a href="<%= homes_path %>" data-no-turbolink="true">
           <i class="fa fa-home"></i>
@@ -315,9 +315,11 @@
 
 
 <script>
-//  $(window).load(function(){
-
-//  })
+  $(window).load(function(){
+    if($('body').hasClass('fixed') == true){
+        $('#layout-fixed').prop('checked', true);
+    }
+  });
   function toggleSidebar(){
       if($('.sidebar-collapse').length == 0){
           localStorage.setItem('is_showed_toggle_sidebar', 0);

@@ -61,7 +61,7 @@ $(window).load(function () {
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='javascript:void(0);' onclick='change_skin(\"skin-blue\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px; background: #367fa9;'></span><span class='bg-light-blue' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #367fa9;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>" + i18nJs.layout.color.blue + "</p>"
                   + "</a>");
   skins_list.append(skin_blue);
