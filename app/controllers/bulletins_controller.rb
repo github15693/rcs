@@ -14,12 +14,13 @@ class BulletinsController < ApplicationController
     end
     @bulletins = hash_to_object get_api('/bulletins', {:page => @current_page, :limit => limit, :condo_id => session[:condo_id], :auth_token => session[:auth_token]})
     @pages = @bulletins[:total] % limit == 0 ? @bulletins[:total]/limit : @bulletins[:total]/limit +1
-    @bulletins = @bulletins.results.size > 0 ? @bulletins.results : nil
+    @total_bulletin = @bulletins.results.blank? ? 0 : @bulletins.results.size
+    @bulletins = @bulletins.results.blank? ? nil : @bulletins.results
   end
 
   def show
     bulletin = hash_to_object get_api('/bulletin_detail', {:bulletin_id => params[:id], :auth_token => session[:auth_token]})
-    @bulletin = bulletin.results.size > 0 ? bulletin.results : nil
+    @bulletin = bulletin.results.blank? ? nil : bulletin.results
   end
 
   private

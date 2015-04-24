@@ -1,44 +1,101 @@
-<div class="event-partial">
-  <h2 class="header"><span class="fa fa-flag-o"></span> &nbsp;<span><%= t('event.index.title') %></span></h2>
+<!--<div class="event-partial">-->
+  <!--<h2 class="header"><span class="fa fa-flag-o"></span> &nbsp;<span><%= t('event.index.title') %></span></h2>-->
 
-  <% unless @events.nil? %>
-      <% @events.each do |e| %>
-          <div class="event-content">
-            <div class="row">
-              <div class="col-xs-2">
-                <%= image_tag url+e[:image], :class => 'img-thumbnail' %>
-              </div>
-              <div class="col-xs-10">
-                <h3><%= link_to e[:name], event_path(e[:id]), {class: "btn-link"} %></h3>
+  <!--<%# unless @events.nil? %>-->
+      <!--<%# @events.each do |e| %>-->
+          <!--<div class="event-content">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-2">-->
+                <!--<%#= image_tag url+e[:image], :class => 'img-thumbnail' %>-->
+              <!--</div>-->
+              <!--<div class="col-xs-10">-->
+                <!--<h3><%#= link_to e[:name], event_path(e[:id]), {class: "btn-link"} %></h3>-->
 
-                <span><%= t('event.index.daypost') %> : <i><%= e[:date] %></i></span>
+                <!--<span><%#= t('event.index.daypost') %> : <i><%#= e[:date] %></i></span>-->
 
-              </div>
+              <!--</div>-->
 
-            </div>
-          </div>
-      <% end %>
-      <div class="text-center">
-        <ul class="pagination">
-          <li class='<%= @current_page.to_i == 1 ? "disabled" : "" %>'>
-            <a href='<%= @current_page.to_i == 1 ? "#" : "/events?page=#{@current_page.to_i - 1}" %>'>&laquo;</a>
-          </li>
-          <% for i in 1..@pages %>
-              <% if i == @current_page.to_i %>
-                  <li class="active">
-                    <a href=""><%= i %><span class="sr-only">(current)</span></a>
-                  </li>
-              <% else %>
-                  <li>
-                    <%= link_to i, events_path(:page => i) %>
-                  </li>
-              <% end %>
+            <!--</div>-->
+          <!--</div>-->
+      <!--<%# end %>-->
+      <!--<div class="text-center">-->
+        <!--<ul class="pagination">-->
+          <!--<li class='<%#= @current_page.to_i == 1 ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == 1 ? "#" : "/events?page=#{@current_page.to_i - 1}" %>'>&laquo</a>-->
+          <!--</li>-->
+          <!--<%# for i in 1..@pages %>-->
+              <!--<%# if i == @current_page.to_i %>-->
+                  <!--<li class="active">-->
+                    <!--<a href=""><%#= i %><span class="sr-only">(current)</span></a>-->
+                  <!--</li>-->
+              <!--<%# else %>-->
+                  <!--<li>-->
+                    <!--<%#= link_to i, events_path(:page => i) %>-->
+                  <!--</li>-->
+              <!--<%# end %>-->
 
-          <% end %>
-          <li class='<%= @current_page.to_i == @pages ? "disabled" : "" %>'>
-            <a href='<%= @current_page.to_i == @pages ? "#" : "/events?page=#{@current_page.to_i + 1}" %>'>&raquo;</a>
-          </li>
-        </ul>
+          <!--<%# end %>-->
+          <!--<li class='<%#= @current_page.to_i == @pages ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == @pages ? "#" : "/events?page=#{@current_page.to_i + 1}" %>'>&raquo</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+  <!--<%# end %>-->
+<!--</div>-->
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.events') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @total_event.to_s + ' ' + t('layout_application.events') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
       </div>
-  <% end %>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="cold-md-12">
+          <% unless @events.nil? %>
+              <% i = 0; @events.each do |event| i += 1;%>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <%= image_tag url+event[:image], :class => 'img-thumbnail' %>
+                    </div>
+                    <div class="col-md-10">
+                      <h5><b><%= link_to event[:name], event_path(event[:id]) %></b></h5>
+                      <h5><%= t 'layouts.homes.date_apply'%><%= DateTime.parse(event.date).strftime("%d/%m/%Y") if !event.date.nil? %>  <%= DateTime.parse(event.time_start).strftime('%H:%M') if !event.time_start.nil? %> - <%= DateTime.parse(event.time_end).strftime('%H:%M') if !event.time_end.nil? %></h5>
+                      <h5><%= t('events.location') %> <%= event.location %></h5>
+                      <span><%= event.description %></span>
+                    </div>
+                    <% if @events.size > i %>
+                        <div class='col-md-12'><hr/></div>
+                    <% end %>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer text-center">
+        <ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>
+        <script>
+            $(function(){
+                $('#pagination').twbsPagination({
+                    totalPages: parseInt('<%= @pages %>'),
+                    visiblePages: 5,
+                    startPage: parseInt('<%= @current_page %>'),
+                    href: '?page={{number}}',
+                    first: i18nJs.layout.first,
+                    prev: i18nJs.layout.prev,
+                    next: i18nJs.layout.next,
+                    last: i18nJs.layout.last
+                });
+            })
+        </script>
+      </div>
+    </div>
+  </div>
 </div>

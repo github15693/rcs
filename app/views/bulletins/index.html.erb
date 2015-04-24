@@ -51,7 +51,7 @@
       <div class="box-header with-border">
         <h3 class="box-title"><%= t('layout_application.bulletins') %></h3>
         <div class="box-tools pull-right">
-          <span class="label label-success"><%= @bulletins.size.to_s + ' ' + t('layout_application.bulletins') %></span>
+          <span class="label label-success"><%= @total_bulletin.to_s + ' ' + t('layout_application.bulletins') %></span>
           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
         </div>
@@ -65,7 +65,7 @@
                   <%= image_tag image_base_url + b[:image_path_thumb], {:class => 'info-box-icon bg-aqua', :style => 'margin-top: 10px;'} %>
                   <div class="info-box-content">
                     <b><%= link_to b[:title], bulletin_path(b[:id]), {} %></b>
-                    <%= simple_format(b[:content].truncate(300, separator: '', omission: link_to("...", bulletin_path(b[:id]))), {class: 'keep-format'}) %>
+                    <%= simple_format(b[:content].truncate(250, separator: '', omission: link_to("...", bulletin_path(b[:id]))), {class: 'keep-format'}) %>
                     <%= t('layouts.homes.date_apply') %><%= b[:date].blank? == true ? '' : DateTime.parse(b[:date]).strftime('%d/%m/%Y') %>
                   </div>
                   <!-- /.info-box-content -->

@@ -11,3 +11,4 @@ en:
       including: "(including you)"
   events:
       location: 'Location: '
+      click_image_to_slideshow: 'Click below image to slide show.'

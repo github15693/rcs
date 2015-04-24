@@ -1,58 +1,124 @@
-<div class= "event-partial">
-<h2 class="header"><span class="fa fa-flag-o"></span> &nbsp;<%= link_to t('event.index.title') , events_path , class: "btn-link nice-red" %><span> <i class="fa fa-angle-right"></i> <%= t('event.index.info') %> </span>
+<!--<div class="event-partial">-->
+  <!--<h2 class="header">-->
+    <!--<span class="fa fa-flag-o"></span> &nbsp;<%#= link_to t('event.index.title'), events_path, class: "btn-link nice-red" %>
+    <!--<span> <i class="fa fa-angle-right"></i> <%#= t('event.index.info') %> </span>-->
 
-  <%= link_to "#", {class: 'btn-link left nice-red', remote: true} do %>
-      <span class="glyphicon glyphicon-film"></span> <%= t('event.show.view_photo') %>
-  <% end %>
+    <!--<%#= link_to "#", {class: 'btn-link left nice-red', remote: true} do %>-->
+        <!--<span class="glyphicon glyphicon-film"></span> <%#= t('event.show.view_photo') %>
+    <!--<%# end %>-->
 
 
-</h2>
+  <!--</h2>-->
 
-<div class="event-content">
+  <!--<div class="event-content">-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-4">-->
+        <!--<%#= image_tag url+@all_image[:results][0][:image_url], :class => 'img-thumbnail' %>-->
+      <!--</div>-->
+      <!--<div class="col-xs-8">-->
+        <!--<h3><%#= @event[:results][:name] %></h3>-->
+
+        <!--<div class="date-post"><%#= t('event.index.daypost') %> :-->
+          <!--<i><%#= @event[:results][:created_at].to_datetime.strftime('%d/%m/%Y ') %></i></div>-->
+        <!--<p class="list_user"><span class="glyphicon glyphicon-user big"></span>-->
+          <!--<span class="num"><%#= @list_user[:results][:num_user] %> </span>-->
+          <!--<%#= t('event.show.resident_atend') %>-->
+          <!--<i class="include"><%#= @list_user[:results][:user_join] ? t('event.show.including') : "" %></i>-->
+        <!--</p>-->
+        <!--<%# unless @list_user[:results][:user_join] %>-->
+            <!--<%#= link_to t('event.show.im_comming'), join_event_path(@event[:results][:id]), class: "btn btn-info join", remote: true %>-->
+        <!--<%# end %>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<p id="left"><span class="glyphicon glyphicon-map-marker big"></span>-->
+      <!--<%#= @event[:results][:location] %>-->
+    <!--</p>-->
+
+    <!--<p id="medium"><span class="glyphicon glyphicon-calendar big"></span>-->
+      <!--<%#= @event[:results][:date] %>-->
+    <!--</p>-->
+
+    <!--<p id="right"><span class="glyphicon glyphicon-dashboard big"></span>-->
+      <!--<%#= @event[:results][:event_start].to_datetime.strftime('%I:%M %P') unless @event[:results][:event_start].nil? %>-->
+      <!----->
+      <!--<%#= @event[:results][:event_end].to_datetime.strftime('%I:%M %P') unless @event[:results][:event_start].nil? %>-->
+    <!--</p>-->
+
+    <!--<p id="foot"><%#= @event[:results][:description] %></p>-->
+  <!--</div>-->
+
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--//    $(document).ready(function () {-->
+<!--//        var dynamicimg = []-->
+        <!--<%# @all_image[:results].each do |img| %>-->
+<!--//        dynamicimg.push({"src": '<%#= url+img[:image_url] %>', "thumb": '<%#= url+img[:image_url_thumb] %>'})-->
+        <!--<%# end %>-->
+<!--//        $('a.left').click(function (e) {-->
+<!--//            $(this).lightGallery({-->
+<!--//                dynamic: true,-->
+<!--//                mobileSrc: true,-->
+<!--//                dynamicEl: dynamicimg-->
+<!--//            });-->
+<!--//        });-->
+<!--//    });-->
+<!--</script>-->
+
+
+
 <div class="row">
-<div class="col-xs-4">
- <%= image_tag url+@all_image[:results][0][:image_url], :class => 'img-thumbnail' %>
+  <div class="col-md-12">
+    <div class="box box-primary" style="display: inline-block;">
+      <div class="box-header with-border">
+        <h3 class="box-title"><a href="" onclick="goBack()" class="fa fa-reply"></a> <%= t('layout_application.events') %></h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body" style="display: inline-block;">
+        <div class="col-md-12">
+          <% unless @event.nil? %>
+            <div class="col-md-2">
+              <%= image_tag (@all_image.nil? ? 'no-image.jpg' : image_base_url + @all_image[0].image_url_thumb), :class => 'img-thumbnail' %>
+            </div>
+            <div class="col-md-10">
+              <h5><b><%= @event[:name] %></b></h5>
+              <h5><%= t 'layouts.homes.date_apply'%><%= DateTime.parse(@event.date).strftime("%d/%m/%Y") if !@event.date.nil? %>  <%= DateTime.parse(@event.event_start).strftime('%H:%M') if !@event.event_start.nil? %> - <%= DateTime.parse(@event.event_end).strftime('%H:%M') if !@event.event_end.nil? %></h5>
+              <h5><%= t('events.location') %> <%= @event.location %></h5>
+              <span><%= @event.description %></span>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-12">
+          <% unless @all_image.nil? %>
+              <div class="col-md-12"><h5 style="margin-bottom: 0px;"><%= t('events.click_image_to_slideshow') %></h5></div>
+              <%  @all_image.each do |img| %>
+              <div class="col-md-2" style="padding-top: 20px;">
+                <a href="<%= image_base_url + img.image_url %>">
+                  <%= image_tag image_base_url + img.image_url_thumb, {:class => 'img-thumbnail', 'data-smoothzoom' => 'group1', :alt => ''} %>
+                </a>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
 </div>
-<div class="col-xs-8">
-    <h3><%= @event[:results][:name]%></h3>
 
-    <div class = "date-post"><%= t('event.index.daypost') %> : <i><%= @event[:results][:created_at].to_datetime.strftime('%d/%m/%Y ') %></i></div> 
-    <p class="list_user"><span class="glyphicon glyphicon-user big"></span>
-   <span class="num"><%= @list_user[:results][:num_user] %> </span>
-    <%= t('event.show.resident_atend') %>
-    <i class="include"><%= @list_user[:results][:user_join] ? t('event.show.including') : "" %></i>
-    </p>
-    <% unless @list_user[:results][:user_join] %>
-    <%= link_to t('event.show.im_comming') , join_event_path(@event[:results][:id] ), class: "btn btn-info join" , remote: true %>
-    <% end %>
-</div>
-</div>
-<p id="left"> <span class="glyphicon glyphicon-map-marker big"></span>
-<%= @event[:results][:location] %> 
-</p>
-<p id="medium"><span class="glyphicon glyphicon-calendar big"></span>
-<%= @event[:results][:date] %> 
-</p>
-<p id="right"><span class="glyphicon glyphicon-dashboard big"></span> 
-<%= @event[:results][:event_start].to_datetime.strftime('%I:%M %P') unless @event[:results][:event_start].nil? %> - 
-<%= @event[:results][:event_end].to_datetime.strftime('%I:%M %P') unless @event[:results][:event_start].nil? %> 
-</p>
-<p id= "foot"><%=@event[:results][:description] %></p>
-</div>
+<style>
+  .sz-overlay, .sz-left, .sz-right, .sz-zoomed{
+      z-index: 9999;
+  }
 
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-      var dynamicimg =[]
-      <% @all_image[:results].each do |img| %>
-      dynamicimg.push( {"src":'<%= url+img[:image_url] %>',"thumb":'<%= url+img[:image_url_thumb] %>'})
-      <% end %>
-    $('a.left').click(function(e){
-    $(this).lightGallery({
-    dynamic:true,
-    mobileSrc:true,
-    dynamicEl:dynamicimg
-    }); 
-    });
+</style>
+<script>
+    $(window).load( function() {
+        $('img').smoothZoom({
+            closeButton: true
+        });
     });
 </script>

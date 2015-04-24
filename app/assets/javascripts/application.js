@@ -37,3 +37,7 @@ $(function(){
 function setLaguage(val){
     localStorage.setItem('i18n', val);
 }
+
+function goBack() {
+    window.history.back();
+}

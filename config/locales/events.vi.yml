@@ -11,3 +11,4 @@ vi:
       including: "(gồm cả  bạn)"
   events:
     location: 'Địa điểm: '
+    click_image_to_slideshow: 'Click vào hình bên dưới để xem ở chế độ trình chiếu.'

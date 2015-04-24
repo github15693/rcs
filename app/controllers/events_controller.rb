@@ -14,14 +14,16 @@ class EventsController < ApplicationController
     end
     @events = hash_to_object get_api('/events', {:page => @current_page, :limit => limit, :auth_token => session[:auth_token], :condo_id => session[:condo_id]})
     @pages = @events[:total] % limit == 0 ? @events[:total]/limit : @events[:total]/limit +1
-    @events = @events.results.size > 0 ? @events.results : nil
-
+    @total_event = @events.results.blank? ? 0 : @events.results.size
+    @events = @events.results.blank? ? nil : @events.results
   end
 
   def show
-    @event = get_api('/event_detail', {:event_id => params[:id], :auth_token => session[:auth_token]})
+    event = hash_to_object get_api('/event_detail', {:event_id => params[:id], :auth_token => session[:auth_token]})
     @list_user = get_api('/list_user', {:event_id => params[:id], :auth_token => session[:auth_token]})
-    @all_image = get_api('/event_detail_photo', {:event_id => params[:id], :auth_token => session[:auth_token]})
+    all_image = hash_to_object get_api('/event_detail_photo', {:event_id => params[:id], :auth_token => session[:auth_token]})
+    @all_image = all_image.results.blank? ? nil : all_image.results
+    @event = event.results.blank? ? nil : event.results
   end
 
   def join
