@@ -55,6 +55,9 @@ en:
       last_bulletins: 'Lastest bulletins'
       last_events: 'Lastest events'
       last_privileges: 'Lastest privileges'
+      last_services: 'Lastest services'
+      last_members: 'Lastest members'
+      new_members: ' new members'
       date_apply: 'Applied date: '
     application:
       first_name: 'Resident Concierge'

@@ -1,5 +1,12 @@
-$('#login-modal').modal('hide')
-<% if @session == 'failed' %>
-  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
-<% end %>
+//$('#login-modal').modal('hide')
+<!--<%# if @session == 'failed' %>-->
+//  $('#notifications').html('<%= alert_bs t('.respond_not_ok') %>')
+<!--<%# end %>-->
 
+cosyAlert("<%= t('.respond_not_ok') %>", 'error', {
+    vPos : 'middle',
+    hPos : 'center',
+    autoHideTime : 1000,
+    showTime : 500,
+    hideTime : 500
+});

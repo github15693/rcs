@@ -33,7 +33,7 @@ $(window).load(function () {
           + "<div class='checkbox'>"
           + "<label>"
           + "<input type='checkbox' id='layout-fixed' onchange='change_layout(\"fixed\");'/> "
-          + "Fixed layout"
+          + i18nJs.layout.fixed_layout
           + "</label>"
           + "</div>"
           + "</div>"
@@ -42,7 +42,7 @@ $(window).load(function () {
           + "<div class='checkbox'>"
           + "<label>"
           + "<input type='checkbox' id='layout-layout-boxed' onchange='change_layout(\"layout-boxed\");'/> "
-          + "Boxed Layout"
+          + i18nJs.layout.boxed_layout
           + "</label>"
           + "</div>"
           + "</div>"

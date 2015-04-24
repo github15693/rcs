@@ -77,5 +77,16 @@ end
   def currency(val)
     "#{ActionController::Base.helpers.number_to_currency(val)}"
   end
+
+
+  def number_format number = 0
+    txt = number.to_i.to_s
+    rs = ''
+    for s in 0...txt.size do
+      rs += txt[txt.size - s - 1]; rs += ',' if (s+1)%3 == 0 && s+1 > 1 && s+1 != txt.size
+    end
+    return session[:language] == 'vi' || session[:language].nil? ? rs.reverse! + ' đồng' : rs.reverse!
+  end
+
 end
 

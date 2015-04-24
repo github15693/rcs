@@ -1,46 +1,117 @@
-<div class= "bulletin-partial">
-<h2 class="header"><span class="fa fa-bullhorn"></span> &nbsp;<span><%= t('bulletins.index.title') %></span></h2>
+<!--<div class="bulletin-partial">-->
+  <!--<h2 class="header"><span class="fa fa-bullhorn"></span> &nbsp;<span><%#= t('bulletins.index.title') %></span></h2>-->
 
-<% if @bulletins[:results].size > 0 %>
-<% @bulletins[:results].each do |b| %>
-<div class="bulletin-content row">
-<div class="col-xs-2">
-<%= image_tag url+b[:image_path_thumb], { :class => 'img-thumbnail', size: '150x150' } %>
-</div>
-<div class="col-xs-10">
-    <h3><%= link_to b[:title] , bulletin_path(b[:id]) ,{class: "btn-link" }  %></h3>
- <%= simple_format( b[:content].truncate(200, separator: '', omission: link_to( "..." , bulletin_path(b[:id]))  ) , {class: 'keep-format'} ) %>
-    <span ><%= t('bulletins.index.daypost') %> : <i><%= b[:date] %></i></span>
-        <br>
+  <!--<%# if @bulletins.size > 0 %>-->
+      <!--<%# @bulletins.each do |b| %>-->
+          <!--<div class="bulletin-content row">-->
+            <!--<div class="col-xs-2">-->
+              <!--<%#= image_tag url+b[:image_path_thumb], {:class => 'img-thumbnail', size: '150x150'} %>-->
+            <!--</div>-->
+            <!--<div class="col-xs-10">-->
+              <!--<h3><%#= link_to b[:title], bulletin_path(b[:id]), {class: "btn-link"} %></h3>-->
+              <!--<%#= simple_format(b[:content].truncate(200, separator: '', omission: link_to("...", bulletin_path(b[:id]))), {class: 'keep-format'}) %>-->
+              <!--<span><%#= t('bulletins.index.daypost') %> : <i><%#= b[:date] %></i></span>-->
+              <!--<br>-->
 
-     
-        
-</div>
-</div>
-<% end %>
-<div class="text-center">
-<ul class="pagination">
-  <li class='<%=  @current_page.to_i == 1 ? "disabled" : "" %>'>
-  <a href='<%=  @current_page.to_i == 1 ? "#" : "/bulletins?page=#{@current_page.to_i - 1}" %>'>&laquo;</a>
-  </li>
-<% for i in 1..@pages %>
-<% if i == @current_page.to_i %>
-<li class = "active"> 
-<a href=""><%= i %><span class="sr-only">(current)</span></a>
-</li>
-<% else %>
-<li > 
-<%= link_to i , bulletins_path(:page=> i) %>
-</li>
-<% end %> 
 
-<% end %>
-  <li class='<%=  @current_page.to_i == @pages ? "disabled" : "" %>'>
-  <a href='<%=  @current_page.to_i == @pages ? "#" : "/bulletins?page=#{@current_page.to_i + 1}" %>'>&raquo;</a>
-  </li>
-</ul>
-</div>
-<% else %>
-<p>No bulletin available </p>
-<% end %>
+            <!--</div>-->
+          <!--</div>-->
+      <!--<%# end %>-->
+      <!--<div class="text-center">-->
+        <!--<ul class="pagination">-->
+          <!--<li class='<%#= @current_page.to_i == 1 ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == 1 ? "#" : "/bulletins?page=#{@current_page.to_i - 1}" %>'>&laquo</a> -->
+          <!--</li>-->
+          <!--<%# for i in 1..@pages %>-->
+              <!--<%# if i == @current_page.to_i %>-->
+                  <!--<li class="active">-->
+                    <!--<a href=""><%#= i %><span class="sr-only">(current)</span></a>-->
+                  <!--</li>-->
+              <!--<%# else %>-->
+                  <!--<li>-->
+                    <!--<%#= link_to i, bulletins_path(:page => i) %>-->
+                  <!--</li>-->
+              <!--<%# end %>-->
+
+          <!--<%# end %>-->
+          <!--<li class='<%#= @current_page.to_i == @pages ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == @pages ? "#" : "/bulletins?page=#{@current_page.to_i + 1}" %>'>&raquo</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+  <!--<%# else %>-->
+      <!--<p>No bulletin available </p>-->
+  <!--<%# end %>-->
+<!--</div>-->
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.bulletins') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @bulletins.size.to_s + ' ' + t('layout_application.bulletins') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="cold-md-12">
+          <% if @bulletins.size > 0 %>
+              <% @bulletins.each do |b| %>
+                <div class="info-box" style="min-height: 120px;">
+                  <%= image_tag image_base_url + b[:image_path_thumb], {:class => 'info-box-icon bg-aqua', :style => 'margin-top: 10px;'} %>
+                  <div class="info-box-content">
+                    <b><%= link_to b[:title], bulletin_path(b[:id]), {} %></b>
+                    <%= simple_format(b[:content].truncate(300, separator: '', omission: link_to("...", bulletin_path(b[:id]))), {class: 'keep-format'}) %>
+                    <%= t('layouts.homes.date_apply') %><%= b[:date].blank? == true ? '' : DateTime.parse(b[:date]).strftime('%d/%m/%Y') %>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer text-center">
+        <ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>
+        <script>
+          $(function(){
+              $('#pagination').twbsPagination({
+                  totalPages: parseInt('<%= @pages %>'),
+                  visiblePages: 5,
+                  startPage: parseInt('<%= @current_page %>'),
+                  href: '?page={{number}}',
+                  first: i18nJs.layout.first,
+                  prev: i18nJs.layout.prev,
+                  next: i18nJs.layout.next,
+                  last: i18nJs.layout.last
+              });
+          })
+        </script>
+        <!--<ul class="pagination" style="margin: 0px;">-->
+          <!--<li class='<%#= @current_page.to_i == 1 ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == 1 ? "#" : "/bulletins?page=#{@current_page.to_i - 1}" %>'>&laquo;</a>-->
+          <!--</li>-->
+          <!--<%# for i in 1..@pages %>-->
+              <!--<%# if i == @current_page.to_i %>-->
+                  <!--<li class="active">-->
+                    <!--<a href=""><%#= i %><span class="sr-only">(current)</span></a>-->
+                  <!--</li>-->
+              <!--<%# else %>-->
+                  <!--<li>-->
+                    <!--<%#= link_to i, bulletins_path(:page => i) %>-->
+                  <!--</li>-->
+              <!--<%# end %>-->
+
+          <!--<%# end %>-->
+          <!--<li class='<%#= @current_page.to_i == @pages ? "disabled" : "" %>'>-->
+            <!--<a href='<%#= @current_page.to_i == @pages ? "#" : "/bulletins?page=#{@current_page.to_i + 1}" %>'>&raquo;</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      </div>
+    </div>
+  </div>
 </div>

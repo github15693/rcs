@@ -69,4 +69,58 @@
       </div><!-- /.box -->
     </div>
   </div>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t('layouts.homes.last_services') %></h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <% if !@facilites.nil? %>
+              <div>
+                <% @facilites.each do |facility| %>
+                    <a href="/bookings/<%= facility.id %>">
+                        <div class="info-box">
+                          <img src="<%= image_base_url + facility.image_path %>" class="info-box-icon bg-aqua">
+                          <div class="info-box-content">
+                            <span class="info-box-text"><%= facility.name %></span>
+                            <span class="info-box-number"><%= number_format facility.booking_price %><small></small></span>
+                          </div><!-- /.info-box-content -->
+                        </div>
+                    </a>
+                <% end %>
+              </div>
+          <% end %>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t('layouts.homes.last_members') %></h3>
+          <div class="box-tools pull-right">
+            <span class="label label-success"><%= @users.size.to_s + t('layouts.homes.new_members') %></span>
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+          <ul class="users-list clearfix">
+            <% unless @users.nil? %>
+                <% @users.each do |user| %>
+                    <li>
+                      <%= image_tag user.avatar.blank? == true ? 'guest_user.png' : image_base_url + user.avatar, 'alt' => user.name %>
+                      <a class="users-list-name" href=""><%= user.name %></a>
+                      <span class="users-list-date"><%= DateTime.parse(user.created_at).strftime('%d/%m') unless user.created_at.nil? %></span>
+                    </li>
+                <% end %>
+            <% end %>
+          </ul><!-- /.users-list -->
+        </div><!-- /.box-body -->
+      </div>
+    </div>
+  </div>
 </div>

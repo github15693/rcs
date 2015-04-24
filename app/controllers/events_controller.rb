@@ -5,18 +5,16 @@ class EventsController < ApplicationController
   def index
     #get total page from api
 
-    limit = 2
+    limit = 5
 
     if params[:page]
       @current_page = params[:page]
     else
       @current_page = 1
     end
-    @events = get_api('/events', {:page => @current_page, :limit => limit, :auth_token => session[:auth_token], :condo_id => session[:condo_id]})
-
-
+    @events = hash_to_object get_api('/events', {:page => @current_page, :limit => limit, :auth_token => session[:auth_token], :condo_id => session[:condo_id]})
     @pages = @events[:total] % limit == 0 ? @events[:total]/limit : @events[:total]/limit +1
-
+    @events = @events.results.size > 0 ? @events.results : nil
 
   end
 

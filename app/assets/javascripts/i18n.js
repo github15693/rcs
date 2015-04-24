@@ -11,6 +11,8 @@ var i18nJs = {
         },
         layout: {
             layout_config: 'Tùy chọn giao diện',
+            fixed_layout: 'Bố cục giao diện cố định',
+            boxed_layout: 'Bố cục giao diện hình hộp',
             skins: 'Mẫu giao diện',
             color: {
                 blue: 'Xanh da trời',
@@ -20,7 +22,11 @@ var i18nJs = {
                 red: 'Đỏ',
                 yellow: 'Vàng',
                 white: 'Trắng'
-            }
+            },
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối'
         }
     },
     en: {
@@ -32,6 +38,8 @@ var i18nJs = {
         },
         layout: {
             layout_config: 'Layout Options',
+            fixed_layout: 'Fixed layout',
+            boxed_layout: 'Boxed Layout',
             skins: 'Skins',
             color: {
                 blue: 'Blue',
@@ -41,7 +49,11 @@ var i18nJs = {
                 red: 'Red',
                 yellow: 'Yellow',
                 white: 'White'
-            }
+            },
+            first: 'First',
+            prev: 'Previous',
+            next: 'Next',
+            last: 'Last'
         }
     }
 }

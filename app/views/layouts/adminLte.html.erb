@@ -82,36 +82,16 @@
           <!--</ul>-->
         <!--</li>-->
         <!--&lt;!&ndash; Tasks: style can be found in dropdown.less &ndash;&gt;-->
-        <!--<li class="dropdown tasks-menu">-->
-          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-            <!--<i class="fa fa-flag-o"></i>-->
-            <!--<span class="label label-danger">9</span>-->
-          <!--</a>-->
-          <!--<ul class="dropdown-menu">-->
-            <!--<li class="header">You have 9 tasks</li>-->
-            <!--<li>-->
-              <!--&lt;!&ndash; inner menu: contains the actual data &ndash;&gt;-->
-              <!--<ul class="menu">-->
-                <!--<li>&lt;!&ndash; Task item &ndash;&gt;-->
-                  <!--<a href="#">-->
-                    <!--<h3>-->
-                      <!--Design some buttons-->
-                      <!--<small class="pull-right">20%</small>-->
-                    <!--</h3>-->
-                    <!--<div class="progress xs">-->
-                      <!--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">-->
-                        <!--<span class="sr-only">20% Complete</span>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</a>-->
-                <!--</li>&lt;!&ndash; end task item &ndash;&gt;-->
-              <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="footer">-->
-              <!--<a href="#">View all tasks</a>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</li>-->
+        <li>
+          <a href="<%= url_for(params.merge(locale: :en)) %>" class="dropdown-toggle" onclick="setLanguage('en')">
+            <%= image_tag 'en.png', :size => '20x20' %>
+          </a>
+        </li>
+        <li>
+          <a href="<%= url_for(params.merge(locale: :vi)) %>" class="dropdown-toggle" onclick="setLanguage('vi')">
+            <%= image_tag 'vi.png', :size => '20x20' %>
+          </a>
+        </li>
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -136,18 +116,18 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><%= glyph(:user) %></span>
-                      <%= text_field :user, :email, { class: 'form-control' } %>
+                      <%= text_field :user, :email, { class: 'form-control', :placeholder => 'Email' } %>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><%= glyph(:lock) %></span>
-                      <%= password_field :user, :password, { class: 'form-control' } %>
+                      <%= password_field :user, :password, { class: 'form-control', :placeholder => t('layouts.welcome.password') } %>
                     </div>
                   </div>
                   <div class="text-right">
-                    <%= button_tag t('.login'), { type: :submit, name: 'user[submit]', value: 'Submit', class: 'btn btn-default' } %>
+                    <%= button_tag t('layouts.welcome.login'), { type: :submit, name: 'user[submit]', value: 'Submit', class: 'btn btn-default' } %>
                   </div>
               <% end %>
               <!--<div class="col-xs-4 text-center">-->
@@ -315,11 +295,20 @@
 
 
 <script>
+  function setLanguage(val){
+      localStorage.setItem('i18n', val);
+  }
   $(window).load(function(){
+      if(localStorage.getItem('i18n') == undefined || localStorage.getItem('i18n') == 'vi'){
+          i18nJs = i18nJs.vi;
+      }else{
+          i18nJs = i18nJs.en;
+      }
     if($('body').hasClass('fixed') == true){
         $('#layout-fixed').prop('checked', true);
     }
   });
+
   function toggleSidebar(){
       if($('.sidebar-collapse').length == 0){
           localStorage.setItem('is_showed_toggle_sidebar', 0);

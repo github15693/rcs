@@ -55,6 +55,9 @@ vi:
       last_bulletins: 'Thông báo mới nhất'
       last_events: 'Sự kiện mới nhất'
       last_privileges: 'Khuyến mãi mới nhất'
+      last_services: 'Dịch vụ mới nhất'
+      last_members: 'Thành viên mới nhất'
+      new_members: ' thành viên mới'
       date_apply: 'Ngày áp dụng: '
     application:
       first_name: 'HTQL'

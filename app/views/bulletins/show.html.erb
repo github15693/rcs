@@ -1,15 +1,52 @@
-<div class= "bulletin-partial">
-<h2 class="header">
-  <span class="fa fa-bullhorn"></span> &nbsp;<%= link_to t('bulletins.index.title') , bulletins_path , class: "btn-link nice-red" %>
- <span> <i class="fa fa-angle-right"></i> <%= t('bulletins.index.info') %></span>
-</h2>
+<!--<div class= "bulletin-partial">-->
+<!--<h2 class="header">-->
+  <!--<span class="fa fa-bullhorn"></span> &nbsp;<%#= link_to t('bulletins.index.title') , bulletins_path , class: "btn-link nice-red" %>-->
+ <!--<span> <i class="fa fa-angle-right"></i> <%#= t('bulletins.index.info') %></span>-->
+<!--</h2>-->
 
-<div class="bulletin-content">
-    <h3><%= @bulletin[:results][:title] %></h3>
- <%= simple_format( @bulletin[:results][:content] , {class: 'keep-format'} ) %>
-       <span ><%= t('bulletins.index.daypost') %> : <i> <%= @bulletin[:results][:date]%></i></span>
-        <br>
+<!--<div class="bulletin-content">-->
+    <!--<h3><%#= @bulletin[:title] %></h3>-->
+ <!--<%#= simple_format( @bulletin[:content] , {class: 'keep-format'} ) %>-->
+       <!--<span ><%#= t('bulletins.index.daypost') %> : <i> <%#= @bulletin[:date]%></i></span>-->
+        <!--<br>-->
 
+<!--</div>-->
+
+<!--</div>-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.bulletins') %></h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="cold-md-12">
+          <% unless @bulletin.nil? %>
+              <div class="info-box">
+                <a href="<%= image_base_url + @bulletin[:image_path] %>"><%= image_tag image_base_url + @bulletin[:image_path_thumb], {:class => 'info-box-icon bg-aqua', :style => 'margin-top: 30px;', 'data-smoothzoom' => 'group1', :alt => ''} %></a>
+                <div class="info-box-content">
+                  <h3><%= @bulletin[:title] %></h3>
+                  <%= simple_format( @bulletin[:content] , {class: 'keep-format'} ) %>
+                  <%= t('layouts.homes.date_apply') %><%= @bulletin[:date].blank? == true ? '' : DateTime.parse(@bulletin[:date]).strftime('%d/%m/%Y') %>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
 </div>
 
-</div>
+<script>
+    $(window).load( function() {
+        $('img').smoothZoom({
+        });
+    });
+</script>
