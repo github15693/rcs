@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     end
     @events = hash_to_object get_api('/events', {:page => @current_page, :limit => limit, :auth_token => session[:auth_token], :condo_id => session[:condo_id]})
     @pages = @events[:total] % limit == 0 ? @events[:total]/limit : @events[:total]/limit +1
-    @total_event = @events.results.blank? ? 0 : @events.results.size
+    @total_event = @events[:total].blank? ? 0 : @events[:total]
     @events = @events.results.blank? ? nil : @events.results
   end
 

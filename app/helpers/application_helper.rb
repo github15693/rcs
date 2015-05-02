@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def string_to_hash string
+    return hash_to_object eval(string.to_s)
+  end
+
   def image_base_url
     return 'http://rms.innoria.com'
   end

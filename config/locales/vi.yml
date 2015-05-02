@@ -71,4 +71,5 @@ vi:
       english: 'Tiếng Anh'
       vietnamese: 'Tiếng Việt'
       logout: 'Đăng xuất'
-
+  data:
+    empty: 'Không có dữ liệu.'

@@ -14,7 +14,7 @@ class BulletinsController < ApplicationController
     end
     @bulletins = hash_to_object get_api('/bulletins', {:page => @current_page, :limit => limit, :condo_id => session[:condo_id], :auth_token => session[:auth_token]})
     @pages = @bulletins[:total] % limit == 0 ? @bulletins[:total]/limit : @bulletins[:total]/limit +1
-    @total_bulletin = @bulletins.results.blank? ? 0 : @bulletins.results.size
+    @total_bulletin = @bulletins[:total].blank? ? 0 : @bulletins[:total]
     @bulletins = @bulletins.results.blank? ? nil : @bulletins.results
   end
 

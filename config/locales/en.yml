@@ -71,4 +71,5 @@ en:
       english: 'English'
       vietnamese: 'Vietnamese'
       logout: 'Logout'
-
+  data:
+    empty: 'Data is empty.'

@@ -1,47 +1,163 @@
-<div class = "profile-partial">
-<div class="col-md-12 icon-menu">
-  <div class="col-md-1">
-    <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-  </div>
-  <div class="col-md-5">
-    <h4><%= t('users.title') %></h4>
-  </div>
-  <div class="col-md-3 private-dhk text-right">
-    <h5>
-      <a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :info %>"></a><%= link_to t('.info'), user_path, class: "#{session[:profile_tab] == :info ? 'booking_tab' : ''}" %>
-    </h5>
-  </div>
-  <div class="col-md-3 private-dhk">
-    <h5>
-      <a class="<%= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :e_walet %>"></a><%= link_to t('.e_wallet'), e_walet_user_path, class: "#{session[:profile_tab] == :e_walet ? 'booking_tab' : ''}" %>
-    </h5>
-  </div>
-</div>
-<div class="profile-content">
-<div class= "row">
-<div class="col-xs-2">
-  <%= image_tag @user.image.blank? == true ? 'guest_user.png' : image_base_url + @user[:image], :class => 'img-circle' %>
-</div>
-<div class="col-xs-10">
-<h4><b><%= @user[:name] %></b></h4>
-  <%= link_to  t('users.edit_profile'), edit_user_path , class: "btn btn-link" %>
-</div>
-</div><!-- end div row -->
+<!--user profile-->
 <div class="row">
-<div class="col-xs-1"><%=t('users.city') %></div>
-<div class="col-xs-8"><%= @user[:city] %></div> 
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('users.title') %></h3>
+
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag @user.image.blank? == true ? 'guest_user.png' : image_base_url + @user[:image], :class => 'img-thumbnail' %>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-12">
+                <h5>
+                  <b><%= @user[:name].blank? ? @user[:username] : @user[:name] %></b>&emsp;
+                  <%= link_to ' ' + t('users.edit_profile'), edit_user_path, class: "fa fa-edit" %>
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <h5><%= t('users.email') %></h5>
+              </div>
+              <div class="col-md-10">
+                <h5><%= @user[:email] %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <h5><%= t('users.phone') %></h5>
+              </div>
+              <div class="col-md-10">
+                <h5><%= @user[:phone] %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <h5><%= t('users.city') %></h5>
+              </div>
+              <div class="col-md-10">
+                <h5><%= @user[:city] %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <h5><%= t('users.country') %></h5>
+              </div>
+              <div class="col-md-10">
+                <h5><%= @user[:country] %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
 </div>
+
+<!--my bookings-->
 <div class="row">
-<div class="col-xs-1"><%=t('users.phone') %></div>
-<div class="col-xs-8"><%=  @user[:phone] %></div>
-</div>
-<div class="row">
-<div class="col-xs-1"><%=t('users.interest') %></div>
-<div class="col-xs-8"><%=@user[:interest] %></div>
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('booking.my_bookings') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @total_booking.to_s + ' ' + t('layout_application.bookings') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table-responsive table">
+              <thead>
+                <th><%= t('booking.table.number') %></th>
+                <th><%= t('booking.table.name') %></th>
+                <th><%= t('booking.table.using_date') %></th>
+                <th><%= t('booking.table.using_time') %></th>
+                <th><%= t('booking.table.booking_price') %></th>
+                <th><%= t('booking.table.deposit_price') %></th>
+                <th><%= t('booking.table.status') %></th>
+              </thead>
+              <tbody>
+              <% unless @my_bookings.blank? %>
+                <% i = 0; @my_bookings.each do |b| i += 1;%>
+                <tr>
+                  <td><%= i %></td>
+                  <td><%= string_to_hash(b.data).facility_name %></td>
+                  <td><%= DateTime.parse(b.date_book).strftime('%d/%m/%Y') %></td>
+                  <td><%= string_to_hash(b.data).time_slot %></td>
+                  <td><%= number_format(string_to_hash(b.data).booking_price) %></td>
+                  <td><%= number_format(string_to_hash(b.data).deposit_price) %></td>
+                  <td><%= t('booking.status.' + b.status.downcase) %></td>
+                </tr>
+                <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
 </div>
 
 
+<!--<div class="profile-partial">-->
+  <!--<div class="col-md-12 icon-menu">-->
+    <!--<div class="col-md-1">-->
+      <!--<%#= image_tag 'no-image.jpg', class: 'img-thumbnail' %>-->
+    <!--</div>-->
+    <!--<div class="col-md-5">-->
+      <!--<h4><%#= t('users.title') %></h4>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 private-dhk text-right">-->
+      <!--<h5>-->
+<!-- <a class="<%#= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :info %>"></a><%#= link_to t('.info'), user_path, class: "#{session[:profile_tab] == :info ? 'booking_tab' : ''}" %>
+      <!--</h5>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 private-dhk">-->
+      <!--<h5>-->
+<!--  <a class="<%#= 'glyphicon glyphicon-star-empty font-size-15' if session[:profile_tab] == :e_walet %>"></a><%#= link_to t('.e_wallet'), e_walet_user_path, class: "#{session[:profile_tab] == :e_walet ? 'booking_tab' : ''}" %>
+      <!--</h5>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="profile-content">-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-2">-->
+        <!--<%#= image_tag @user.image.blank? == true ? 'guest_user.png' : image_base_url + @user[:image], :class => 'img-circle' %>-->
+      <!--</div>-->
+      <!--<div class="col-xs-10">-->
+        <!--<h4><b><%#= @user[:name] %></b></h4>-->
+        <!--<%#= link_to t('users.edit_profile'), edit_user_path, class: "btn btn-link" %>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-1"><%#= t('users.city') %></div>-->
+      <!--<div class="col-xs-8"><%#= @user[:city] %></div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-1"><%#= t('users.phone') %></div>-->
+      <!--<div class="col-xs-8"><%#= @user[:phone] %></div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-1"><%#= t('users.interest') %></div>-->
+      <!--<div class="col-xs-8"><%#= @user[:interest] %></div>-->
+    <!--</div>-->
 
 
-</div>
-</div>
+  <!--</div>-->
+<!--</div>-->

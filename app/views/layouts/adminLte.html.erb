@@ -208,21 +208,21 @@
           <span><%= t('layout_application.events') %></span>
         </a>
       </li>
-      <li class="treeview <%= 'active' if session[:menu] == :bookings %>">
-        <a href="<%= bookings_path %>">
-          <i class="fa fa-newspaper-o"></i>
-          <span><%= t('layout_application.bookings') %></span>
-        </a>
-      </li>
       <li class="treeview <%= 'active' if session[:menu] == :privileges %>">
         <a href="<%= privileges_path %>">
           <i class="fa fa-tags"></i>
           <span><%= t('layout_application.privileges') %></span>
         </a>
       </li>
+      <li class="treeview <%= 'active' if session[:menu] == :bookings %>">
+        <a href="<%= bookings_path %>">
+          <i class="fa fa-newspaper-o"></i>
+          <span><%= t('layout_application.bookings') %></span>
+        </a>
+      </li>
       <li class="treeview <%= 'active' if session[:menu] == :forms %>">
         <a href="<%= forms_path %>">
-          <i class="fa fa-file"></i>
+          <i class="fa fa-edit"></i>
           <span><%= t('layout_application.forms') %></span>
         </a>
       </li>

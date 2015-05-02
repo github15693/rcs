@@ -8,6 +8,7 @@ class SessionsController < RootsController
       session[:user_id] = json_session[:results][:user_id]
       session[:email] = json_session[:results][:email]
       session[:name] = json_session[:results][:name]
+      session[:username] = json_session[:results][:username]
       session[:auth_token] = json_session[:results][:auth_token]
       session[:condo_id] = json_session[:results][:condo_id]
       render js: "window.location = '#{homes_url}'"

@@ -14,3 +14,23 @@ en:
     book_now: 'Book now!'
     my_bookings: 'My bookings'
     missing_time_slot: 'Missing timeslot.'
+    show_all: 'All'
+    booking_price: "Booking Price"
+    deposit_price: "Deposit Price"
+    note: "Note"
+    warning: 'Warning: You are using Guest account, you can register to use services but information is guest. You should login into system. Thanks you.'
+    using_date: 'Using date: '
+    using_time: 'Using time: '
+    booking_title: 'Choose date and time to use service. Please!'
+    status:
+      waiting: 'Waiting'
+      approved: 'Approved'
+      cancel: 'Cancel'
+    table:
+      number: 'No.'
+      name: 'Facility name'
+      booking_price: "Booking price"
+      deposit_price: "Deposit price"
+      using_date: 'Using date'
+      using_time: 'Using time'
+      status: 'Status'

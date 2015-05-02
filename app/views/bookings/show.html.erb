@@ -1,57 +1,68 @@
 <%= form_tag bookings_make_a_booking_path, remote: true do |f| %>
-    <div class="row private-dhk">
-      <% if !@booking_detail.nil? %>
-          <h2 class="col-md-12 header">
-            <span class="fa fa-newspaper-o"></span>
-            <span><%= t('booking.bookings') %></span>
-          </h2>
-          <div class="col-md-12" id="img-privileges">
-            <div class="col-md-4"><%= image_tag image_base_url + @booking_detail.facility.image_path, class: 'img-thumbnail' %></div>
-            <div class="col-md-8 height-200">
-              <h4><%= @booking_detail.facility.name %></h4>
-              <h5><%= @booking_detail.facility.booking_price %></h5>
-              <h5><%= @booking_detail.facility.deposit_price %></h5>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><a href="" onclick="goBack()" class="fa fa-reply"></a> <%= t('layout_application.bookings') %></h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <% unless @booking_detail.nil? %>
+              <div class="col-md-2">
+                <%= image_tag image_base_url + @booking_detail.facility.image_path, :class => 'img-thumbnail' %>
+              </div>
+              <div class="col-md-10">
+                <h5><b><%= @booking_detail.facility.name %></b></h5>
+                <h5><%= t 'booking.booking_price' %>: <%= number_format @booking_detail.facility.booking_price %></h5>
+                <h5><%= t 'booking.deposit_price' %>: <%= number_format @booking_detail.facility.deposit_price %></h5>
+                <span><%= t 'booking.note' %>: <%= @booking_detail.facility.note %></span>
+                <% if @user.username == 'guest' %>
+                    <h5 style="line-height: 1.5;"><%= t 'booking.warning' %></h5>
+                <% end %>
+              </div>
+              <div class='col-md-12'><hr style="margin-bottom: 0px"/></div>
+            <div class="col-md-12">
+                <h5><%= t('booking.booking_title') %></h5>
             </div>
-          </div>
-          <div class="col-md-12 margin-top-20">
-            <div class="background-title"><%= t('booking.please_select_your_preferred_date') %></div>
-          </div>
-          <div class="col-md-12  margin-top-10">
-            <div class="col-md-4 input-group date margin-left-15" id="datetime-picker" data-date-format="DD/MM/YYYY">
-              <input class="form-control" id="textFieldDate" name="preferred_date" placeholder="DD/MM/YYYY" readonly="true" type="text">
-              <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-            </div>
-          </div>
-          <div class="col-md-12 margin-top-20">
-            <div class="background-title"><%= t('booking.please_select_your_preferred_timeslot') %></div>
-          </div>
-          <div class="col-md-12  margin-top-10">
-            <div class=" col-md-4">
-              <select class="form-control change-active" name="time_slot_id">
-                <% if !@booking_detail.time_slots.nil? %>
-                    <% @booking_detail.time_slots.each do |tl| %>
-                        <% if !tl.slot_start.nil? && !tl.slot_end.nil? %>
-                            <option value="<%= tl.id %>"><%= Time.parse(tl.slot_start).strftime('%I:%M %P') + ' - ' + Time.parse(tl.slot_end).strftime('%I:%M %P') %></option>
+          <div class="col-md-12">
+                <div class="col-md-2 items-center" style="height: 34px;"><%= t('booking.using_date') %></div>
+                <div class="col-md-3">
+                    <div class="input-group date" id="datetime-picker" data-date-format="DD/MM/YYYY" style="float: left;">
+                      <input class="form-control" id="textFieldDate" name="preferred_date" placeholder="DD/MM/YYYY" readonly="true" type="text">
+                      <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                    </div>
+                </div>
+                <div class="col-md-2 items-center" style="height: 34px;"><%= t('booking.using_time') %></div>
+                <div class="col-md-3">
+                  <select class="form-control change-active" name="time_slot_id">
+                    <% if !@booking_detail.time_slots.nil? %>
+                        <% @booking_detail.time_slots.each do |tl| %>
+                            <% if !tl.slot_start.nil? && !tl.slot_end.nil? %>
+                                <option value="<%= tl.id %>"><%= Time.parse(tl.slot_start).strftime('%I:%M %P') + ' - ' + Time.parse(tl.slot_end).strftime('%I:%M %P') %></option>
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
-              </select>
-            </div>
-            <div class="col-md-1 text-center">
-              <a class="glyphicon glyphicon-time font-size-35"></a>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <%= submit_tag t('booking.book_now'), class: 'btn btn-primary col-md-5 margin-top-20' %>
-          </div>
-
-      <% else %>
-          <h4><%= t('booking.facility_is_empty') %></h4>
-      <% end %>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <%= submit_tag t('booking.book_now'), class: 'btn btn-primary' %>
+                </div>
+              </div>
+          <% else %>
+              <div class='col-md-12'><%= t('data.empty') %></div>
+          <% end %>
+        </div>
+      </div>
+      <!-- /.box-body -->
     </div>
-
+  </div>
+</div>
 <% end %>
-
 <script type="text/javascript">
     var currentdate = new Date();
     var date_val = currentdate.getDate();
@@ -76,3 +87,61 @@
 
 
 </script>
+
+
+
+
+<%#= form_tag bookings_make_a_booking_path, remote: true do |f| %>
+    <!--<div class="row private-dhk">-->
+      <!--<%# if !@booking_detail.nil? %>-->
+          <!--<h2 class="col-md-12 header">-->
+            <!--<span class="fa fa-newspaper-o"></span>-->
+            <!--<span><%#= t('booking.bookings') %></span>-->
+          <!--</h2>-->
+          <!--<div class="col-md-12" id="img-privileges">-->
+            <!--<div class="col-md-4"><%#= image_tag image_base_url + @booking_detail.facility.image_path, class: 'img-thumbnail' %></div>-->
+            <!--<div class="col-md-8 height-200">-->
+              <!--<h4><%#= @booking_detail.facility.name %></h4>-->
+              <!--<h5><%#= @booking_detail.facility.booking_price %></h5>-->
+              <!--<h5><%#= @booking_detail.facility.deposit_price %></h5>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-md-12 margin-top-20">-->
+            <!--<div class="background-title"><%#= t('booking.please_select_your_preferred_date') %></div>-->
+          <!--</div>-->
+          <!--<div class="col-md-12  margin-top-10">-->
+            <!--<div class="col-md-4 input-group date margin-left-15" id="datetime-picker" data-date-format="DD/MM/YYYY">-->
+              <!--<input class="form-control" id="textFieldDate" name="preferred_date" placeholder="DD/MM/YYYY" readonly="true" type="text">-->
+              <!--<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-md-12 margin-top-20">-->
+            <!--<div class="background-title"><%#= t('booking.please_select_your_preferred_timeslot') %></div>-->
+          <!--</div>-->
+          <!--<div class="col-md-12  margin-top-10">-->
+            <!--<div class=" col-md-4">-->
+              <!--<select class="form-control change-active" name="time_slot_id">-->
+                <!--<%# if !@booking_detail.time_slots.nil? %>-->
+                    <!--<%# @booking_detail.time_slots.each do |tl| %>-->
+                        <!--<%# if !tl.slot_start.nil? && !tl.slot_end.nil? %>-->
+                            <!--<option value="<%#= tl.id %>"><%#= Time.parse(tl.slot_start).strftime('%I:%M %P') + ' - ' + Time.parse(tl.slot_end).strftime('%I:%M %P') %></option>-->
+                        <!--<%# end %>-->
+                    <!--<%# end %>-->
+                <!--<%# end %>-->
+              <!--</select>-->
+            <!--</div>-->
+            <!--<div class="col-md-1 text-center">-->
+              <!--<a class="glyphicon glyphicon-time font-size-35"></a>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-md-12">-->
+            <!--<%#= submit_tag t('booking.book_now'), class: 'btn btn-primary col-md-5 margin-top-20' %>-->
+          <!--</div>-->
+
+      <!--<%# else %>-->
+          <!--<h4><%#= t('booking.facility_is_empty') %></h4>-->
+      <!--<%# end %>-->
+    <!--</div>-->
+
+<%# end %>
+

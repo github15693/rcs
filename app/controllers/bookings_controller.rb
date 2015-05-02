@@ -2,8 +2,31 @@ class BookingsController < ApplicationController
   before_action :set_menu
 
   def index
+
     temp = hash_to_object get_api('/booking_facilities', {user_id: session[:user_id], auth_token: session[:auth_token]})
     @booking_facilities=temp.total > 0 ? temp.results : nil
+
+    limit = 5
+    unless params[:page].blank?
+      @current_page = params[:page]
+    else
+      @current_page = 1
+    end
+    @category_id = params[:category_id].blank? ? -1 : params[:category_id]
+    if @category_id == -1
+      facilities = hash_to_object get_api('/get_facilities', {auth_token: session[:auth_token], :condo_id => session[:condo_id], :page => @current_page})
+    else
+      facilities = hash_to_object get_api('/get_facilities', {auth_token: session[:auth_token], :condo_id => session[:condo_id], :facility_category => @category_id, :page => @current_page})
+    end
+    if facilities[:total] == 0
+      @pages = 1
+    else
+      @pages = facilities[:total] % limit == 0 ? facilities[:total]/limit : facilities[:total]/limit + 1
+    end
+    @total_facility = hash_to_object(get_api('/count_facility', {auth_token: session[:auth_token], :condo_id => session[:condo_id]})).results
+    @facilities = facilities.results.blank? ? nil : facilities.results
+    facility_category = hash_to_object get_api('/get_facility_categories', {auth_token: session[:auth_token], :condo_id => session[:condo_id]})
+    @facility_category = facility_category.status == 'success' ? facility_category.results : []
   end
 
   def check_booking
@@ -14,7 +37,7 @@ class BookingsController < ApplicationController
 
   def show
     temp = hash_to_object get_api('/booking_detail', {booking_facility_id: params[:id], auth_token: session[:auth_token]})
-    @booking_detail=temp.total > 0 ? temp.results : nil
+    @booking_detail = temp.total > 0 ? temp.results : nil
   end
 
   def make_a_booking

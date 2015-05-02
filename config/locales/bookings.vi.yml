@@ -11,6 +11,26 @@ vi:
     make_a_booking: 'Thực hiện đặt'
     please_select_your_preferred_date: 'Vui lòng chọn ngày:'
     please_select_your_preferred_timeslot: 'Vui lòng chọn thời gian:'
-    book_now: 'Đặt ngay!'
+    book_now: 'Đăng ký'
     my_bookings: 'Dịch vụ đã đặt'
     missing_time_slot: 'Thời gian không được rỗng'
+    show_all: 'Tất cả'
+    booking_price: "Phí thuê"
+    deposit_price: "Đặt cọc"
+    note: "Lưu ý"
+    warning: 'Cảnh báo: Bạn đang sử dụng hệ thống với quyền Khách, bạn có thể đăng ký sử dụng dịch vụ nhưng thông tin đăng ký là khách, trường hợp xảy ra tranh chấp chúng tôi sẽ ưu tiên người đến trước. Bạn nên đăng nhập vào hệ thống để đảm bảo quyền lợi của bạn. Xin cảm ơn.'
+    using_date: 'Ngày sử dụng: '
+    using_time: 'Thời gian sử dụng: '
+    booking_title: 'Vui lòng chọn ngày và thời gian sử dụng dịch vụ.'
+    status:
+      waiting: 'Đang đợi'
+      approved: 'Thành công'
+      cancel: 'Thất bại'
+    table:
+      number: 'STT'
+      name: 'Tên dịch vụ'
+      booking_price: "Phí thuê"
+      deposit_price: "Đặt cọc"
+      using_date: 'Ngày sử dụng'
+      using_time: 'Thời gian sử dụng'
+      status: 'Trạng thái'

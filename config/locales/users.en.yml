@@ -2,10 +2,12 @@ en:
   users:
     edit_profile: 'Edit Profile'
     title: 'Profile'
-    name: 'Name:'
-    phone: 'Phone:'
-    city: 'Address:'
-    interest: 'Interest(s):'
+    name: 'Name: '
+    phone: 'Phone: '
+    email: 'Email: '
+    city: 'Address: '
+    country: 'Country: '
+    interest: 'Interest(s): '
   helpers:
     label:
       user:
