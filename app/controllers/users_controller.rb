@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   # layout 'application'
+  before_action :check_user
 
+
+  def get_users
+    session[:menu] = :users
+
+  end
 
   def show
     session[:profile_tab] = :info
@@ -71,7 +77,11 @@ class UsersController < ApplicationController
   end
 
   private
-
+  def check_user
+    if @user.username == 'guest'
+      redirect_to '/422.html'
+    end
+  end
 
   def password_params
     params.require(:user).permit(:current_password, :password, :password_confirmation, :auth_token)

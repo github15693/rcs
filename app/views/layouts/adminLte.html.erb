@@ -220,12 +220,20 @@
           <span><%= t('layout_application.bookings') %></span>
         </a>
       </li>
+      <% unless @user.username == 'guest' %>
       <li class="treeview <%= 'active' if session[:menu] == :forms %>">
         <a href="<%= forms_path %>">
           <i class="fa fa-edit"></i>
           <span><%= t('layout_application.forms') %></span>
         </a>
       </li>
+      <li class="treeview <%= 'active' if session[:menu] == :users %>">
+        <a href="<%= get_users_user_path %>">
+          <i class="fa fa-edit"></i>
+          <span><%= t('layout_application.uers') %></span>
+        </a>
+      </li>
+      <% end %>
       <li class="treeview <%= 'active' if session[:menu] == :guard_houses %>">
         <a href="<%= guard_houses_path %>">
           <i class="fa fa-tty"></i>

@@ -1,101 +1,112 @@
 
-<!--<div class="row">-->
-  <!--<div class="col-md-12">-->
-    <!--<div class="box box-primary">-->
-      <!--<div class="box-header with-border">-->
-        <!--<h3 class="box-title"><%#= t('layout_application.forms') %></h3>-->
-        <!--<div class="box-tools pull-right">-->
-          <!--<span class="label label-success"><%#= 1.to_s + ' ' + t('layout_application.forms') %></span>-->
-          <!--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
-          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="box-body">-->
-       <!---->
-      <!--</div>-->
-      <!--<div class="box-footer text-center">-->
-        <!--<ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>-->
-        <!--<script>-->
-            <!--$(function(){-->
-                <!--$('#pagination').twbsPagination({-->
-                    <!--totalPages: parseInt('<%#= @pages %>'),-->
-                    <!--visiblePages: 5,-->
-                    <!--startPage: parseInt('<%#= @current_page %>'),-->
-                    <!--href: '?page={{number}}',-->
-                    <!--first: i18nJs.layout.first,-->
-                    <!--prev: i18nJs.layout.prev,-->
-                    <!--next: i18nJs.layout.next,-->
-                    <!--last: i18nJs.layout.last-->
-               <!--});-->
-            <!--})-->
-        <!--</script>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
-
-
-<div class="forms-partial">
-<h2 class="header"><span class="glyphicon glyphicon-th"></span> &nbsp;<span><%= t('form.index.title') %></span></h2>
-
-
-<div class="panel-group" id="accordion">
-<% @forms[:results].each do |fc| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#<%= fc[:form_category_name] %>">
-          <%= fc[:form_category_name] %>
-        </a>
-      </h3>
-    </div>
-    <div id="<%= fc[:form_category_name] %>" class="panel-collapse collapse">
-      <div class="panel-body">
-       <% fc[:forms].each do |f| %>
-         <h4><a href=" <%= url %><%= f[:form_path]%>"><%= f[:title] %></a></h4>
-       <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.forms') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @total_form.to_s + ' ' + t('layout_application.forms') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+          <% unless @forms.nil? %>
+            <% i = 0; @forms.each do |f| i += 1;%>
+            <div class="row">
+              <div class="col-md-12">
+                <a href="<%= url + f.form_path %>"><i class="fa fa-cloud-download"></i>&ensp;<%= f.title %></a>
+              </div>
+              <% if @forms.size > i %>
+                  <div class='col-md-12'><hr/></div>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="box-footer text-center">
+        <ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>
+        <script>
+            $(function(){
+                $('#pagination').twbsPagination({
+                    totalPages: parseInt('<%= @pages %>'),
+                    visiblePages: 5,
+                    startPage: parseInt('<%= @current_page %>'),
+                    href: '?page={{number}}',
+                    first: i18nJs.layout.first,
+                    prev: i18nJs.layout.prev,
+                    next: i18nJs.layout.next,
+                    last: i18nJs.layout.last
+               });
+            })
+        </script>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
-<div id="form-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div id="form-content" class="modal-content">
-    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">Close</span>
-    </button>
-    <h4 class="modal-title"></h4>
-</div>
-<div class= "modal-body">
-
-    <div class="content-iframe text-center">
-    <embed id="frame" src="" width="800" height="500">
-    </div>
-
 </div>
 
-    </div>
-  </div>
-</div>
-<script type="text/javascript">
-  $(document).ready(function(){
-       $("#accordion div:first-child div.panel-collapse").addClass('in');
-       $("div.panel-body h4 a").click(function(e){
-             e.preventDefault();
-             $('h4.modal-title').text($(this).text());
-
-             $('#frame').attr('src', $(this).attr('href'));
-             $('#form-modal').modal('show');
 
 
-       });
-
-  });
-</script>
+<!--<div class="forms-partial">-->
+<!--<h2 class="header"><span class="glyphicon glyphicon-th"></span> &nbsp;<span><%#= t('form.index.title') %></span></h2>-->
 
 
-</div>
+<!--<div class="panel-group" id="accordion">-->
+<!--<%# @forms[:results].each do |fc| %>-->
+  <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading">-->
+      <!--<h3 class="panel-title">-->
+        <!--<a data-toggle="collapse" data-parent="#accordion" href="#<%#= fc[:form_category_name] %>">-->
+          <!--<%#= fc[:form_category_name] %>-->
+        <!--</a>-->
+      <!--</h3>-->
+    <!--</div>-->
+    <!--<div id="<%#= fc[:form_category_name] %>" class="panel-collapse collapse">-->
+      <!--<div class="panel-body">-->
+       <!--<%# fc[:forms].each do |f| %>-->
+         <!--<h4><a href=" <%#= url %><%#= f[:form_path]%>"><%#= f[:title] %></a></h4>-->
+       <!--<%# end %>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<%# end %>-->
+<!--</div>-->
+<!--<div id="form-modal" class="modal fade" tabindex="-1">-->
+  <!--<div class="modal-dialog modal-lg">-->
+    <!--<div id="form-content" class="modal-content">-->
+    <!--<div class="modal-header">-->
+    <!--<button type="button" class="close" data-dismiss="modal">-->
+        <!--<span aria-hidden="true"></span>-->
+        <!--<span class="sr-only">Close</span>-->
+    <!--</button>-->
+    <!--<h4 class="modal-title"></h4>-->
+<!--</div>-->
+<!--<div class= "modal-body">-->
+
+    <!--<div class="content-iframe text-center">-->
+    <!--<embed id="frame" src="" width="800" height="500">-->
+    <!--</div>-->
+
+<!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--//  $(document).ready(function(){-->
+<!--//       $("#accordion div:first-child div.panel-collapse").addClass('in');-->
+<!--//       $("div.panel-body h4 a").click(function(e){-->
+<!--//             e.preventDefault();-->
+<!--//             $('h4.modal-title').text($(this).text());-->
+<!--//-->
+<!--//             $('#frame').attr('src', $(this).attr('href'));-->
+<!--//             $('#form-modal').modal('show');-->
+<!--//-->
+<!--//-->
+<!--//       });-->
+<!--//-->
+<!--//  });-->
+<!--</script>-->
+
+
+<!--</div>-->

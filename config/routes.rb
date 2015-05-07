@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         get 'e_walet' => 'users#e_walet'
         patch 'update_password'
         put 'update_password'
+        get 'get_users' => 'users#get_users', as: 'get_users'
       end
     end
     resource :help, only: [] do
