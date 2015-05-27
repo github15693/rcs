@@ -1,21 +1,47 @@
+<%#= debug  @guard_houses %>
 <div class="row">
-  <% if !@guard_houses.nil? %>
-      <div class="col-md-12 icon-menu">
-        <div class="col-md-1">
-          <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-        </div>
-        <div class="col-md-11">
-          <h4><%= t('guard_houses.guard_houses') %></h4>
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.guard_house') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
         </div>
       </div>
-      <% @guard_houses.each do |gh| %>
-          <div class="col-md-12">
-            <hr>
-            <h4>Guard house name</h4>
-            <h4><%= gh.phone %></h4>
-          </div>
-      <% end %>
-  <% else %>
-      <h4>Guard houses is empty!</h4>
-  <% end %>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <% unless @guard_houses.nil? %>
+            <div class="row">
+              <div class="col-md-12">
+                <h4><i class="fa fa-tty"></i>&ensp;<%= @guard_houses.phone %></h4>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-6"><%= image_tag url + @guard_houses.photo_path, :class => 'img-thumbnail', :title => t('layouts.application.alt_photo_image') %></div>
+                <div class="col-md-6"><%= image_tag url + @guard_houses.map_path, :class => 'img-thumbnail', :title => t('layouts.application.alt_map_image') %></div>
+              </div>
+              <div class='col-md-12'><hr/></div>
+            </div>
+            <div class="row">
+              <div class='col-md-12'><h4><%= t('layouts.application.guards') %></h4></div>
+            <%  @guard_houses.guards.each do |g| %>
+              <div class="col-md-2">
+                <%= image_tag url + g.image_path, :class => 'img-thumbnail', :title => g.name %><br>
+                <label><%= g.name %></label>
+              </div>
+            <% end %>
+            </div>
+        <% else %>
+            <div class='col-md-12'><%= t('data.empty') %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  $(function(){
+      $('.box-body img').tooltip();
+  });
+</script>

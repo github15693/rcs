@@ -2,10 +2,10 @@ vi:
   privileges:
     location: 'Vị trí'
     name: 'Tên'
-    price: 'Giá tiền'
+    price: 'Giá tiền: '
     description: 'Mô tả'
     distance: 'Khoảng cách'
-    date_expiry: 'Ngày hết hạn'
+    date_expiry: 'Ngày hết hạn: '
     info: 'Thông tin'
     empty: 'Không có khuyến mãi!'
     save_btn: 'Lưu khuyến mãi'

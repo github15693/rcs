@@ -1,28 +1,84 @@
-<div class="row private-dhk">
-  <% if !@privileges.nil? %>
-  <div class="col-md-12 icon-menu">
-    <div class="col-md-1">
-      <%= image_tag 'no-image.jpg', class: 'img-thumbnail' %>
-    </div>
-    <div class="col-md-11">
-      <h4><%= t('privileges.privileges')%></h4>
-    </div>
-  </div>
-      <% @privileges.each do |privilege| %>
-          <a href="<%= privilege_path(privilege.id) %>">
-      <div class="col-md-12">
-        <hr>
-        <div class="col-md-2"><%= image_tag image_base_url + privilege.image_path, class: 'img-thumbnail' %></div>
-        <div class="col-md-10">
-          <h4><%= privilege.name %></h4>
-          <h5><%= privilege.location %></h5>
-          <h5><%= privilege.distance %></h5>
-          <h5 class="text-right"><%= (privilege.date_expiry.to_date - Date.today()).to_i %> Days left</h5>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.privileges') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @total_privilege.to_s + ' ' + t('layout_application.privileges') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
         </div>
       </div>
-           </a>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <% unless @privileges.nil? %>
+            <% i = 0; @privileges.each do |pri| i += 1;%>
+                <div class="row">
+                  <div class="col-md-2">
+                    <%= image_tag image_base_url + pri.image_path, :class => 'img-thumbnail' %>
+                  </div>
+                  <div class="col-md-10">
+                    <h5><b><%= link_to pri.name, privilege_path(pri.id) %></b></h5>
+                    <h5><%= t('privileges.price') %> <%= number_format pri.price %></h5>
+                    <h5><%= t('privileges.date_expiry') %> <%= DateTime.parse(pri.date_expiry).strftime("%d/%m/%Y") if !pri.date_expiry.nil? %></h5>
+                    <span><%= pri.description %></span>
+                  </div>
+                  <% if @privileges.size > i %>
+                      <div class='col-md-12'><hr/></div>
+                  <% end %>
+                </div>
+            <% end %>
+        <% else %>
+            <div class='col-md-12'><%= t('data.empty') %></div>
         <% end %>
-      <% else %>
-  <h4><%= t('booking.facility_is_empty.cancel') %></h4>
-  <% end %>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer text-center">
+        <ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>
+        <script>
+            $(function(){
+                $('#pagination').twbsPagination({
+                    totalPages: parseInt('<%= @pages %>'),
+                    visiblePages: 5,
+                    startPage: parseInt('<%= @current_page %>'),
+                    href: '?page={{number}}',
+                    first: i18nJs.layout.first,
+                    prev: i18nJs.layout.prev,
+                    next: i18nJs.layout.next,
+                    last: i18nJs.layout.last
+                });
+            })
+        </script>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!--<div class="row private-dhk">-->
+  <!--<%# if !@privileges.nil? %>-->
+  <!--<div class="col-md-12 icon-menu">-->
+    <!--<div class="col-md-1">-->
+      <!--<%#= image_tag 'no-image.jpg', class: 'img-thumbnail' %>-->
+    <!--</div>-->
+    <!--<div class="col-md-11">-->
+      <!--<h4><%#= t('privileges.privileges') %></h4>-->
+    <!--</div>-->
+  <!--</div>-->
+      <!--<%# @privileges.each do |privilege| %>-->
+          <!--<a href="<%#= privilege_path(privilege.id) %>">-->
+      <!--<div class="col-md-12">-->
+        <!--<hr>-->
+        <!--<div class="col-md-2"><%#= image_tag image_base_url + privilege.image_path, class: 'img-thumbnail' %></div>-->
+        <!--<div class="col-md-10">-->
+          <!--<h4><%#= privilege.name %></h4>-->
+          <!--<h5><%#= privilege.location %></h5>-->
+          <!--<h5><%#= privilege.distance %></h5>-->
+          <!--<h5 class="text-right"><%#= (privilege.date_expiry.to_date - Date.today()).to_i %> Days left</h5>-->
+        <!--</div>-->
+      <!--</div>-->
+           <!--</a>-->
+        <!--<%# end %>-->
+      <!--<%# else %>-->
+  <!--<h4><%#= t('booking.facility_is_empty.cancel') %></h4>-->
+  <!--<%# end %>-->
+<!--</div>-->

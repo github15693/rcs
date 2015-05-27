@@ -71,5 +71,8 @@ vi:
       english: 'Tiếng Anh'
       vietnamese: 'Tiếng Việt'
       logout: 'Đăng xuất'
+      'alt_photo_image': 'Đây là hình ảnh nhà bảo vệ.'
+      'alt_map_image': 'Đây là sơ đồ đi đến nhà bảo vệ.'
+      'guards': 'Bảo vệ:'
   data:
     empty: 'Không có dữ liệu.'

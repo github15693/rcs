@@ -3,8 +3,8 @@ class BookingsController < ApplicationController
 
   def index
 
-    temp = hash_to_object get_api('/booking_facilities', {user_id: session[:user_id], auth_token: session[:auth_token]})
-    @booking_facilities=temp.total > 0 ? temp.results : nil
+    # temp = hash_to_object get_api('/booking_facilities', {user_id: session[:user_id], auth_token: session[:auth_token]})
+    # @booking_facilities=temp.total > 0 ? temp.results : nil
 
     limit = 5
     unless params[:page].blank?

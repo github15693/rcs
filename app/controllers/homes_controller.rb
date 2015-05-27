@@ -18,7 +18,7 @@ class HomesController < ApplicationController
     facilites = hash_to_object get_api('/get_facilities', {:condo_id => session[:condo_id], auth_token: session[:auth_token]})
     @facilites = facilites.total > 0 ? facilites.results.take(3) : nil
 
-    users = hash_to_object get_api('/get_users', {:condo_id => session[:condo_id], auth_token: session[:auth_token]})
+    users = hash_to_object get_api('/get_users', {:limit => 8, :condo_id => session[:condo_id], auth_token: session[:auth_token]})
     @users = users.total > 0 ? users.results.take(8) : nil
   end
 

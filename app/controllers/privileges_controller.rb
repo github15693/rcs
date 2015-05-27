@@ -2,8 +2,20 @@ class PrivilegesController < ApplicationController
   before_action :set_menu
   include ApplicationHelper
   def index
-    # @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id], auth_token:session[:auth_token]})
-    # @privileges=@temp.results
+    limit = 5
+
+    if params[:page]
+      @current_page = params[:page]
+    else
+      @current_page = 1
+    end
+    privileges = hash_to_object get_api('/privileges', {:page => @current_page, :limit => limit, user_id:session[:user_id], auth_token:session[:auth_token]})
+    @pages = privileges[:total] % limit == 0 ? privileges[:total]/limit : privileges[:total]/limit +1
+    @total_privilege = privileges[:total].blank? ? 0 : privileges[:total]
+    @privileges = privileges.results.blank? ? nil : privileges.results
+
+     # @temp = hash_to_object get_api('/privileges',{user_id:session[:user_id], auth_token:session[:auth_token]})
+     # @privileges=@temp.results
   end
 
   def show

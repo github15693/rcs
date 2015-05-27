@@ -71,5 +71,8 @@ en:
       english: 'English'
       vietnamese: 'Vietnamese'
       logout: 'Logout'
+      'alt_photo_image': 'This is a photo of guard house.'
+      'alt_map_image': 'This is a map go to guard house.'
+      'guards': 'Guards:'
   data:
     empty: 'Data is empty.'

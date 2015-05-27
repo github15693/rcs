@@ -2,10 +2,10 @@ en:
   privileges:
     location: 'Location'
     name: 'Name'
-    price: 'Price'
+    price: 'Price: '
     description: 'Description'
     distance: 'Distance'
-    date_expiry: 'Date_expiry'
+    date_expiry: 'Date expiry: '
     info: 'Info'
     empty: 'Privileges is empty!'
     save_btn: 'Save to E-Walet'

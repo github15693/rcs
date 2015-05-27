@@ -1,1 +1,58 @@
-dxgfhg
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t('layout_application.users') %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success"><%= @total_user.to_s + ' ' + t('layout_application.users') %></span>
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <table class="table table-responsive">
+          <thead>
+              <th><%= t('users.name') %> </th>
+              <th><%= t('users.email') %> </th>
+              <th><%= t('users.phone') %> </th>
+              <th><%= t('users.city') %> </th>
+              <th><%= t('users.country') %> </th>
+          </thead>
+          <tbody>
+          <% unless @users.nil? %>
+              <% @users.each do |u|%>
+                <tr>
+                  <td><%= u.name %></td>
+                  <td><%= u.email %></td>
+                  <td><%= u.phone %></td>
+                  <td><%= u.city %></td>
+                  <td><%= u.country %></td>
+                </tr>
+              <% end %>
+          <% else %>
+              <tr><%= t('data.empty') %></tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="box-footer text-center">
+        <ul id="pagination" class="pagination-sm" style="margin: 0px;"></ul>
+        <script>
+            $(function(){
+                $('#pagination').twbsPagination({
+                    totalPages: parseInt('<%= @pages %>'),
+                    visiblePages: 5,
+                    startPage: parseInt('<%= @current_page %>'),
+                    href: '?page={{number}}',
+                    first: i18nJs.layout.first,
+                    prev: i18nJs.layout.prev,
+                    next: i18nJs.layout.next,
+                    last: i18nJs.layout.last
+                });
+            })
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

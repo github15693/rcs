@@ -4,7 +4,6 @@ class FormsController < ApplicationController
 
   def index
     set_menu
-    @forms = hash_to_object get_api('/forms', { :condo_id => session[:condo_id] ,:auth_token =>session[:auth_token]})
 
     limit = 5
     unless params[:page].blank?

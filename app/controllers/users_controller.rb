@@ -6,6 +6,20 @@ class UsersController < ApplicationController
   def get_users
     session[:menu] = :users
 
+    limit = 5
+    unless params[:page].blank?
+      @current_page = params[:page]
+    else
+      @current_page = 1
+    end
+    users = hash_to_object get_api('/get_users', {:page => @current_page, :limit => limit, :condo_id => session[:condo_id] ,:auth_token =>session[:auth_token]})
+    @total_user = users[:total].blank? ? 0 : users[:total]
+    @users = users.results.blank? ? nil : users.results
+    if users.total == 0
+      @pages = 1
+    else
+      @pages = users[:total] % limit == 0 ? users.total/limit : users.total/limit + 1
+    end
   end
 
   def show
